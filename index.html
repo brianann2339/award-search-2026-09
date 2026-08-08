@@ -292,7 +292,8 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
       <tr><td>ANA 星盟夥伴票</td><td><span class="tag t-no">無位</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-no">回程時段不符</span></td><td><span class="tag t-ok">17,500 哩有位</span></td><td class="wrapcell">不接受候補，全航段須確認</td></tr>
       <tr><td>長榮 無限萬哩遊</td><td><span class="tag t-wait">全候補</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-wait">回程候補</span></td><td><span class="tag t-wait">候補</span></td><td class="wrapcell">哩數比 ANA 貴 2 倍以上</td></tr>
       <tr><td>新航 KrisFlyer</td><td><span class="tag t-wait">多為候補</span></td><td><span class="tag t-wait">Saver 候補</span></td><td><span class="tag t-ok">少數可訂</span></td><td class="wrapcell">Advantage 價差大但仍候補</td></tr>
-      <tr><td>日本航空 JMB</td><td><span class="tag t-no">全無位</span></td><td><span class="tag t-no">未營運</span></td><td><span class="tag t-ok">有位</span></td><td class="wrapcell"><strong>2026-08-07 登入後三個引擎全查完</strong>（自家／提携社 CX·QF／寰宇一家）：東京⇄墨爾本經濟與商務皆 0，已用 TYO→SIN 正對照證明查法有效</td></tr>
+      <tr><td>日本航空 JMB</td><td><span class="tag t-no">全無位</span></td><td><span class="tag t-no">未營運</span></td><td><span class="tag t-ok">有位</span></td><td class="wrapcell"><strong>2026-08-07 登入後三個引擎全查完</strong>（自家／提携社 CX·QF／寰宇一家）：東京⇄墨爾本經濟與商務皆 0，已用 TYO→SIN 正對照證明查法有效。
+      <br><strong>2026-08-08 補：香港→東京 9/28 自家特典有位</strong>——JL028 23:45→HND 04:55+1 僅 <strong>11,000 哩</strong>＋¥22,650（該日最低）、JL736 10:30→NRT 24,000 哩、JL026 15:15→HND 27,000 哩，皆○可訂。已收錄為回程卡片。</td></tr>
       <tr><td>亞洲萬里通</td><td><span class="tag t-no">全零</span></td><td><span class="tag t-wait">去程趕不上</span></td><td><span class="tag t-no">全零</span></td><td class="wrapcell"><strong>但 MEL→HKG 回程有 CX178 直飛 20,000 里數，符合時段</strong></td></tr>
       <tr><td>現金</td><td><span class="tag t-cash">NT$40,391</span></td><td><span class="tag t-cash">NT$15,289</span></td><td><span class="tag t-cash">NT$20,580</span></td><td class="wrapcell">皆為來回含稅</td></tr>
     </tbody>
@@ -1719,6 +1720,10 @@ const RET=[
  {id:'r46',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',type:'wait',miles:44500,prog:'新航',tax:null,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
  {id:'r47',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[2,'06:45'],air:'新航 SQ218＋SQ636',type:'wait',miles:44500,prog:'新航',tax:null,dur:'32h10',stops:'1停新加坡（隔夜）',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
  {id:'r48',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:2982,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'08-08',note:'稅費 AUD 130.95 為訂位頁實測（2026-08-08）；候補若起飛前兩週未成位將自動取消'},
+ // 日航自家特典 HKG→東京 9/28（08-08 使用者實查，○＝可訂）
+ {id:'r53',from:'HKG',to:'HND',dep:[1,'23:45'],arr:[2,'04:55'],air:'日航 JL028（787-8）',type:'mile',miles:11000,prog:'日航',tax:4616,dur:'4h10',stops:'直飛',bag:'incl',src:'08-08',note:'★畫面紅底標記＝該日最低哩程。稅 ¥22,650。11,000 哩省下 NT$2,458（對照現金 7,074）→ 每哩僅 NT$0.22'},
+ {id:'r54',from:'HKG',to:'NRT',dep:[1,'10:30'],arr:[1,'15:55'],air:'日航 JL736（787-8）',type:'mile',miles:24000,prog:'日航',tax:4616,dur:'4h25',stops:'直飛',bag:'incl',src:'08-08',note:'○可訂。稅 ¥22,650。每哩僅 NT$0.10，比 JL028 差很多。接 CX178（06:55 抵港）轉機 3h35'},
+ {id:'r55',from:'HKG',to:'HND',dep:[1,'15:15'],arr:[1,'20:25'],air:'日航 JL026（787-9，SKY 787 共掛）',type:'mile',miles:27000,prog:'日航',tax:4616,dur:'4h10',stops:'直飛',bag:'incl',src:'08-08',note:'○可訂。稅 ¥22,650。三班中哩程最貴。接 TG462+TG600（11:45 抵港）轉機 3h30'},
  // ANA 越航商務（08-08 使用者於 ANA 引擎實查，可訂）
  {id:'r52',from:'MEL',to:'HKG',dep:[1,'00:25'],arr:[1,'13:30'],air:'越南航空 VN778＋VN592',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2688,dur:'15h05',stops:'1停河內 3h20',bag:'incl',src:'08-08',note:'⚠ 9/28 凌晨 00:25 出發——在 9/27 20:00–23:59 窗外 26 分鐘，依你要求列入。稅 JPY 13,190（ANA 引擎實查）；ANA 不收候補＝顯示即可訂'},
  // 長榮星盟 商務（08-08 實查，全候補）
