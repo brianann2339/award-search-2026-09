@@ -293,6 +293,14 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 <!-- ================= 去程/回程 選擇器 ================= -->
 <section id="obuild" hidden>
   <h2>去程所有的選項（9/18 出發，須於 9/19 21:30 前抵達 MEL）</h2>
+  <div class="callout warn">
+    <strong>9/19 從東京出發，當天到不了墨爾本——這是結構性的，不是差一點。</strong>
+    2026-08-08 查 TYO→MEL 9/19 共 24 筆結果，<strong>全部隔日抵達</strong>，最早也要 9/20 06:30（飛行 15h05），
+    距 9/19 21:30 差 <strong>9 小時</strong>。原因：東京 UTC+9、墨爾本 UTC+10，要當地 21:30 落地等於東京時間 20:30 前，
+    扣掉最短飛行時間得在早上 10:25 前起飛——但直飛班全在傍晚後、轉機最短也要 15 小時。
+    <br><strong>可行的是「9/18 先飛到轉機點，9/19 從轉機點出發當天進墨爾本」</strong>，下方已收錄：
+    新加坡出發 4 班（07:50／10:25／11:05／11:10）、曼谷 TG461 08:10→20:00、香港國泰 00:20→11:15。
+  </div>
   <p class="note">點卡片＝加入行程，再點＝移除。選了航段後，下方只留下<strong>接得上</strong>的卡片
   （時間不重疊、且與已選段的城市前後銜接——例如選了抵達香港的段，就只剩香港出發的段）；其餘暫時隱藏，移除已選即恢復。
   現金票價 2026-08-08 快照（標 08-07 者未重查）；里程空位 ANA 08-06～07／長榮 08-07／新航 07-12。
@@ -1591,7 +1599,8 @@ const OUT=[
  // 曼谷 → 墨爾本
  {id:'o47',from:'BKK',to:'MEL',dep:[0,'21:40'],arr:[1,'09:25'],air:'捷星／澳航',type:'cash',price:8080,dur:'8h45',stops:'直飛',bag:'extra',src:'08-07'},
  {id:'o48',from:'BKK',to:'MEL',dep:[0,'19:40'],arr:[1,'07:30'],air:'泰航 TG465',type:'cash',price:14810,dur:'8h50',stops:'直飛',bag:'incl',src:'08-07'},
- {id:'o49',from:'BKK',to:'MEL',dep:[1,'08:10'],arr:[1,'20:00'],air:'泰航 TG461',type:'cash',price:19975,dur:'8h50',stops:'直飛',bag:'incl',src:'08-07'},
+ {id:'o49',from:'BKK',to:'MEL',dep:[1,'08:10'],arr:[1,'20:00'],air:'泰航 TG461',type:'cash',price:20038,dur:'8h50',stops:'直飛',bag:'incl',src:'08-08',note:'9/19 出發、當天 20:00 抵達'},
+ {id:'o65',from:'HKG',to:'MEL',dep:[1,'00:20'],arr:[1,'11:15'],air:'國泰 CX',type:'cash',price:26909,dur:'8h55',stops:'直飛',bag:'incl',src:'08-08',note:'9/19 凌晨出發、當天 11:15 抵達；須 9/18 內先到香港'},
  {id:'o50',from:'BKK',to:'MEL',dep:[0,'19:40'],arr:[1,'07:30'],air:'泰航 TG465',type:'mile',miles:23000,prog:'ANA',tax:5929,dur:'8h50',stops:'直飛',bag:'incl'},
  {id:'o51',from:'BKK',to:'MEL',dep:[0,'08:10'],arr:[0,'20:00'],air:'泰航 TG461',type:'mile',miles:23000,prog:'ANA',tax:5929,dur:'8h50',stops:'直飛',bag:'incl',note:'9/18 當天 20:00 抵達'},
  // 長榮全程候補直通
