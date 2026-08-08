@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>東京 ⇄ 墨爾本 里程票查詢總表（2026/09）</title>
+<style>
+:root{
+  --bg:#f7f8f7; --panel:#fff; --ink:#15201c; --muted:#5c6b64; --line:#dde3e0;
+  --accent:#1c6b4b; --accent-soft:#e8f2ed;
+  --ok:#146c43; --ok-bg:#e3f3ea; --wait:#9a6700; --wait-bg:#fff4d6; --no:#9b2226; --no-bg:#fdeaea;
+  --cash:#1d4ed8; --cash-bg:#e6edfd;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111512;--panel:#171d1a;--ink:#e8efeb;--muted:#9aa8a1;--line:#2b342f;
+  --accent:#57c99a;--accent-soft:#16302650;
+  --ok:#5fd39a;--ok-bg:#123326;--wait:#e8b53f;--wait-bg:#3a2e10;--no:#f08a8d;--no-bg:#3a1a1c;
+  --cash:#7ea6ff;--cash-bg:#16213f;}
+}
+:root[data-theme=dark]{--bg:#111512;--panel:#171d1a;--ink:#e8efeb;--muted:#9aa8a1;--line:#2b342f;
+  --accent:#57c99a;--accent-soft:#16302650;
+  --ok:#5fd39a;--ok-bg:#123326;--wait:#e8b53f;--wait-bg:#3a2e10;--no:#f08a8d;--no-bg:#3a1a1c;
+  --cash:#7ea6ff;--cash-bg:#16213f;}
+:root[data-theme=light]{--bg:#f7f8f7;--panel:#fff;--ink:#15201c;--muted:#5c6b64;--line:#dde3e0;
+  --accent:#1c6b4b;--accent-soft:#e8f2ed;
+  --ok:#146c43;--ok-bg:#e3f3ea;--wait:#9a6700;--wait-bg:#fff4d6;--no:#9b2226;--no-bg:#fdeaea;
+  --cash:#1d4ed8;--cash-bg:#e6edfd;}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 18px 80px}
+header{padding:8px 0 20px;border-bottom:1px solid var(--line);margin-bottom:22px}
+h1{font-size:26px;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:14px}
+.stamp{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--muted);
+  background:var(--accent-soft);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+
+nav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;position:sticky;top:0;z-index:10;
+  background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+nav button{font:inherit;font-size:14px;color:var(--muted);background:transparent;
+  border:1px solid transparent;border-radius:8px;padding:7px 13px;cursor:pointer}
+nav button:hover{background:var(--accent-soft);color:var(--ink)}
+nav button[aria-selected=true]{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+section[hidden]{display:none}
+h2{font-size:19px;margin:30px 0 6px;letter-spacing:-.01em}
+h2:first-child{margin-top:0}
+h3{font-size:15.5px;margin:24px 0 6px;color:var(--muted);font-weight:600}
+p.note{color:var(--muted);font-size:13.5px;margin:6px 0 14px}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin:14px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .lbl{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+.kpi .val{font-size:23px;font-weight:650;margin:4px 0 2px;letter-spacing:-.02em}
+.kpi .fine{font-size:12.5px;color:var(--muted)}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600;font-size:12.5px;letter-spacing:.02em;
+  position:sticky;top:0;cursor:pointer;user-select:none}
+th.nosort{cursor:default}
+th[data-dir=asc]::after{content:" ▲";font-size:9px;color:var(--muted)}
+th[data-dir=desc]::after{content:" ▼";font-size:9px;color:var(--muted)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--accent-soft)}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.wrapcell{white-space:normal;min-width:230px}
+.seg{white-space:normal;min-width:330px;font-size:12.5px;line-height:1.55}
+.seg ol{margin:0;padding-left:1.35em}
+.seg li{margin:2px 0}
+.seg .fno{font-weight:600}
+.seg .pay{display:inline-block;font-size:11px;padding:0 5px;border-radius:3px;margin-left:4px;white-space:nowrap}
+.seg .pay-cash{background:var(--cash-bg);color:var(--cash)}
+.seg .pay-mile{background:var(--accent-soft);color:var(--accent)}
+.seg .warnline{color:var(--no);font-size:11.5px;margin-top:5px}
+
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;
+  border:1px solid transparent;white-space:nowrap}
+.t-ok{color:var(--ok);background:var(--ok-bg)}
+.t-wait{color:var(--wait);background:var(--wait-bg)}
+.t-no{color:var(--no);background:var(--no-bg)}
+.t-cash{color:var(--cash);background:var(--cash-bg)}
+.t-mix{color:var(--wait);background:var(--wait-bg)}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.filters label{font-size:13px;color:var(--muted)}
+.filters select,.filters input{font:inherit;font-size:13px;padding:5px 9px;border-radius:8px;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);
+  border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;font-size:14px}
+.callout.warn{border-left-color:var(--wait);background:var(--wait-bg)}
+.callout.bad{border-left-color:var(--no);background:var(--no-bg)}
+.callout strong{font-weight:650}
+ul.tight{margin:8px 0;padding-left:20px}
+ul.tight li{margin:4px 0}
+
+.themebtn{position:fixed;right:16px;bottom:16px;z-index:20;font:inherit;font-size:13px;
+  background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:999px;
+  padding:8px 14px;cursor:pointer;box-shadow:0 2px 10px #0001}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>東京 ⇄ 墨爾本 里程票 ／ 現金票 查詢總表</h1>
+  <div class="sub">出發 2026/09/18　·　抵達 MEL 不晚於 09/19 21:30　·　回程 09/27 自 MEL 出發 20:00–23:59　·　1 位成人</div>
+  <div class="stamp">資料為查詢當下快照 · 日航（登入後空位）&amp; 長榮 &amp; 現金單程 2026-08-07 · ANA &amp; 現金來回 2026-08-06 · 新航/亞萬 2026-07-12～13</div>
+</header>
+
+<nav id="tabs" role="tablist">
+  <button role="tab" data-t="sum" aria-selected="true">總覽與結論</button>
+  <button role="tab" data-t="eva">長榮（最新）</button>
+  <button role="tab" data-t="ana">ANA</button>
+  <button role="tab" data-t="cash">現金票價</button>
+  <button role="tab" data-t="sq">新航 KrisFlyer</button>
+  <button role="tab" data-t="other">日航 · 亞萬</button>
+  <button role="tab" data-t="chart">哩程表</button>
+  <button role="tab" data-t="gaps">缺口與方法</button>
+</nav>
+
+<!-- ================= 總覽 ================= -->
+<section id="sum">
+  <h2>一句話結論</h2>
+  <div class="callout">
+    <strong>經曼谷轉機，ANA 里程可以完整訂完整趟行程，而且回程那段是商務艙。</strong>
+    2026-08-07 補查發現：東京⇄墨爾本「直通」確實全無空位，但<strong>拆成經 BKK 的四段，每一段都有確認位（非候補）</strong>。
+    其中 <strong>TG462 墨爾本 23:30 → 曼谷 商務艙直飛</strong> 正好落在你的回程時段內。
+  </div>
+  <div class="callout warn">
+    <strong>但別把每一段都用里程換。</strong>里程的價值集中在「現金很貴」的那一段——也就是墨爾本飛出去的長程商務。
+    其餘短程（香港→東京只要 NT$4,788）用里程換反而虧。
+  </div>
+  <div class="callout warn">
+    <strong>★ 2026-08-07 晚間更新：CX178 那條被降級了。</strong>
+    原本它掛著「里程最省（20,000 亞萬哩）」，但稅金實際是 <strong>NT$8,199</strong>（亞萬訂位頁 HKD 1,995；其中國泰燃油附加費就 NT$5,640，8/1 剛漲 41%）。
+    重算後：CX178 方案現金要 <strong>NT$35,432</strong>、全程經濟；ANA/TG462 方案現金只要 <strong>NT$30,060</strong> 而且回程長程段是商務。
+    <strong>少用 28,000 哩，卻要多付 NT$5,372 並降到經濟艙——在你里程充足的前提下不值得。</strong>
+  </div>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>建議做法</th><th class="num">里程</th><th class="num">現金</th><th class="num">每哩價值</th><th class="nosort">內容</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>★★ ANA 換 MEL→HKG 商務</strong><br><span style="font-size:11px;color:var(--muted)">現況最佳</span></td>
+        <td class="num"><strong>48,000</strong><br><span style="font-size:11px">ANA</span></td>
+        <td class="num"><strong>NT$30,060</strong></td><td class="num"><strong>NT$1.56</strong></td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">香港快運 UO</span>　NRT 15:45 → HKG 19:40　直飛 4h55<span class="pay pay-cash">現金 NT$10,044</span></li>
+          <li>9/18　<span class="fno">酷航 TR</span>　HKG 20:45 → MEL 20:20<sup>+1</sup>（9/19 抵達）　1 停 21h35<span class="pay pay-cash">現金 NT$12,401</span></li>
+          <li>9/27　<span class="fno">泰航 TG462＋TG600</span>　MEL <strong>23:30</strong> → BKK → HKG 11:45<sup>+1</sup>　<strong>商務</strong> 14h15<span class="pay pay-mile">48,000 ANA ＋ NT$2,827</span></li>
+          <li>9/28　<span class="fno">香港快運 UO</span>　HKG 20:00 → HND 01:20<sup>+1</sup>　直飛 4h20<span class="pay pay-cash">現金 NT$4,788</span></li>
+        </ol>
+        <div class="warnline">⚠ 第 1→2 段在香港只有 <strong>65 分鐘</strong>轉機，且是兩張分開的票，沒有銜接保障。要走這條建議改訂 HKG→MEL 較晚的班機或前一晚抵港。</div></td>
+      </tr>
+      <tr>
+        <td>亞萬換 CX178 經濟<br><span style="font-size:11px;color:var(--muted)">里程最省，但<u>不划算</u></span></td>
+        <td class="num">20,000<br><span style="font-size:11px">亞洲萬里通</span></td>
+        <td class="num">NT$35,432</td><td class="num">NT$0.55</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">香港快運 UO</span>　NRT 15:45 → HKG 19:40　直飛 4h55<span class="pay pay-cash">現金 NT$10,044</span></li>
+          <li>9/18　<span class="fno">酷航 TR</span>　HKG 20:45 → MEL 20:20<sup>+1</sup>（9/19 抵達）　1 停 21h35<span class="pay pay-cash">現金 NT$12,401</span></li>
+          <li>9/27　<span class="fno">國泰 CX178</span>　MEL <strong>23:45</strong> → HKG 06:55<sup>+1</sup>　直飛 9h10　經濟<span class="pay pay-mile">20,000 亞萬 ＋ NT$8,199</span></li>
+          <li>9/28　<span class="fno">香港快運 UO</span>　HKG 20:00 → HND 01:20<sup>+1</sup>　直飛 4h20<span class="pay pay-cash">現金 NT$4,788</span></li>
+        </ol>
+        <div class="warnline">⚠ 同上，香港轉機只有 65 分鐘。且第 3 段是經濟艙，稅費 NT$8,199 為亞萬訂位頁實測（HKD 1,995）。</div></td>
+      </tr>
+      <tr>
+        <td>換 MEL→BKK 商務</td>
+        <td class="num">43,500<br><span style="font-size:11px">ANA</span></td>
+        <td class="num">NT$28,307</td><td class="num">NT$1.07</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">濟州航空 7C</span>　NRT 10:30 → SIN 23:25　1 停 13h55<span class="pay pay-cash">現金 NT$10,798</span></li>
+          <li>9/19　<span class="fno">酷航 TR</span>　SIN 11:05 → MEL 20:20　直飛 7h15<span class="pay pay-cash">現金 NT$6,823</span></li>
+          <li>9/27　<span class="fno">泰航 TG462</span>　MEL <strong>23:30</strong> → BKK 06:00<sup>+1</sup>　<strong>商務直飛</strong> 9h30<span class="pay pay-mile">43,500 ANA ＋ NT$2,827</span></li>
+          <li>9/28　<span class="fno">香港快運 UO</span>　BKK 10:10 → HND 01:20<sup>+1</sup>　1 停 13h10<span class="pay pay-cash">現金 NT$7,859</span></li>
+        </ol>
+        <div class="warnline">轉機時間寬鬆（SIN 過夜、BKK 停 4h10），比上面兩條安全，但每哩價值較低。</div></td>
+      </tr>
+      <tr>
+        <td>全現金<br><span style="font-size:11px;color:var(--muted)">最省現金的拆法</span></td>
+        <td class="num">0</td><td class="num">NT$38,040</td><td class="num">—</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">濟州航空 7C</span>　NRT 10:30 → SIN 23:25　1 停 13h55<span class="pay pay-cash">NT$10,798</span></li>
+          <li>9/19　<span class="fno">酷航 TR</span>　SIN 11:05 → MEL 20:20　直飛 7h15<span class="pay pay-cash">NT$6,823</span></li>
+          <li>9/27　<span class="fno">酷航 TR</span>　MEL <strong>21:35</strong> → SIN 03:40<sup>+1</sup>　直飛 8h05<span class="pay pay-cash">NT$10,014</span></li>
+          <li>9/28　<span class="fno">德威航空 TW</span>　SIN 23:00 → NRT 11:05<sup>+1</sup>　1 停 11h05<span class="pay pay-cash">NT$10,405</span></li>
+        </ol>
+        <div class="warnline">全程經濟艙、4 張分開的票，行李與餐食另計、誤點無銜接保障。</div></td>
+      </tr>
+      <tr>
+        <td>全現金直通一張票</td>
+        <td class="num">0</td><td class="num">NT$40,391</td><td class="num">—</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">中國南方 CZ</span>　HND 15:40 → MEL 08:40<sup>+1</sup>　1 停廣州(CAN)、轉機 2h05、全程 16h00</li>
+          <li>9/27　<span class="fno">中國南方 CZ</span>　MEL <strong>21:10</strong> → HND 19:55<sup>+1</sup>　全程 23h45</li>
+        </ol>
+        <div class="warnline">單一訂位代號，有轉機保障、行李直掛——只比最省的拆法貴 NT$2,351。</div></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>而且拆開買省不到多少。</strong>把四段都用「確實符合時段」的單程票重算後：
+    經 SIN 拆 <strong>NT$38,040</strong>、經 BKK 拆 <strong>NT$39,157</strong>、直通一張票 <strong>NT$40,391</strong>。
+    最多省約 NT$2,350，代價是 4 張分開的廉航票、自理轉機、行李餐食另計、誤點無銜接保障。
+  </div>
+
+  <div class="grid">
+    <div class="kpi"><div class="lbl">現金 · 直通來回（符合兩個時段）</div><div class="val">NT$40,391</div><div class="fine">中國南方 · 去 16h00 ／ 回 23h45</div></div>
+    <div class="kpi"><div class="lbl">現金 · 自己拆四段（經 SIN）</div><div class="val">NT$38,040</div><div class="fine">4 張分開的票，自理轉機</div></div>
+    <div class="kpi"><div class="lbl">現金 · 商務艙來回最低</div><div class="val">NT$156,884</div><div class="fine">國泰 15h45（NT$103,924 為菲航 39h）</div></div>
+    <div class="kpi"><div class="lbl">★ 最佳里程用法</div><div class="val">48,000 哩</div><div class="fine">TG462 MEL→HKG 商務，取代 NT$77,945 現金票（每哩 NT$1.56）</div></div>
+  </div>
+
+  <h2>各計畫在這條線的實際結果</h2>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>計畫</th><th>東京⇄墨爾本 直通</th><th>新加坡⇄墨爾本</th><th>東京⇄新加坡</th><th class="nosort">備註</th></tr></thead>
+    <tbody>
+      <tr><td>ANA 星盟夥伴票</td><td><span class="tag t-no">無位</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-no">回程時段不符</span></td><td><span class="tag t-ok">17,500 哩有位</span></td><td class="wrapcell">不接受候補，全航段須確認</td></tr>
+      <tr><td>長榮 無限萬哩遊</td><td><span class="tag t-wait">全候補</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-wait">回程候補</span></td><td><span class="tag t-wait">候補</span></td><td class="wrapcell">哩數比 ANA 貴 2 倍以上</td></tr>
+      <tr><td>新航 KrisFlyer</td><td><span class="tag t-wait">多為候補</span></td><td><span class="tag t-wait">Saver 候補</span></td><td><span class="tag t-ok">少數可訂</span></td><td class="wrapcell">Advantage 價差大但仍候補</td></tr>
+      <tr><td>日本航空 JMB</td><td><span class="tag t-no">全無位</span></td><td><span class="tag t-no">未營運</span></td><td><span class="tag t-ok">有位</span></td><td class="wrapcell"><strong>2026-08-07 登入後三個引擎全查完</strong>（自家／提携社 CX·QF／寰宇一家）：東京⇄墨爾本經濟與商務皆 0，已用 TYO→SIN 正對照證明查法有效</td></tr>
+      <tr><td>亞洲萬里通</td><td><span class="tag t-no">全零</span></td><td><span class="tag t-wait">去程趕不上</span></td><td><span class="tag t-no">全零</span></td><td class="wrapcell"><strong>但 MEL→HKG 回程有 CX178 直飛 20,000 里數，符合時段</strong></td></tr>
+      <tr><td>現金</td><td><span class="tag t-cash">NT$40,391</span></td><td><span class="tag t-cash">NT$15,289</span></td><td><span class="tag t-cash">NT$20,580</span></td><td class="wrapcell">皆為來回含稅</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>三個關鍵發現</h2>
+  <div class="callout warn">
+    <strong>1 · 清單頁看不出候補。</strong>
+    長榮的航班清單完全沒有候補標記，但一路點到「旅客資料 → 確認」頁，機位狀態才顯示<strong>候補</strong>。
+    網站自己也跳提示：「機位狀態為確認或候補需待您填寫完旅客資料才可確認」。只看清單頁會誤判。
+  </div>
+  <div class="callout warn">
+    <strong>2 · 拆短不會比較便宜。</strong>
+    長榮 SIN→MEL 與 NRT→MEL 都是 <strong>52,500 哩</strong>；ANA 日本⇄澳洲 91,000 哩、新加坡⇄澳洲 87,000 哩，只差 4,000 哩。
+    拆開要多付一張東京⇄新加坡現金票（NT$20,580 起），純粹虧。
+  </div>
+  <div class="callout bad">
+    <strong>3 · 短程用里程換不划算。</strong>
+    ANA 新加坡⇄墨爾本來回 46,000 哩 ＋ 稅 JPY 50,150（約 NT$10,221），
+    但同一條線現金來回只要 NT$15,289（酷航）／ NT$18,759（土航 TK168，就是同一班機）。
+    等於燒 46,000 哩只省約 NT$8,538，<strong>每哩僅約 NT$0.19</strong>。
+  </div>
+</section>
+
+<!-- ================= 長榮 ================= -->
+<section id="eva" hidden>
+  <h2>長榮 無限萬哩遊 · 星空聯盟酬賓機票</h2>
+  <p class="note">查詢時間 2026-08-07 上午（台北）。單程查詢，經濟艙。<strong>每一筆都實際點進「旅客資料 → 確認」頁讀取機位狀態</strong>，非僅看清單。
+  帳號餘額已查證，不在此公開。</p>
+
+  <div class="filters">
+    <label>機位狀態
+      <select id="evaFilter">
+        <option value="">全部</option>
+        <option value="ok">確認</option>
+        <option value="wait">候補</option>
+        <option value="mix">混合</option>
+      </select>
+    </label>
+    <label>搜尋 <input id="evaSearch" placeholder="航線 / 班號"></label>
+  </div>
+
+  <div class="tablewrap">
+  <table data-sortable id="evaTable">
+    <thead><tr>
+      <th>航線</th><th>日期</th><th class="num">哩程</th><th>查詢的行程</th>
+      <th class="num">飛行時間</th><th>轉機</th><th>機位狀態</th>
+    </tr></thead>
+    <tbody>
+      <tr data-st="wait"><td>NRT → MEL</td><td>9/18</td><td class="num">52,500</td>
+        <td class="wrapcell">OZ105 NRT 19:45→ICN 22:15 ／ SQ605 ICN 23:50→SIN 05:00 ／ SQ207 SIN 07:50→MEL 9/19 17:10</td>
+        <td class="num">20h25</td><td>2</td><td><span class="tag t-wait">三段全候補</span></td></tr>
+      <tr data-st="wait"><td>HND → MEL</td><td>9/18</td><td class="num">52,500</td>
+        <td class="wrapcell">OZ1055 HND 09:00→GMP 11:20 ／ SQ601 ICN 16:45→SIN 22:00 ／ SQ237 SIN 01:45→MEL 9/19 11:00</td>
+        <td class="num">25h00</td><td>2</td><td><span class="tag t-wait">三段全候補</span></td></tr>
+      <tr data-st="mix"><td>NRT → SIN</td><td>9/18</td><td class="num">25,000</td>
+        <td class="wrapcell">ZH652 NRT 19:00→SZX 23:05 ／ SQ857 SZX 02:05→SIN 9/19 06:10</td>
+        <td class="num">12h10</td><td>1</td><td><span class="tag t-mix">段1候補 · 段2確認</span></td></tr>
+      <tr data-st="wait"><td>NRT → SIN</td><td>9/18</td><td class="num">25,000</td>
+        <td class="wrapcell">OZ107 NRT 09:00→ICN 11:30 ／ OZ751 ICN 16:10→SIN 21:30</td>
+        <td class="num">13h30</td><td>1</td><td><span class="tag t-wait">兩段全候補</span></td></tr>
+      <tr data-st="wait"><td>HND → SIN</td><td>9/18</td><td class="num">25,000</td>
+        <td class="wrapcell">OZ1055 HND 09:00→GMP 11:20 ／ OZ751 ICN 16:10→SIN 21:30</td>
+        <td class="num">13h30</td><td>1</td><td><span class="tag t-wait">兩段全候補</span></td></tr>
+      <tr data-st="ok"><td>SIN → MEL</td><td>9/19</td><td class="num">52,500</td>
+        <td class="wrapcell"><strong>TK168 土耳其航空　SIN 10:25 → MEL 19:40（直飛）</strong></td>
+        <td class="num">7h15</td><td>0</td><td><span class="tag t-ok">確認 · 可訂</span></td></tr>
+      <tr data-st="wait"><td>MEL → SIN</td><td>9/27</td><td class="num">52,500</td>
+        <td class="wrapcell">SQ218 MEL 23:35 → SIN 9/28 05:30（直飛，符合 20:00–23:59）</td>
+        <td class="num">7h55</td><td>0</td><td><span class="tag t-wait">候補</span></td></tr>
+      <tr data-st="wait"><td>SIN → NRT</td><td>9/28</td><td class="num">25,000</td>
+        <td class="wrapcell">SQ012 SIN 09:25 → NRT 17:30（直飛）</td>
+        <td class="num">7h05</td><td>0</td><td><span class="tag t-wait">候補</span></td></tr>
+      <tr data-st="wait"><td>SIN → HND</td><td>9/28</td><td class="num">25,000</td>
+        <td class="wrapcell">SQ632 SIN 07:40 → HND 15:45（直飛）</td>
+        <td class="num">7h05</td><td>0</td><td><span class="tag t-wait">候補</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout bad">
+    <strong>商務艙未能查到。</strong>長榮在查完 8 條經濟艙後跳出：
+    「親愛的會員，您的查詢次數已達本日上限，本頁面將暫停查詢功能 24 小時。」
+    商務／頭等艙的哩程與空位<strong>本次未取得</strong>，需隔日再查或洽會員中心。
+  </div>
+
+  <h3>各航線可選行程數（清單頁）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航線</th><th>日期</th><th class="num">行程數</th><th>其中直飛</th><th class="nosort">說明</th></tr></thead>
+    <tbody>
+      <tr><td>NRT → MEL</td><td>9/18</td><td class="num">4</td><td>0</td><td class="wrapcell">全部經 ICN + SIN 兩次轉機</td></tr>
+      <tr><td>HND → MEL</td><td>9/18</td><td class="num">4</td><td>0</td><td class="wrapcell">全部兩轉；含 HND→GMP 需自行轉首爾兩機場</td></tr>
+      <tr><td>NRT → SIN</td><td>9/18</td><td class="num">4</td><td>0</td><td class="wrapcell">經 SZX / ICN / PEK</td></tr>
+      <tr><td>HND → SIN</td><td>9/18</td><td class="num">20</td><td>0</td><td class="wrapcell">最短 13h20（NH411+BR133+SQ877）</td></tr>
+      <tr><td>SIN → MEL</td><td>9/19</td><td class="num">10</td><td>5</td><td class="wrapcell">SQ237／TK168／SQ217／SQ247／SQ227</td></tr>
+      <tr><td>MEL → SIN</td><td>9/27</td><td class="num">8</td><td>5</td><td class="wrapcell">SQ248／SQ238／SQ228／SQ208／SQ218</td></tr>
+      <tr><td>SIN → NRT</td><td>9/28</td><td class="num">18</td><td>1</td><td class="wrapcell">直飛僅 SQ012</td></tr>
+      <tr><td>SIN → HND</td><td>9/28</td><td class="num">16</td><td>2</td><td class="wrapcell">直飛 SQ632、SQ634</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>★ 2026-08-07 晚間補查：官方哩程兌換表（商務／頭等，公開檔案）</h3>
+  <p class="note">來源：長榮官網「兌換星空聯盟航空酬賓機票哩程數兌換表」下載檔，
+  檔名 <code>requirement-redeeming-star-alliance-award-zh-20250721</code>（2025-07-21 版）。
+  原表為<strong>來回</strong>哩程、單位千哩；長榮規則明訂<strong>「可開立單程機票，所需哩程數為來回機票的一半」</strong>。</p>
+
+  <div class="callout ok">
+    <strong>先驗證再使用：</strong>我拿表上三個格子除以 2，跟本 session 稍早在長榮系統<u>實際查到的單程哩程</u>對帳——
+    日本⇄澳洲 52,500、日本⇄新加坡 25,000、新加坡⇄澳洲 52,500，<strong>三項全數吻合</strong>。表可信，才拿來推商務／頭等。
+  </div>
+
+  <div class="tablewrap">
+  <table data-sortable id="evaChart">
+    <thead><tr><th>區域對</th><th>對應城市</th><th class="num">經濟 單程</th><th class="num">商務 單程</th><th class="num">頭等 單程</th></tr></thead>
+    <tbody>
+      <tr><td>北亞 ⇄ 西南太平洋</td><td>東京 ⇄ 墨爾本</td><td class="num">52,500</td><td class="num"><strong>77,500</strong></td><td class="num">95,000</td></tr>
+      <tr><td>北亞 ⇄ 東南亞</td><td>東京 ⇄ 新加坡</td><td class="num">25,000</td><td class="num"><strong>40,000</strong></td><td class="num">62,500</td></tr>
+      <tr><td>東南亞 ⇄ 西南太平洋</td><td>新加坡 ⇄ 墨爾本</td><td class="num">52,500</td><td class="num"><strong>77,500</strong></td><td class="num">85,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">區域歸屬（官方定義）：<strong>北亞</strong>＝關島、日本、密克羅西尼亞、帛琉、俄羅斯遠東、南韓、馬紹爾群島、蒙古、塞班島；
+  <strong>東南亞</strong>＝汶萊、印尼、馬來西亞、新加坡、柬埔寨、寮國、緬甸、菲律賓、泰國、越南；
+  <strong>西南太平洋</strong>＝澳大利亞、庫克群島、斐濟、紐西蘭、紐埃島、諾福克島、薩摩亞、大溪地、東加、萬那杜。</p>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">拆開走新加坡 vs 直飛（單程哩程）</h4>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>艙等</th><th class="num">直飛 東京→墨爾本</th><th class="num">拆開 東京→新加坡→墨爾本</th><th class="num">拆開多花</th></tr></thead>
+    <tbody>
+      <tr><td>經濟</td><td class="num">52,500</td><td class="num">77,500</td><td class="num">+25,000</td></tr>
+      <tr><td>商務</td><td class="num">77,500</td><td class="num">117,500</td><td class="num">+40,000</td></tr>
+      <tr><td>頭等</td><td class="num">95,000</td><td class="num">147,500</td><td class="num">+52,500</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>長榮這邊「拆開買」在哩程上一定虧。</strong>三個艙等都是拆開比直飛貴，商務差 40,000 哩、頭等差 52,500 哩。
+    原因是長榮用分區表計價，中轉並不會讓你落進更便宜的區間，反而變成兩段各自計價。
+    <span class="tag t-warn">注意</span>這只講哩程；若「東京⇄新加坡那段用現金」則是另一回事，見「現金票價」分頁。
+  </div>
+
+  <h3>★ 2026-08-07 晚間補查：長榮酬賓票的規則與費用（官網原文）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>項目</th><th>內容</th></tr></thead>
+    <tbody>
+      <tr><td>訂位服務費 YR Tax</td><td>啟始地非香港、含長榮航班者隨票徵收，<strong>不予退費</strong>。開票／改票日 <strong>2026-08-01 起每張 USD 33</strong>（此前 2026-03-01～07-31 為 USD 28）</td></tr>
+      <tr><td><strong>候補機位</strong></td><td><strong>「酬賓機票僅限在全程機位確認才可開票，不允許在機場候補登機。」</strong>候補段無法開票，也不保證自動確認</td></tr>
+      <tr><td>單程票</td><td>所需哩程＝來回的一半；<strong>不允許中途停留</strong>，最多 3 個航段</td></tr>
+      <tr><td>來回票</td><td>最多 6 個航段；除折返點外去回程可各加一個中停點</td></tr>
+      <tr><td>訂位艙等代碼</td><td>經濟 <code>X</code>／商務 <code>I</code>／頭等 <code>O</code></td></tr>
+      <tr><td>改票</td><td>全程未使用可改，手續費 USD 50；鑽石／金／銀卡本人免收</td></tr>
+      <tr><td>退票</td><td><strong>官網線上退票免手續費</strong>；非線上 USD 50</td></tr>
+      <tr><td>未登機費</td><td>長程線（美洲／歐洲／大洋洲）<strong>USD 170</strong>（2026-03-01 起）</td></tr>
+      <tr><td>不可兌換</td><td>新航 Suites、瑞航頭等；星盟共掛班號但由他航實際承運者不可兌換</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>「候補不能開票」這條會直接砍掉一批選項。</strong>先前查到的長榮候補位（含 9/27 MEL 23:35 的 SQ218）
+    在確認前<strong>連票都開不出來</strong>，不是「先訂再等」那麼簡單。要當備案可以，不能當主方案。
+  </div>
+
+  <h3>★ 商務／頭等空位：核對後發現大部分早就查過了</h3>
+  <div class="callout ok">
+    <strong>東京⇄墨爾本的商務與頭等，先前那輪查詢就已經涵蓋：</strong>
+    <br>商務 <strong>77,500 哩單程</strong>（固定價，經 5 個樣本驗證）、當時檢查的每條 TYO⇄MEL 行程<strong>皆可訂、無候補</strong>；
+    <strong>頭等雙向 0 組</strong>。
+    <br>而這個 77,500 正好等於我今晚從官方兌換表推出的數字（來回 155,000 ÷ 2）——
+    <strong>這是第 4 個交叉驗證</strong>（前 3 個是經濟艙的三條區域對）。表與實搜完全一致。
+  </div>
+  <div class="tablewrap">
+  <table data-sortable id="evaXcheck">
+    <thead><tr><th>區域對 · 艙等</th><th class="num">官方表（來回）</th><th class="num">÷2</th><th class="num">實搜單程</th><th>是否吻合</th></tr></thead>
+    <tbody>
+      <tr><td>日本⇄澳洲 經濟</td><td class="num">105,000</td><td class="num">52,500</td><td class="num">52,500</td><td><span class="tag t-yes">吻合</span></td></tr>
+      <tr><td>日本⇄新加坡 經濟</td><td class="num">50,000</td><td class="num">25,000</td><td class="num">25,000</td><td><span class="tag t-yes">吻合</span></td></tr>
+      <tr><td>新加坡⇄澳洲 經濟</td><td class="num">105,000</td><td class="num">52,500</td><td class="num">52,500</td><td><span class="tag t-yes">吻合</span></td></tr>
+      <tr><td><strong>日本⇄澳洲 商務</strong></td><td class="num">155,000</td><td class="num"><strong>77,500</strong></td><td class="num"><strong>77,500</strong></td><td><span class="tag t-yes">吻合</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">還沒查的部分，以及為什麼它不會改變結論</h4>
+  <p class="note">真正還沒查商務／頭等空位的是<strong>經新加坡拆段那 6 條</strong>（NRT/HND⇄SIN、SIN⇄MEL 雙向）。
+  但官方兌換表已經證明：<strong>拆開走新加坡，商務要 117,500 哩、直飛只要 77,500 哩</strong>。
+  就算那 6 條全部都有位，拆開仍然多花 40,000 哩。
+  <span class="tag t-ok">結論不受影響</span>這些查詢的價值只剩「萬一直飛那天沒位時的備案」。</p>
+  <div class="callout warn">
+    <strong>今日無法補查的原因（實測，非推測）：</strong>
+    <br>① 訂位查詢頁——2026-08-07 晚間 session 仍有效（成功送出 NRT→MEL 9/18 商務查詢並到達選擇航班頁），
+    但結果頁跳出：<strong>「親愛的會員，您的查詢次數已達本日上限，本頁面將暫停查詢功能24小時。」</strong>
+    <br>② 另一個獨立工具「酬賓/艙位升等空位查詢」——是<strong>另一道會員登入</strong>，帳號欄已帶出但需輸入密碼，
+    <strong>密碼只能由你本人輸入</strong>（我不代輸任何密碼）。
+  </div>
+
+  <h3>★★ 2026-08-07 深夜：你登入 United 後，缺口用另一條路查到了</h3>
+  <p class="note">星盟夥伴的獎勵艙位是共用庫存。你登入 United 之後，我用 MileagePlus 查同一批位子，
+  等於繞過長榮的 24 小時鎖。設定：<strong>以里程顯示 ＋ 艙等 Business ＋ 只看星空聯盟航空</strong>。</p>
+  <div class="tablewrap">
+  <table data-sortable id="uaResults">
+    <thead><tr><th>航段</th><th>日期</th><th>結果</th><th>鄰近日期</th></tr></thead>
+    <tbody>
+      <tr><td>東京(TYO) → 墨爾本</td><td>9/18</td><td><span class="tag t-no">無位</span></td><td>9/15、9/21 有 50k 經濟</td></tr>
+      <tr><td>新加坡 → 墨爾本</td><td>9/19</td><td><span class="tag t-no">無位</span></td><td>9/16–9/18 有 35k 經濟</td></tr>
+      <tr><td>成田 → 新加坡</td><td>9/18</td><td><span class="tag t-no">無位</span></td><td>9/15、9/16、9/21 有 35k 經濟</td></tr>
+      <tr><td><strong>墨爾本 → 新加坡</strong></td><td><strong>9/27</strong></td><td><span class="tag t-yes">有位 35k 經濟</span></td><td>9/24、9/25 亦有</td></tr>
+      <tr><td>墨爾本 → 東京(TYO)</td><td>9/27</td><td><span class="tag t-no">無位</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout ok">
+    <strong>★ 找到第三個落在你回程時段的里程選項。</strong>
+    墨爾本→新加坡 9/27 有兩班 35,000 UA 哩：
+    <br>① <strong>SQ248（A350-900）MEL 05:55 → SIN 11:45 直飛 7 小時</strong>，＋US$80.60 —— 但 05:55 出發，<u>不符</u>你的時段
+    <br>② <strong>MEL 21:20 → SIN 12:20+1，經深圳轉機，17 小時，深圳航空承運</strong>，＋US$100.30 ——
+    <strong>21:20 出發，落在 20:00–23:59 內</strong>
+    <br>繼泰航 TG462（23:30→BKK）與國泰 CX178（23:45→HKG）之後的第三個選項。代價是繞經深圳、全程 17 小時。
+  </div>
+
+  <div class="callout ok">
+    <strong>★ 艙等判定已從推論升級為直接觀測（後續補做）。</strong>
+    <br>先前只能說「頁面沒列出 Business 區塊」，強度不足。後來找到了決定性的判準：
+    United 結果頁在<strong>該航線有商務位時</strong>，DOM 裡會出現一個排序連結
+    <code>Select to sort results by Business (lowest) from lowest to highest price</code>。
+    <br><strong>正對照</strong>：NRT→SFO 2027-05-12 <u>有</u>這個連結；點下去網址變成
+    <code>st=MIN-BUSINESS-SURP-OR-DISP_ASC&amp;sc=3</code>，日期條隨即顯示 <strong>250k miles</strong> 的商務票價
+    （同航線經濟為 55k）——證明此判準確實會在有商務位時亮起。
+    <br><strong>對目標航線施測</strong>：<strong>MEL→SIN 9/27</strong> 即使直接帶入上述商務網址，
+    DOM 裡<strong>沒有</strong>該連結，票價全部維持 <code>Economy (X)</code> 35k。
+    → <strong>該航線該日確定沒有商務獎勵位</strong>，這是直接觀測，不再是推論。
+    <br>其餘航線（TYO→MEL 9/18、SIN→MEL 9/19、MEL→TYO 9/27）在你的日期<u>連經濟位都是零</u>，商務自然更不可能。
+  </div>
+
+  <p class="note"><strong>與既有資料三處互相印證：</strong>
+  ANA 查 SIN→MEL 9/19 商務、MEL→SIN 9/27 商務皆 0 → United 同樣無商務；
+  ANA 查 MEL→TYO 9/27 無位 → United 亦無位；
+  ANA 查到的 SQ248 MEL 05:55 → United 同樣列出。兩個獨立計畫看到同一批星盟庫存。</p>
+
+  <p class="note"><strong>踩到的兩個坑（記錄下來供下次用）：</strong>
+  ① 我自行猜的網址參數 <code>sc=2</code> <strong>無效</strong>，回傳仍是經濟艙；真正的艙等參數是 <code>cp</code>，星盟篩選是 <code>act=2</code>。
+  ② 現金模式下 Cabin 只有兩檔（Economy/PremiumEconomy、Business/First），切到里程模式後才變成四檔。
+  正確網址：<code>?f=&amp;t=&amp;d=&amp;sc=7&amp;cbm=-1&amp;cbm2=-1&amp;ft=0&amp;cp=2&amp;tt=1&amp;at=1&amp;rm=1&amp;act=2&amp;px=1,0,0,0,0,0,0,0&amp;pst=LP8%3D-Y-H&amp;taxng=1&amp;clm=7&amp;tqp=A</code></p>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">在你登入 United 之前，其他管道的實測結果</h4>
+  <p class="note">星盟夥伴的獎勵艙位是共用庫存，理論上任何星盟會員計畫都查得到同一批位子。
+  所以我逐一試了其他計畫的查詢工具，想繞過長榮的 24 小時鎖：</p>
+  <div class="tablewrap">
+  <table data-sortable id="altChannels">
+    <thead><tr><th>管道</th><th>能否查星盟商務空位</th><th>擋住的原因（站方原文／實測）</th></tr></thead>
+    <tbody>
+      <tr><td>長榮 訂位查詢頁</td><td><span class="tag t-no">否</span></td><td class="wrapcell">「您的查詢次數已達本日上限，本頁面將暫停查詢功能24小時」</td></tr>
+      <tr><td>長榮 酬賓/艙位升等空位查詢</td><td><span class="tag t-no">否</span></td><td class="wrapcell">另一道會員登入，需密碼——我不代輸密碼</td></tr>
+      <tr><td>ANA 提携航空会社特典</td><td><span class="tag t-no">否</span></td><td class="wrapcell">網站已登出（<code>loggedIn:false</code>），訂位引擎直接進網址回「このページは表示できません」</td></tr>
+      <tr><td>加拿大航空 Aeroplan</td><td><span class="tag t-no">否</span></td><td class="wrapcell">勾選「Book with Aeroplan points」後顯示「Please <u>sign in</u> to book with Aeroplan points.」</td></tr>
+      <tr><td>聯合航空 MileagePlus</td><td><span class="tag t-yes">後來可以</span></td><td class="wrapcell">當時未登入：「You must be signed-in to see flight results with miles.」→ <strong>使用者稍後登入，缺口已由此管道查到（見上方表格）</strong></td></tr>
+      <tr><td>日航 JMB</td><td><span class="tag t-no">不適用</span></td><td class="wrapcell">session 仍有效，但日航是寰宇一家，看不到星盟庫存（其自身範圍今日已全查完）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>結論：剩下的缺口全部卡在「需要你本人的帳密」或「站方故障」，不是再多試幾次就能解決的。</strong>
+    <br>可執行的解法只有三個：<strong>① 等 24 小時</strong>長榮解鎖；<strong>② 你登入</strong>任一星盟計畫後我接手；
+    <strong>③ 打電話</strong>問長榮會員中心（站方訊息本身也是這樣建議）。
+  </div>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">從既有資料能推到什麼（標記為推論，未實測）</h4>
+  <p class="note">新航自家計畫 KrisFlyer 在 9/18 去程顯示<strong>商務 17 組</strong>、9/27 回程<strong>商務 20 組</strong>（經 SIN），
+  但 ANA 這個<strong>夥伴</strong>計畫查 SIN→MEL 9/19 與 MEL→SIN 9/27 商務<strong>都是 0</strong>。
+  這是新航典型的做法：premium 艙位只放給自家會員，不釋出給星盟夥伴。
+  <span class="tag t-warn">推論</span>因此長榮（同樣是夥伴身分）在 SIN⇄MEL 商務大機率也是 0。
+  <strong>這是推論不是實測</strong>，等長榮解鎖後才能確認——但它與「拆開走新加坡商務多花 40,000 哩」指向同一個結論：
+  這條路不用再考慮。</p>
+</section>
+
+<!-- ================= ANA ================= -->
+<section id="ana" hidden>
+  <h2>ANA 星盟夥伴票（提携航空会社特典航空券）</h2>
+  <p class="note">查詢時間 2026-08-06 23:00–23:20（日本時間）。單程搜尋（另註明者除外）。帳戶餘額已查證，不在此公開。
+  頁面標示：Star Alliance Award · ANA Group 可用 · 星盟成員可用 · 其他夥伴不可用 ·
+  <strong>Eligibility for waitlisted：Not permitted（不接受候補）</strong>。</p>
+
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航段</th><th>日期</th><th>艙等</th><th>結果</th><th>航班</th><th class="num">哩程</th><th class="num">稅金</th></tr></thead>
+    <tbody>
+      <tr><td>東京(TYO) → 墨爾本</td><td>9/18</td><td>經濟</td><td><span class="tag t-no">無位</span></td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>東京 ⇄ 墨爾本（來回）</td><td>9/18–9/27</td><td>商務</td><td><span class="tag t-no">無位</span></td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>墨爾本 → 東京(TYO)</td><td>9/27</td><td>經濟</td><td><span class="tag t-no">無位</span></td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>新加坡 → 墨爾本</td><td>9/19</td><td>經濟</td><td><span class="tag t-ok">有位</span></td><td class="wrapcell"><strong>TK168 土耳其航空 SIN 10:25 → MEL 19:40（7h15 直飛）</strong></td><td class="num">23,000</td><td class="num">JPY 37,470</td></tr>
+      <tr><td>新加坡 → 墨爾本</td><td>9/19</td><td>商務</td><td><span class="tag t-no">無位</span></td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>墨爾本 → 新加坡</td><td>9/27</td><td>經濟</td><td><span class="tag t-wait">有位但時段不符</span></td><td class="wrapcell">SQ248 MEL 05:55 → SIN 11:45（7h50 直飛）</td><td class="num">23,000</td><td class="num">JPY 12,680</td></tr>
+      <tr><td>墨爾本 → 新加坡</td><td>9/27</td><td>商務</td><td><span class="tag t-no">無位</span></td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>墨爾本 → 曼谷</td><td>9/27</td><td>經濟</td><td><span class="tag t-no">未取回</span></td><td class="wrapcell">ANA 伺服器連續兩次卡死無回應</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>（對照組）東京 → 新加坡</td><td>9/18</td><td>經濟</td><td><span class="tag t-ok">有位</span></td><td class="wrapcell">NH843 ／ NH803 ／ NH801</td><td class="num">17,500</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>★ 2026-08-07 補查：經曼谷（BKK）拆段全部有確認位</h3>
+  <p class="note">單程搜尋。標「可訂」者畫面上<strong>沒有</strong> Waitlisted 標記；標「候補」者畫面明確顯示 Waitlisted。稅金換算用 1 JPY = 0.2038 TWD。</p>
+  <div class="tablewrap">
+  <table data-sortable id="bkkTable">
+    <thead><tr><th>段</th><th>日期</th><th>艙等</th><th>航班／時刻</th><th class="num">時間</th><th class="num">哩程</th><th class="num">稅金</th><th>狀態</th></tr></thead>
+    <tbody>
+      <tr><td>① TYO → BKK</td><td>9/18</td><td>經濟</td><td class="wrapcell">NH813 HND 01:35→HKG 05:15／TG603 HKG 07:50→BKK 09:35</td><td class="num">10h00</td><td class="num">19,000</td><td class="num">JPY 32,410<br>NT$6,605</td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>① TYO → BKK</td><td>9/18</td><td>經濟</td><td class="wrapcell">NH805 NRT 19:20→BKK 23:55／NH807 NRT 17:30→22:15／NH847 HND 10:50→15:30／NH849 HND 00:15→04:35／NH877 HND 01:25→05:55</td><td class="num">6h20–6h45</td><td class="num">19,000</td><td class="num">JPY 32,410</td><td><span class="tag t-wait">全候補</span></td></tr>
+      <tr><td>② BKK → MEL</td><td>9/18</td><td>經濟</td><td class="wrapcell"><strong>TG465 BKK 19:40 → MEL 07:30+1（9/19 抵達）</strong></td><td class="num">8h50</td><td class="num">23,000</td><td class="num">JPY 29,090<br>NT$5,929</td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>② BKK → MEL</td><td>9/18</td><td>經濟</td><td class="wrapcell">TG461 BKK 08:10 → MEL 20:00（當日抵達）</td><td class="num">8h50</td><td class="num">23,000</td><td class="num">JPY 29,090</td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>③ MEL → BKK</td><td>9/27</td><td><strong>商務</strong></td><td class="wrapcell"><strong>TG462 MEL 23:30 → BKK 06:00+1（直飛，符合 20:00–23:59）</strong></td><td class="num">9h30</td><td class="num"><strong>43,500</strong></td><td class="num">JPY 13,870<br><strong>NT$2,827</strong></td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>③ MEL → BKK</td><td>9/27</td><td>經濟</td><td class="wrapcell">TG466 MEL 13:30 → BKK 20:00（直飛，<em>時段不符</em>）</td><td class="num">9h30</td><td class="num">23,000</td><td class="num">JPY 13,870</td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>④ BKK → TYO</td><td>9/28</td><td>經濟</td><td class="wrapcell">TG642 BKK 23:50→NRT 08:10+1／TG640 21:55→NRT 06:20+1／NH850 21:35→HND 06:00+1／NH806 07:00→NRT 15:20</td><td class="num">6h20–6h25</td><td class="num">17,500</td><td class="num">JPY 42,980<br>NT$8,759</td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>④ BKK → TYO</td><td>9/28</td><td>商務</td><td class="wrapcell">NH806 07:00／NH848 09:35／NH878 13:55／NH850 21:35</td><td class="num">6h20–6h25</td><td class="num">42,500</td><td class="num">JPY 42,980</td><td><span class="tag t-wait">全候補</span></td></tr>
+      <tr><td>直通 TYO → MEL</td><td>9/18</td><td>商務</td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>直通 MEL → TYO</td><td>9/27</td><td>商務</td><td class="wrapcell">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td><span class="tag t-no">無位</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>★★ 2026-08-07 全面掃描：ANA 星盟夥伴票（單程，各方向各艙等）</h3>
+  <p class="note">共 26 次搜尋。「可訂」＝畫面無 Waitlisted 標記；「候補」＝有標記；「無位」＝E_A01P01_0006；「不提供」＝E_A01P01_0007（該艙等在此航線未設定）。
+  ✓ 標記表示符合你的時段條件（去程抵達 MEL ≤9/19 21:30／回程 MEL 出發 20:00–23:59）。</p>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">回程方向 · 9/27 自墨爾本出發</h4>
+  <div class="tablewrap">
+  <table data-sortable id="anaOutTable">
+    <thead><tr><th>目的地</th><th>艙等</th><th class="num">哩程</th><th class="num">稅金</th><th>可訂航班</th><th>時段</th></tr></thead>
+    <tbody>
+      <tr><td>曼谷 BKK</td><td><strong>商務</strong></td><td class="num"><strong>43,500</strong></td><td class="num">JPY 13,870</td><td class="wrapcell"><strong>TG462 23:30 → 06:00+1 直飛</strong></td><td><span class="tag t-ok">✓ 符合</span></td></tr>
+      <tr><td>香港 HKG</td><td><strong>商務</strong></td><td class="num"><strong>48,000</strong></td><td class="num">JPY 13,870</td><td class="wrapcell"><strong>TG462+TG600 23:30 → BKK → HKG 11:45</strong>／VN778+VN592 00:25</td><td><span class="tag t-ok">✓ 符合</span></td></tr>
+      <tr><td>曼谷 BKK</td><td>經濟</td><td class="num">23,000</td><td class="num">JPY 13,870</td><td class="wrapcell">TG466 13:30／SQ248+SQ710 05:55／VN780+VN609 10:35</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>新加坡 SIN</td><td>經濟</td><td class="num">23,000</td><td class="num">JPY 12,680</td><td class="wrapcell">SQ248 05:55 → 11:45</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>吉隆坡 KUL</td><td>經濟</td><td class="num">23,000</td><td class="num">JPY 14,570</td><td class="wrapcell">SQ248+SQ116 05:55 → 15:45</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>香港 HKG</td><td>經濟</td><td class="num">25,000</td><td class="num">JPY 14,570</td><td class="wrapcell">SQ248+SQ894 05:55／VN778+VN592 00:25</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>新加坡 SIN</td><td>商務</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>吉隆坡 KUL</td><td>商務</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>台北 TPE</td><td>商務</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>胡志明市 SGN</td><td>商務</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>曼谷 BKK</td><td>豪經</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>曼谷 BKK</td><td>頭等</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">不提供</span></td></tr>
+      <tr><td>東京 TYO（直通）</td><td>經濟／商務／頭等</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">全無位</span></td></tr>
+      <tr><td>胡志明市 SGN</td><td>經濟</td><td class="num">23,000</td><td class="num">JPY 14,570</td><td class="wrapcell">VN780 10:35 直飛／SQ248+SQ184 05:55／SQ248+SQ710+TG556 05:55</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>馬尼拉 MNL</td><td>經濟</td><td class="num">25,000</td><td class="num">JPY 14,570</td><td class="wrapcell">SQ248+SQ916 05:55／VN780+VN648 10:35</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>台北 TPE</td><td>經濟</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>峇里島 DPS</td><td>經濟</td><td class="num">—</td><td class="num">—</td><td class="wrapcell">—</td><td><span class="tag t-no">無位</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">回程方向共掃 SIN／BKK／KUL／HKG／TPE／SGN／MNL／DPS／ICN／TYO 十個目的地。
+  <strong>有可訂位子的：BKK、SIN、KUL、HKG、SGN、MNL——但除了 TG462（23:30）之外，全部都是清晨或白天出發，不符合 20:00–23:59。</strong></p>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">去程方向與接駁段</h4>
+  <div class="tablewrap">
+  <table data-sortable id="anaInTable">
+    <thead><tr><th>航段</th><th>日期</th><th>艙等</th><th class="num">哩程</th><th class="num">稅金</th><th>結果</th></tr></thead>
+    <tbody>
+      <tr><td>TYO → BKK</td><td>9/18</td><td>經濟</td><td class="num">19,000</td><td class="num">JPY 32,410</td><td class="wrapcell"><span class="tag t-ok">可訂</span> NH813+TG603 HND 01:35→BKK 09:35／NH 直飛 5 班全候補</td></tr>
+      <tr><td>TYO → BKK</td><td>9/18</td><td>商務</td><td class="num">31,500</td><td class="num">JPY 36,900</td><td class="wrapcell"><span class="tag t-ok">可訂</span> NH813+TG603／NH 直飛 5 班全候補</td></tr>
+      <tr><td>BKK → MEL</td><td>9/18</td><td>經濟</td><td class="num">23,000</td><td class="num">JPY 29,090</td><td class="wrapcell"><span class="tag t-ok">可訂</span> <strong>TG465 19:40→MEL 07:30+1（9/19 ✓）</strong>／TG461 08:10→20:00</td></tr>
+      <tr><td>BKK → MEL</td><td>9/18</td><td>商務</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">無位</span></td></tr>
+      <tr><td>BKK → MEL</td><td>9/19</td><td>經濟</td><td class="num">23,000</td><td class="num">JPY 29,090</td><td class="wrapcell"><span class="tag t-wait">可訂但太晚</span> TG465 19:40→07:30+1（9/20 抵達）</td></tr>
+      <tr><td>HKG → MEL</td><td>9/18</td><td>經濟</td><td class="num">25,000</td><td class="num">JPY 36,580</td><td class="wrapcell"><span class="tag t-ok">可訂</span> TG629+TG465 15:30→MEL 07:30+1（9/19 ✓）</td></tr>
+      <tr><td>KUL → MEL</td><td>9/18</td><td>經濟</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">無位</span></td></tr>
+      <tr><td>TYO → SIN</td><td>9/18</td><td>經濟</td><td class="num">17,500</td><td class="num">—</td><td class="wrapcell"><span class="tag t-ok">可訂</span> NH843 00:40／NH803 17:15／NH801 18:40</td></tr>
+      <tr><td>TYO → SIN</td><td>9/18</td><td>商務</td><td class="num">42,500</td><td class="num">JPY 40,230</td><td class="wrapcell"><span class="tag t-wait">全候補</span> NH843／NH803／NH801／NH841</td></tr>
+      <tr><td>TYO → SIN</td><td>9/18</td><td>頭等</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">不提供</span></td></tr>
+      <tr><td>SIN → TYO</td><td>9/28</td><td>經濟</td><td class="num">19,000</td><td class="num">JPY 30,720</td><td class="wrapcell"><span class="tag t-ok">可訂</span> TG410+TG642 SIN 20:50→NRT 08:10+1／NH 直飛 4 班全候補</td></tr>
+      <tr><td>SIN → TYO</td><td>9/28</td><td>商務</td><td class="num">42,500</td><td class="num">JPY 45,970</td><td class="wrapcell"><span class="tag t-wait">全候補</span></td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td>經濟</td><td class="num">17,500</td><td class="num">JPY 42,980</td><td class="wrapcell"><span class="tag t-ok">可訂</span> TG642 23:50／TG640 21:55／NH850 21:35／NH806 07:00</td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td>豪經</td><td class="num">25,500</td><td class="num">JPY 42,980</td><td class="wrapcell"><span class="tag t-wait">全候補</span></td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td>商務</td><td class="num">42,500</td><td class="num">JPY 42,980</td><td class="wrapcell"><span class="tag t-wait">全候補</span></td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td>頭等</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">不提供</span></td></tr>
+      <tr><td><strong>TYO → HKG</strong></td><td>9/18</td><td>經濟</td><td class="num"><strong>10,000</strong></td><td class="num">JPY 21,350</td><td class="wrapcell"><span class="tag t-ok">可訂</span> <strong>NH813 HND 01:35→HKG 05:15</strong>／NH859 08:35 候補／NH811 18:45 候補</td></tr>
+      <tr><td>TYO → HKG</td><td>9/18</td><td>商務</td><td class="num">26,500</td><td class="num">JPY 21,350</td><td class="wrapcell"><span class="tag t-wait">全候補</span> NH813／NH859／NH811</td></tr>
+      <tr><td>HKG → MEL</td><td>9/18</td><td>商務</td><td class="num">48,000</td><td class="num">JPY 12,780</td><td class="wrapcell"><span class="tag t-ok">可訂</span> VN595+VN781 HKG 18:45→SGN→MEL 08:35+1（9/19 ✓）</td></tr>
+      <tr><td>HKG → MEL</td><td>9/19</td><td>經濟</td><td class="num">25,000</td><td class="num">JPY 36,580</td><td class="wrapcell"><span class="tag t-wait">可訂但太晚</span> TG629+TG465 → 9/20 07:30 抵達</td></tr>
+      <tr><td>MEL → ICN</td><td>9/27</td><td>商務</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">無位</span></td></tr>
+      <tr><td>HKG → TYO</td><td>9/28</td><td>經濟</td><td class="num">10,000</td><td class="num">JPY 25,600</td><td class="wrapcell"><span class="tag t-wait">全候補</span> NH814 23:55／NH860 14:35／NH812 09:30　→ 這段用現金（NT$4,788）比較實在</td></tr>
+      <tr><td>SIN → MEL</td><td>9/18</td><td>經濟</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">無位</span></td></tr>
+      <tr><td>TYO → MEL（直通）</td><td>9/19</td><td>經濟</td><td class="num">—</td><td class="num">—</td><td class="wrapcell"><span class="tag t-no">無位</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">ANA 共執行 <strong>43 次搜尋</strong>（10 個回程目的地 × 各艙等、去程各配對段、9/18 與 9/19 兩天）。</p>
+
+  <div class="callout">
+    <strong>★ 去程最省：經香港，共 35,000 哩。</strong>
+    TYO→HKG 經濟只要 <strong>10,000 哩</strong>（NH813 HND 01:35→05:15，可訂），
+    接 HKG→MEL 經濟 <strong>25,000 哩</strong>（TG629+TG465 15:30→MEL 9/19 07:30，可訂）。
+    比經曼谷的 19,000＋23,000＝42,000 哩少 7,000。
+    想要商務：HKG→MEL 商務 48,000 哩（VN595+VN781 18:45→9/19 08:35，可訂）也是確認位。
+  </div>
+  <div class="callout">
+    <strong>掃描結論：9/27 20:00–23:59 從墨爾本出發、且里程能真正訂到的，只有泰航 TG462 23:30 一班。</strong>
+    可以只開到曼谷（商務 43,500 哩），也可以直接開到香港（商務 48,000 哩，多 4,500 哩換一段 BKK→HKG）。
+    新加坡、吉隆坡、台北、胡志明市方向在該時段全部沒有可訂的位子。
+  </div>
+
+  <h3>三種組合的實際成本</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>做法</th><th class="num">哩程</th><th class="num">現金</th><th class="nosort">評價</th></tr></thead>
+    <tbody>
+      <tr><td><strong>★ 只換 MEL→BKK 商務，其餘現金</strong></td><td class="num"><strong>43,500</strong></td><td class="num"><strong>NT$28,307</strong></td><td class="wrapcell">去程 TYO→SIN→MEL 現金 NT$17,621、回程 BKK→TYO 現金 NT$7,859、里程票稅 NT$2,827。比全現金省 NT$9,733，還把 9.5 小時夜航升到商務</td></tr>
+      <tr><td>四段全用里程</td><td class="num">103,000</td><td class="num">NT$24,120（稅）</td><td class="wrapcell">只比全現金省 NT$13,920 → 每哩 NT$0.135，浪費</td></tr>
+      <tr><td>全現金（經 SIN 拆）</td><td class="num">0</td><td class="num">NT$38,040</td><td class="wrapcell">最單純，但全程經濟艙</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">為什麼不用里程換 BKK→TYO：那段稅金 NT$8,759 幾乎等於現金票價 NT$7,859，換了反而虧。</p>
+  <p class="note">對照組的用途：證明搜尋引擎與帳號運作正常，因此上面那些「無位」是真的沒有空位，不是操作失敗。
+  實搜 23,000 哩與哩程表 Zone 4⇄Zone 10 單程經濟完全吻合。</p>
+
+  <h3>稅金換算</h3>
+  <p class="note">匯率 1 JPY = 0.2038 TWD（xe.com，2026-08-06 查證）</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>航段</th><th class="num">稅金 JPY</th><th class="num">約 TWD</th></tr></thead>
+    <tbody>
+      <tr><td>TK168　SIN→MEL</td><td class="num">37,470</td><td class="num">NT$7,637</td></tr>
+      <tr><td>SQ248　MEL→SIN</td><td class="num">12,680</td><td class="num">NT$2,584</td></tr>
+      <tr><td><strong>兩段合計</strong></td><td class="num"><strong>50,150</strong></td><td class="num"><strong>NT$10,221</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= 現金 ================= -->
+<section id="cash" hidden>
+  <h2>現金票價</h2>
+  <p class="note">Google Flights，2026-08-06 查詢，TWD 含稅，1 位成人。</p>
+
+  <h3>東京 ⇄ 墨爾本 來回（同時滿足去程抵達與回程出發時段）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航空</th><th>去程</th><th>回程</th><th class="num">總價</th></tr></thead>
+    <tbody>
+      <tr><td>中國南方</td><td class="wrapcell">9/18 HND 15:40 → MEL 08:40+1（16h00，1 停 CAN，轉機 2h05）</td><td class="wrapcell">9/27 MEL 21:10 → HND 19:55+1（23h45）</td><td class="num"><strong>NT$40,391</strong></td></tr>
+      <tr><td>中國南方</td><td class="wrapcell">同上</td><td class="wrapcell">9/27 MEL 21:10 → HND 14:20+1（18h10）</td><td class="num">NT$46,681</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>單程參考（皆符合時段）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>方向</th><th>航空 / 班次</th><th class="num">飛行時間</th><th>停點</th><th class="num">票價</th></tr></thead>
+    <tbody>
+      <tr><td>TYO→MEL 9/18</td><td class="wrapcell">中國南方 NRT 14:45 → MEL 08:40+1</td><td class="num">16h55</td><td>1</td><td class="num">NT$27,750</td></tr>
+      <tr><td>TYO→MEL 9/18</td><td class="wrapcell">泰航 NRT 12:00 → MEL 07:30+1</td><td class="num">18h30</td><td>1</td><td class="num">NT$32,592</td></tr>
+      <tr><td>TYO→MEL 9/18</td><td class="wrapcell">澳航 NRT 20:25 → MEL 07:40+1</td><td class="num">10h15</td><td>直飛</td><td class="num">NT$49,633</td></tr>
+      <tr><td>TYO→MEL 9/18</td><td class="wrapcell">日航 NRT 18:40 → MEL 05:45+1</td><td class="num">10h05</td><td>直飛</td><td class="num">NT$52,382</td></tr>
+      <tr><td>MEL→TYO 9/27</td><td class="wrapcell">酷航 MEL 21:35 → NRT 07:05+2</td><td class="num">34h30</td><td>1</td><td class="num">NT$18,166</td></tr>
+      <tr><td>MEL→TYO 9/27</td><td class="wrapcell">中國南方 MEL 21:10 → HND 19:55+1</td><td class="num">23h45</td><td>1</td><td class="num">NT$23,294</td></tr>
+      <tr><td>MEL→TYO 9/27</td><td class="wrapcell">中國南方 MEL 21:10 → NRT 13:40+1</td><td class="num">17h30</td><td>1</td><td class="num">NT$27,378</td></tr>
+      <tr><td>MEL→TYO 9/27</td><td class="wrapcell">國泰 MEL 23:45 → NRT 13:40+1</td><td class="num">14h55</td><td>1</td><td class="num">NT$29,722</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>拆段買 · 各段單程實價（2026-08-07 補查，每段都已確認符合時段）</h3>
+  <p class="note">下列每一筆都逐筆核對過抵達／出發時間確實落在條件內。之前用「來回票最低價」相加會低估，因為那些來回票的回程時段不符。</p>
+  <div class="tablewrap">
+  <table data-sortable id="legTable">
+    <thead><tr><th>段</th><th>日期</th><th>航空 / 時刻</th><th class="num">飛行時間</th><th>停點</th><th class="num">票價</th></tr></thead>
+    <tbody>
+      <tr><td>TYO → SIN</td><td>9/18</td><td class="wrapcell">濟州航空 NRT 10:30 → SIN 23:25</td><td class="num">13h55</td><td>1</td><td class="num"><strong>NT$10,798</strong></td></tr>
+      <tr><td>TYO → SIN</td><td>9/18</td><td class="wrapcell">酷航 NRT 12:30 → SIN 20:45</td><td class="num">9h15</td><td>1</td><td class="num">NT$12,356</td></tr>
+      <tr><td>TYO → SIN</td><td>9/18</td><td class="wrapcell">酷航 NRT 08:20 → SIN 14:35（直飛）</td><td class="num">7h15</td><td>直飛</td><td class="num">NT$18,278</td></tr>
+      <tr><td>SIN → MEL</td><td>9/19</td><td class="wrapcell">酷航 11:05 → MEL 20:20（直飛）</td><td class="num">7h15</td><td>直飛</td><td class="num"><strong>NT$6,823</strong></td></tr>
+      <tr><td>SIN → MEL</td><td>9/19</td><td class="wrapcell">土耳其航空 TK168 10:25 → MEL 19:40（直飛）</td><td class="num">7h15</td><td>直飛</td><td class="num">NT$10,785</td></tr>
+      <tr><td>SIN → MEL</td><td>9/19</td><td class="wrapcell">新加坡航空 01:45 → MEL 11:00（直飛）</td><td class="num">7h15</td><td>直飛</td><td class="num">NT$19,842</td></tr>
+      <tr><td>MEL → SIN</td><td>9/27</td><td class="wrapcell">酷航 21:35 → SIN 03:40+1（直飛）</td><td class="num">8h05</td><td>直飛</td><td class="num"><strong>NT$10,014</strong></td></tr>
+      <tr><td>MEL → SIN</td><td>9/27</td><td class="wrapcell">新航／維珍澳洲 23:35 → SIN 05:30+1（直飛）</td><td class="num">7h55</td><td>直飛</td><td class="num">NT$23,956</td></tr>
+      <tr><td>SIN → TYO</td><td>9/28</td><td class="wrapcell">T'way 23:00 → NRT 11:05+1</td><td class="num">11h05</td><td>1</td><td class="num"><strong>NT$10,405</strong></td></tr>
+      <tr><td>SIN → TYO</td><td>9/28</td><td class="wrapcell">酷航 23:05 → NRT 07:05+1（直飛）</td><td class="num">7h00</td><td>直飛</td><td class="num">NT$11,201</td></tr>
+      <tr><td>SIN → TYO</td><td>9/28</td><td class="wrapcell">ANA／新航 06:15 → NRT 14:30（直飛）</td><td class="num">7h15</td><td>直飛</td><td class="num">NT$20,483</td></tr>
+      <tr><td>TYO → BKK</td><td>9/18</td><td class="wrapcell">香港快運 HND 06:35 → BKK 15:30</td><td class="num">10h55</td><td>1</td><td class="num"><strong>NT$12,972</strong></td></tr>
+      <tr><td>TYO → BKK</td><td>9/18</td><td class="wrapcell">泰越捷 NRT 08:55 → BKK 13:45（直飛）</td><td class="num">6h50</td><td>直飛</td><td class="num">NT$23,667</td></tr>
+      <tr><td>TYO → BKK</td><td>9/18</td><td class="wrapcell">日航 HND 01:20 → BKK 05:45（直飛）</td><td class="num">6h25</td><td>直飛</td><td class="num">NT$29,051</td></tr>
+      <tr><td>BKK → MEL</td><td>9/18</td><td class="wrapcell">捷星／澳航 21:40 → MEL 09:25+1（直飛）</td><td class="num">8h45</td><td>直飛</td><td class="num"><strong>NT$8,080</strong></td></tr>
+      <tr><td>BKK → MEL</td><td>9/18</td><td class="wrapcell">泰國航空 19:40 → MEL 07:30+1（直飛）</td><td class="num">8h50</td><td>直飛</td><td class="num">NT$14,810</td></tr>
+      <tr><td>BKK → MEL</td><td>9/19</td><td class="wrapcell">泰國航空 08:10 → MEL 20:00（直飛，當日抵達）</td><td class="num">8h50</td><td>直飛</td><td class="num">NT$19,975</td></tr>
+      <tr><td>MEL → BKK</td><td>9/27</td><td class="wrapcell">酷航 21:35 → BKK 14:25+1</td><td class="num">19h50</td><td>1</td><td class="num"><strong>NT$10,246</strong></td></tr>
+      <tr><td>MEL → BKK</td><td>9/27</td><td class="wrapcell">泰國航空 23:30 → BKK 06:00+1（直飛）</td><td class="num">9h30</td><td>直飛</td><td class="num">NT$14,478</td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td class="wrapcell">香港快運 10:10 → HND 01:20+1</td><td class="num">13h10</td><td>1</td><td class="num"><strong>NT$7,859</strong></td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td class="wrapcell">泰航／ANA 13:00 → HND 21:10（直飛）</td><td class="num">6h10</td><td>直飛</td><td class="num">NT$18,015</td></tr>
+      <tr><td>BKK → TYO</td><td>9/28</td><td class="wrapcell">日航／曼谷航空 09:40 → HND 18:00（直飛）</td><td class="num">6h20</td><td>直飛</td><td class="num">NT$18,944</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>★ 2026-08-07 補查：經香港（HKG）各段單程現金</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>段</th><th>日期</th><th>航空 / 時刻</th><th class="num">飛行時間</th><th>停點</th><th class="num">票價</th></tr></thead>
+    <tbody>
+      <tr><td>TYO → HKG</td><td>9/18</td><td class="wrapcell">香港快運 NRT 15:45 → HKG 19:40（直飛）</td><td class="num">4h55</td><td>直飛</td><td class="num"><strong>NT$10,044</strong></td></tr>
+      <tr><td>TYO → HKG</td><td>9/18</td><td class="wrapcell">香港快運 HND 06:35 → HKG 10:15（直飛）</td><td class="num">4h40</td><td>直飛</td><td class="num">NT$10,817</td></tr>
+      <tr><td>HKG → MEL</td><td>9/18</td><td class="wrapcell">酷航 20:45 → MEL 20:20+1（9/19 抵達）</td><td class="num">21h35</td><td>1</td><td class="num"><strong>NT$12,401</strong></td></tr>
+      <tr><td>HKG → MEL</td><td>9/18</td><td class="wrapcell">皇家汶萊 14:40 → MEL 05:30+1</td><td class="num">12h50</td><td>1</td><td class="num">NT$12,512</td></tr>
+      <tr><td>HKG → MEL</td><td>9/18</td><td class="wrapcell">澳洲航空 20:05 → MEL 07:20+1（直飛）</td><td class="num">9h15</td><td>直飛</td><td class="num">NT$20,643</td></tr>
+      <tr><td>MEL → HKG</td><td>9/27</td><td class="wrapcell">酷航 21:35 → HKG 19:45+1</td><td class="num">24h10</td><td>1</td><td class="num"><strong>NT$11,551</strong></td></tr>
+      <tr><td>MEL → HKG</td><td>9/27</td><td class="wrapcell">泰國航空 23:30 → HKG 11:45+1（即 TG462+TG600）</td><td class="num">14h15</td><td>1</td><td class="num">NT$18,678</td></tr>
+      <tr><td>MEL → HKG</td><td>9/27</td><td class="wrapcell"><strong>國泰 23:45 → HKG 06:55+1（直飛）</strong></td><td class="num">9h10</td><td>直飛</td><td class="num">NT$19,074</td></tr>
+      <tr><td>HKG → TYO</td><td>9/28</td><td class="wrapcell">香港快運 20:00 → HND 01:20+1（直飛）</td><td class="num">4h20</td><td>直飛</td><td class="num"><strong>NT$4,788</strong></td></tr>
+      <tr><td>HKG → TYO</td><td>9/28</td><td class="wrapcell">香港快運 15:10 → NRT 20:40／17:35 → HND 22:55（直飛）</td><td class="num">4h20–4h30</td><td>直飛</td><td class="num">NT$5,610</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout">
+    <strong>香港線索：國泰有 MEL 23:45 → HKG 直飛，正好在回程時段內。</strong>
+    這是寰宇一家班機，理論上可用亞洲萬里通兌換——但亞萬帳號目前未登入，<strong>尚未查證有無獎勵位</strong>。
+    這是亞萬唯一還可能翻盤的機會。
+  </div>
+
+  <h3>三種買法總帳</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>買法</th><th>組合</th><th class="num">總額</th><th class="nosort">代價</th></tr></thead>
+    <tbody>
+      <tr><td><strong>經 SIN 全拆</strong></td><td class="wrapcell">10,798 + 6,823 + 10,014 + 10,405</td><td class="num"><strong>NT$38,040</strong></td><td class="wrapcell">4 張分開的票、自理轉機、行李餐食另計</td></tr>
+      <tr><td><strong>經 BKK 全拆</strong></td><td class="wrapcell">12,972 + 8,080 + 10,246 + 7,859</td><td class="num"><strong>NT$39,157</strong></td><td class="wrapcell">同上；但 BKK→MEL 有便宜直飛（捷星 8h45）</td></tr>
+      <tr><td><strong>經 HKG 全拆</strong></td><td class="wrapcell">10,044 + 12,401 + 11,551 + 4,788</td><td class="num"><strong>NT$38,784</strong></td><td class="wrapcell">4 張票；HKG→TYO 只要 NT$4,788 很便宜，但 HKG→MEL 便宜的要 21h35</td></tr>
+      <tr><td><strong>直通一張票</strong></td><td class="wrapcell">中國南方 9/18 HND 15:40 ／ 9/27 MEL 21:10</td><td class="num"><strong>NT$40,391</strong></td><td class="wrapcell">單一行程、有轉機保障、行李直掛</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">三條拆法幾乎同價（NT$38,040 / NT$38,784 / NT$39,157），都只比直通省 NT$1,200–2,350。</p>
+  <div class="callout warn">
+    拆四段最多只省 <strong>約 NT$2,350</strong>（5.8%）。以「4 張廉航票、誤點自負」換這個金額，划不划算見仁見智；
+    若只想省錢又能接受長轉機，經 SIN 拆最便宜。
+  </div>
+
+  <h3>中轉點比較（比過 SIN / BKK / KUL / TPE）</h3>
+  <p class="note">拆票的成本由兩邊決定。下表把四個中轉點的兩側分別列出，每筆都符合時段條件。</p>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>中轉點</th><th>轉機點 → MEL（抵達 ≤ 9/19 21:30）</th><th>MEL → 轉機點（9/27 20:00–23:59 出發）</th><th class="num">MEL 側小計</th></tr></thead>
+    <tbody>
+      <tr><td><strong>新加坡 SIN</strong></td><td class="wrapcell">NT$6,823 酷航直飛 7h15</td><td class="wrapcell">NT$10,014 酷航直飛 8h05</td><td class="num"><strong>NT$16,837</strong></td></tr>
+      <tr><td>吉隆坡 KUL</td><td class="wrapcell">NT$7,343 酷航 19h35 ／ NT$9,482 亞航X 直飛 7h50</td><td class="wrapcell">NT$9,868 酷航 15h00</td><td class="num">NT$17,211</td></tr>
+      <tr><td>曼谷 BKK</td><td class="wrapcell">NT$8,080 捷星／澳航 直飛 8h45</td><td class="wrapcell">NT$10,246 酷航 19h50</td><td class="num">NT$18,326</td></tr>
+      <tr><td>台北 TPE</td><td class="wrapcell">未查（MEL 側已明顯偏貴）</td><td class="wrapcell">NT$16,753 酷航 34h10 ／ NT$50,053 華航直飛</td><td class="num">— 單邊即超過</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>中轉點</th><th>TYO → 轉機點 9/18</th><th>轉機點 → TYO 9/28</th><th class="num">TYO 側小計</th></tr></thead>
+    <tbody>
+      <tr><td><strong>新加坡 SIN</strong></td><td class="wrapcell">NT$10,798 濟州航空 13h55</td><td class="wrapcell">NT$10,405 T'way 11h05</td><td class="num">NT$21,203</td></tr>
+      <tr><td>曼谷 BKK</td><td class="wrapcell">NT$12,972 香港快運 10h55</td><td class="wrapcell">NT$7,859 香港快運 13h10</td><td class="num"><strong>NT$20,831</strong></td></tr>
+      <tr><td>吉隆坡 KUL</td><td class="wrapcell">NT$14,753 華航 20h30 ／ NT$15,144 峇迪航空 直飛 7h30</td><td class="wrapcell">未查</td><td class="num">— 單邊即偏高</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note"><strong>結論：新加坡最便宜。</strong>BKK 的東京側略勝（便宜 NT$372），但墨爾本側貴 NT$1,489，合計仍輸。
+  混搭（去程經 BKK、回程經 SIN）＝ NT$41,471，比純 SIN 更貴。
+  注意：亞洲航空（AirAsia）自家網站票價未必完整出現在 Google Flights，KUL 這條實際可能更便宜，值得自行到 airasia.com 比一次。</p>
+
+  <h3>★ 商務艙單程現金（用來評估里程換得值不值）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>段</th><th>航空 / 時刻</th><th class="num">時間</th><th class="num">現金</th><th class="num">ANA 里程</th><th class="num">每哩價值</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MEL → HKG 9/27</strong></td><td class="wrapcell"><strong>泰航 23:30 → 11:45+1（＝TG462+TG600）</strong></td><td class="num">14h15</td><td class="num"><strong>NT$77,945</strong></td><td class="num"><strong>48,000</strong>＋NT$2,827</td><td class="num"><strong>NT$1.56</strong></td></tr>
+      <tr><td>MEL → HKG 9/27</td><td class="wrapcell">國泰 23:45 → 06:55+1（直飛）</td><td class="num">9h10</td><td class="num">NT$83,313</td><td class="num">亞萬未查</td><td class="num">—</td></tr>
+      <tr><td><strong>MEL → BKK 9/27</strong></td><td class="wrapcell">最低（皇家汶萊 1 停）；TG462 直飛更高</td><td class="num">10h40</td><td class="num">NT$49,157</td><td class="num"><strong>43,500</strong>＋NT$2,827</td><td class="num">NT$1.07</td></tr>
+      <tr><td>MEL → HKG 9/27</td><td class="wrapcell">海南航空 19:45 → 09:05+1（時段外）</td><td class="num">15h20</td><td class="num">NT$51,655</td><td class="num">—</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout">
+    <strong>這是整份調查裡最划算的一筆兌換：MEL→HKG 商務 48,000 哩。</strong>
+    同一班泰航 TG462（23:30 出發，符合時段）現金商務要 NT$77,945，用里程只要 48,000 哩＋NT$2,827，
+    <strong>每哩價值 NT$1.56</strong>；停在曼谷（43,500 哩）每哩 NT$1.07。多花 4,500 哩、每哩價值反而更高，
+    而且香港→東京的現金票只要 NT$4,788。
+  </div>
+
+  <h3>商務艙來回</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航空</th><th class="num">飛行時間</th><th class="num">票價</th></tr></thead>
+    <tbody>
+      <tr><td>菲律賓航空</td><td class="num">39h05</td><td class="num">NT$103,924</td></tr>
+      <tr><td>國泰航空</td><td class="num">15h45</td><td class="num">NT$156,884</td></tr>
+      <tr><td>泰國航空</td><td class="num">18h30</td><td class="num">NT$169,966</td></tr>
+      <tr><td>澳洲航空（直飛）</td><td class="num">10h15</td><td class="num">NT$235,427</td></tr>
+      <tr><td>日本航空（直飛）</td><td class="num">10h05</td><td class="num">NT$277,069</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= 新航 ================= -->
+<section id="sq" hidden>
+  <h2>新加坡航空 KrisFlyer</h2>
+  <p class="note">查詢時間 2026-07-12～13。「Waitlist」＝候補；無標籤＝可直接訂。
+  三個兌換層級：Saver（最便宜、位子最少）／Advantage（中間）／Access（最貴、位子最多）。</p>
+
+  <div class="callout warn">
+    <strong>Advantage 在這條線特別不划算：</strong>同一個位子是 Saver 的兩倍價，
+    而且 SIN→MEL 的 Saver 與 Advantage <strong>兩欄都標候補</strong>——多付一倍哩數換到的還是候補。
+    真正保證出票的只有 Access。
+  </div>
+
+  <h3>東京 → 新加坡　9/18（直飛）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航班</th><th>時刻</th><th class="num">時間</th><th>經濟 Adv／Access</th><th>商務</th><th class="nosort">其他艙等</th></tr></thead>
+    <tbody>
+      <tr><td>SQ11</td><td>NRT 19:00 → SIN 00:55+1</td><td class="num">6h55</td><td>候補 49,500 ／ 71,000</td><td>候補 80,500 ／ Access 166,000</td><td class="wrapcell">豪經 Access 70,000；頭等 候補 Adv 138,000</td></tr>
+      <tr><td>SQ637</td><td>NRT 10:55 → SIN 16:55</td><td class="num">7h00</td><td><span class="tag t-ok">可訂 49,500</span> ／ 71,000</td><td>候補 80,500</td><td class="wrapcell">—</td></tr>
+      <tr><td>SQ633</td><td>HND 17:05 → SIN 23:05</td><td class="num">7h00</td><td>候補 49,500 ／ 71,000</td><td>候補 80,500</td><td class="wrapcell">—</td></tr>
+      <tr><td>SQ631</td><td>HND 08:55 → SIN 15:00</td><td class="num">7h05</td><td>候補 49,500 ／ 71,000</td><td>—</td><td class="wrapcell">頭等 候補 Saver 81,000／候補 Adv 138,000／<span class="tag t-ok">Access 256,000 可訂</span></td></tr>
+      <tr><td>SQ635</td><td>HND 22:55 → SIN 05:25+1</td><td class="num">7h30</td><td>候補 49,500</td><td>候補 80,500</td><td class="wrapcell">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>新加坡 → 東京　9/28（直飛，經濟）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航班</th><th>時刻</th><th class="num">時間</th><th>Saver</th><th>Advantage</th><th class="num">Access</th></tr></thead>
+    <tbody>
+      <tr><td>SQ636</td><td>SIN 22:50 → HND 06:45+1</td><td class="num">6h55</td><td>不可用</td><td>候補 49,500</td><td class="num">71,000</td></tr>
+      <tr><td>SQ634</td><td>SIN 13:55 → HND 21:55</td><td class="num">7h00</td><td>不可用</td><td><span class="tag t-ok">可訂 49,500</span></td><td class="num">71,000</td></tr>
+      <tr><td>SQ632</td><td>SIN 07:40 → HND 15:45</td><td class="num">7h05</td><td>候補 25,500</td><td>候補 49,500</td><td class="num">71,000</td></tr>
+      <tr><td>SQ12</td><td>SIN 09:25 → NRT 17:30</td><td class="num">7h05</td><td>候補 25,500</td><td><span class="tag t-ok">可訂 49,500</span></td><td class="num">71,000</td></tr>
+      <tr><td>SQ638</td><td>SIN 23:55 → NRT 08:00+1</td><td class="num">7h05</td><td>不可用</td><td><span class="tag t-ok">可訂 49,500</span></td><td class="num">71,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">回程 豪經／商務／頭等 = 0（整週日期條全空）。</p>
+
+  <h3>新加坡 → 墨爾本　9/19（直飛）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航班</th><th>時刻</th><th class="num">時間</th><th>經濟 Saver／Adv／Access</th><th>商務</th></tr></thead>
+    <tbody>
+      <tr><td>SQ237</td><td>01:45 → 11:00</td><td class="num">7h15</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Saver 72,000 ／ Access 160,000</td></tr>
+      <tr><td>SQ227</td><td>22:10 → 07:25+1</td><td class="num">7h15</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Adv 103,500 ／ Access 213,500</td></tr>
+      <tr><td>SQ207</td><td>07:50 → 17:10</td><td class="num">7h20</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Saver 72,000 ／ 候補 Adv 103,500</td></tr>
+      <tr><td>SQ247</td><td>19:20 → 04:40+1</td><td class="num">7h20</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Adv 103,500 ／ Access 213,500</td></tr>
+      <tr><td>SQ217</td><td>11:10 → 20:35</td><td class="num">7h25</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Adv 103,500 ／ Access 213,500</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>墨爾本 → 新加坡　9/27（直飛）</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航班</th><th>時刻</th><th class="num">時間</th><th>經濟 Saver／Adv／Access</th><th>商務</th></tr></thead>
+    <tbody>
+      <tr><td>SQ248</td><td>05:55 → 11:45</td><td class="num">7h50</td><td>候補 29,000 ／ <span class="tag t-ok">可訂 60,500</span> ／ 87,000</td><td class="wrapcell">候補 Saver 72,000 ／ Access 160,000</td></tr>
+      <tr><td>SQ208</td><td>18:25 → 00:15+1</td><td class="num">7h50</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Saver 72,000 ／ Access 160,000</td></tr>
+      <tr><td>SQ228</td><td>15:20 → 21:15</td><td class="num">7h55</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">豪經 Access 77,000</td></tr>
+      <tr><td>SQ218</td><td>23:35 → 05:30+1</td><td class="num">7h55</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Saver 72,000 ／ Access 192,000</td></tr>
+      <tr><td>SQ238</td><td>09:15 → 15:15</td><td class="num">8h00</td><td>候補 29,000 ／ 候補 60,500 ／ 87,000</td><td class="wrapcell">候補 Saver 72,000 ／ Access 192,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>東京 ⇄ 墨爾本 直通（經 SIN）</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>方向</th><th>經濟</th><th>商務</th><th>頭等</th></tr></thead>
+    <tbody>
+      <tr><td>去程 9/18</td><td>Saver 44,500 ／ Adv 90,500 ／ Access 149,500（20 組）</td><td>Saver 108,500 ／ Adv 159,500（17 組）</td><td>Adv 236,000 ／ Access 486,500（2 組）</td></tr>
+      <tr><td>回程 9/27</td><td>同上層級（20 組）</td><td>（20 組）</td><td>候補 Adv 236,000 ／ Access 486,500（4 組）</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ================= 日航/亞萬 ================= -->
+<section id="other" hidden>
+  <h2>日本航空 JMB</h2>
+  <p class="note">查詢時間 2026-07。動態哩數定價。「残席 N」＝實際剩餘座位數（國際線特典無候補機制）。稅金 ¥41,550–41,760。</p>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航班</th><th>時刻</th><th class="num">時間</th><th class="num">經濟</th><th class="num">豪經</th><th class="num">商務</th></tr></thead>
+    <tbody>
+      <tr><td>JL035</td><td>HND 00:05 → SIN 06:10</td><td class="num">7h05</td><td class="num">—</td><td class="num">—</td><td class="num">100,000（残3）</td></tr>
+      <tr><td>JL037</td><td>HND 11:40 → SIN 17:45</td><td class="num">7h05</td><td class="num">59,000</td><td class="num">77,000（残7）</td><td class="num">170,000</td></tr>
+      <tr><td>JL711</td><td>NRT 18:05 → SIN 00:20+1</td><td class="num">7h15</td><td class="num">45,000</td><td class="num">—</td><td class="num">100,000（残8）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">頭等：「検索条件に合う旅程が見つかりませんでした」＝此航線不提供。
+  商務日期條：9/14 = 60,000／9/15–18 = 100,000／9/19 = 170,000／9/20 = 130,000。
+  經濟日期條：9/15–17 = 13,000／9/18 = 45,000／9/19 = 71,000／9/20 = 24,000。
+  <strong>持有餘額不足以兌換任何一段（最低需 45,000 哩）。</strong></p>
+
+  <h3>★ 2026-08-07 補查：日航「ワンワールド特典航空券」必要哩程表（公開資料，不需登入）</h3>
+  <p class="note">來源：<code>jal.co.jp/jp/ja/jalmile/use/partner_air/oneworld/miles.html</code>。
+  這是<strong>依總旅程距離（IATA TPM 合計）計價的來回表</strong>，不是分區表。距離用 JAL 官方「距離制特典区間マイル計算機」實算。</p>
+  <div class="tablewrap">
+  <table data-sortable id="jalOwChart">
+    <thead><tr><th>總旅程距離（哩）</th><th class="num">經濟</th><th class="num">商務</th><th class="num">頭等</th></tr></thead>
+    <tbody>
+      <tr><td>1 – 4,000</td><td class="num">25,000</td><td class="num">48,000</td><td class="num">72,000</td></tr>
+      <tr><td>4,001 – 8,000</td><td class="num">40,000</td><td class="num">80,000</td><td class="num">100,000</td></tr>
+      <tr><td>8,001 – 10,000</td><td class="num">50,000</td><td class="num">85,000</td><td class="num">110,000</td></tr>
+      <tr><td><strong>10,001 – 12,000</strong></td><td class="num"><strong>60,000</strong></td><td class="num"><strong>110,000</strong></td><td class="num"><strong>160,000</strong></td></tr>
+      <tr><td><strong>12,001 – 14,000</strong></td><td class="num"><strong>70,000</strong></td><td class="num"><strong>115,000</strong></td><td class="num"><strong>165,000</strong></td></tr>
+      <tr><td>14,001 – 20,000</td><td class="num">90,000</td><td class="num">120,000</td><td class="num">170,000</td></tr>
+      <tr><td>20,001 – 25,000</td><td class="num">120,000</td><td class="num">150,000</td><td class="num">230,000</td></tr>
+      <tr><td>25,001 – 29,000</td><td class="num">140,000</td><td class="num">190,000</td><td class="num">280,000</td></tr>
+      <tr><td>29,001 – 34,000</td><td class="num">150,000</td><td class="num">200,000</td><td class="num">300,000</td></tr>
+      <tr><td>34,001 – 50,000</td><td class="num">160,000</td><td class="num">220,000</td><td class="num">330,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">套用到你的行程（距離為 JAL 官方計算機實算值）</h4>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>路線</th><th class="num">TPM 合計</th><th>級距</th><th class="num">經濟</th><th class="num">商務</th><th class="num">頭等</th></tr></thead>
+    <tbody>
+      <tr><td>東京 ⇄ 墨爾本（直達來回）</td><td class="num">10,182</td><td>10,001–12,000</td><td class="num"><strong>60,000</strong></td><td class="num"><strong>110,000</strong></td><td class="num">160,000</td></tr>
+      <tr><td>東京 ⇄ 香港 ⇄ 墨爾本（來回）</td><td class="num">12,874</td><td>12,001–14,000</td><td class="num"><strong>70,000</strong></td><td class="num"><strong>115,000</strong></td><td class="num">165,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">分段 TPM：東京–墨爾本 5,091／東京–香港 1,823／香港–墨爾本 4,614。</p>
+  <div class="callout warn">
+    <strong>對照 ANA：日航比較貴。</strong>ANA 日本⇄澳洲來回經濟 50,000／商務 91,000（分區表）；
+    日航寰宇一家直達來回經濟 60,000／商務 110,000。
+    <strong>但兩者的關鍵差別在空位</strong>——ANA 直通東京⇄墨爾本已確認全無位，而寰宇一家這邊至少墨爾本→香港是有位的（亞萬 CX178）。
+    日航實際空位仍需登入查詢。
+  </div>
+
+  <h3>★ 2026-08-07 補查：日航 JMB 登入後實際空位（已完成）</h3>
+  <p class="note">已完成簡訊驗證登入。日航線上有三種特典票，走三個不同引擎，分開查：
+  <strong>①JAL 自家特典</strong>（只飛日航航班）／<strong>②JMB 提携社特典</strong>（單一夥伴航空）／<strong>③寰宇一家特典</strong>（需 3 家以上 oneworld 成員）。</p>
+  <div class="tablewrap">
+  <table data-sortable id="jalAvail">
+    <thead><tr><th>引擎</th><th>航線 · 日期</th><th>艙等</th><th>結果</th><th>錯誤碼</th></tr></thead>
+    <tbody>
+      <tr><td>③寰宇一家特典</td><td>TYO→MEL 9/18 ＋ MEL→TYO 9/27</td><td>經濟</td><td><span class="tag t-no">無</span></td><td class="num">5003</td></tr>
+      <tr><td>③寰宇一家特典</td><td>TYO→MEL 9/18 ＋ MEL→TYO 9/27</td><td>商務</td><td><span class="tag t-no">無</span></td><td class="num">5003</td></tr>
+      <tr><td>③寰宇一家特典</td><td>TYO→HKG 9/18 ＋ HKG→TYO 9/27（對照）</td><td>經濟</td><td><span class="tag t-no">無</span></td><td class="num">5003</td></tr>
+      <tr><td>②提携社 · 國泰 CX</td><td>TYO→MEL 9/18 ＋ MEL→TYO 9/27</td><td>經濟</td><td><span class="tag t-no">無</span></td><td class="num">9100</td></tr>
+      <tr><td>②提携社 · 國泰 CX</td><td>TYO→MEL 9/18 ＋ MEL→TYO 9/27</td><td>商務</td><td><span class="tag t-no">無</span></td><td class="num">9100</td></tr>
+      <tr><td>②提携社 · 國泰 CX</td><td>TYO→HKG 9/18 ＋ HKG→TYO 9/27（對照）</td><td>經濟</td><td><span class="tag t-no">無</span></td><td class="num">9100</td></tr>
+      <tr><td>②提携社 · 國泰 CX</td><td>TYO→HKG 11/11 ＋ HKG→TYO 11/18（淡季對照）</td><td>經濟</td><td><span class="tag t-no">無</span></td><td class="num">5003</td></tr>
+      <tr><td>②提携社 · 澳航 QF</td><td>TYO→MEL 9/18 ＋ MEL→TYO 9/27</td><td>經濟</td><td><span class="tag t-no">無</span></td><td class="num">9100</td></tr>
+      <tr><td>②提携社 · 澳航 QF</td><td>TYO→MEL 9/18 ＋ MEL→TYO 9/27</td><td>商務</td><td><span class="tag t-no">無</span></td><td class="num">9100</td></tr>
+      <tr><td>①JAL 自家特典</td><td>TYO→SIN 9/18 ＋ SIN→TYO 9/27（<strong>正對照</strong>）</td><td>經濟</td><td><span class="tag t-yes">有位</span> JL711 NRT 18:05→SIN 00:20+1，殘席 9</td><td>—</td></tr>
+      <tr><td>①JAL 自家特典</td><td>空席照会カレンダー：TYO 出發 · 片道 · 經濟 · 全目的地</td><td>經濟</td><td>全世界只有 <strong>ホノルル 20,000 哩</strong>；墨爾本「検索できませんでした」</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout ok">
+    <strong>為什麼可以斷定「真的沒位」而不是「我查錯」：</strong>最後一列是<strong>正對照</strong>——同一個帳號、同一組操作手法、同樣按真實「検索する」鍵，
+    TYO→SIN 就回傳了真實航班與殘席數。證明引擎、登入狀態、查詢方法都正常，因此上面那些空白是真的空白。
+  </div>
+  <p class="note"><strong>錯誤碼意義（畫面原文）：</strong>
+  <code>5003</code>＝「以下のリストにあげられたものには、ご希望の客席クラスが満席の場合があります」；
+  <code>9100</code>＝「ご指定の条件では、満席または運航便がないためご予約いただけません」。
+  另：寰宇一家特典連 TYO⇄HKG 都回 5003，符合其規則「需搭乘 3 家以上 oneworld 成員航空」——單一夥伴的行程本來就不該走這個引擎。</p>
+  <div class="callout warn">
+    <strong>日航結論：這條路走不通。</strong>不論是自家、單一夥伴（國泰／澳航）還是寰宇一家，
+    9/18 去、9/27 回的東京⇄墨爾本<strong>線上一個艙等都沒有</strong>。
+    哩程表算得再便宜（經濟 60,000／商務 110,000）也換不到。
+    <span class="tag t-warn">未查</span>唯一沒排除的是電話訂位（JMB センター）——日航部分夥伴庫存不開放網站，只能電話問。
+  </div>
+  <p class="note"><strong>順帶查到（可供拆開買參考）：</strong>JAL 自家特典 TYO⇄SIN，9/18 出發／9/27 回程，經濟，畫面顯示
+  <strong>合計 45,000 哩 ＋ ¥41,760</strong>（種別 9Z0Z0YPZ）。日期橫條（起價）：9/15–9/17 = 13,000／<strong>9/18 = 45,000</strong>／9/19 = 71,000／9/20–9/21 = 13,000 哩。
+  <span class="tag t-warn">待確認</span>畫面「旅程」欄只列出往路，45,000 哩究竟是單程還是來回總額我沒有向下確認，不臆測。
+  但無論哪一種，光稅金 ¥41,760（≈NT$8,510）就已接近東京⇄新加坡現金票價，<strong>兌換價值差</strong>。</p>
+
+  <h2>亞洲萬里通</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>航線</th><th>結果</th></tr></thead>
+    <tbody>
+      <tr><td>東京 ⇄ 墨爾本（四艙等、雙向）</td><td><span class="tag t-no">全部 0</span>　線上引擎無候補機制</td></tr>
+      <tr><td>HND → SIN 9/18 經濟</td><td><span class="tag t-no">不適用 / 0</span>（9/17–21 整週皆無）</td></tr>
+      <tr><td>HND → SIN 9/18 頭等</td><td><span class="tag t-no">0</span>「你所選的日期並無可供選擇的航班」</td></tr>
+      <tr><td>HND → SIN 商務／特選經濟、NRT 出發、9/28 回程</td><td><span class="tag t-no">未查完</span></td></tr>
+      <tr><td>官方哩程表（2026-08-07 嘗試）</td><td><span class="tag t-no">取不到</span>　國泰靜態官網回「似乎出現技術問題」（訂位引擎本身正常）</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>★★ 2026-08-07 晚間補查：CX178 的稅金——用官方公告反推（訂位頁壞掉的替代路徑）</h3>
+  <p class="note">國泰訂位頁故障、進不到稅金畫面，改從<strong>國泰與澳洲政府的官方公告</strong>逐項取得。
+  每一項都有出處，沒有任何一個數字是估的。發現這個路徑是因為 <code>flights.cathaypacific.com</code> 這台主機是好的，
+  只有 <code>www.cathaypacific.com</code> 的訂位元件壞掉。</p>
+  <p class="note">補上 ITA Matrix（Google 旗下票價查詢工具，免登入）拉出的 <strong>CX178 完整票價結構</strong>後，
+  這筆稅金已經<strong>逐項到齊，不再只是下限</strong>。</p>
+  <div class="tablewrap">
+  <table data-sortable id="cx178tax">
+    <thead><tr><th>IATA 稅碼</th><th>項目</th><th class="num">AU$</th><th class="num">NT$</th></tr></thead>
+    <tbody>
+      <tr><td>AU</td><td>澳洲離境稅 Passenger Movement Charge</td><td class="num">70.00</td><td class="num">1,594</td></tr>
+      <tr><td>WG</td><td>澳洲安檢規費 Safety And Security Charge Departure</td><td class="num">10.50</td><td class="num">239</td></tr>
+      <tr><td>WY</td><td>墨爾本機場國際線旅客服務費</td><td class="num">33.75</td><td class="num">769</td></tr>
+      <tr><td>YR</td><td>國泰業者附加費（燃油）</td><td class="num">247.70</td><td class="num">5,640</td></tr>
+      <tr><td>—</td><td>推導合計（不含票價本身）</td><td class="num">361.95</td><td class="num">8,242</td></tr>
+      <tr><td>★</td><td><strong>實際值：亞萬訂位頁 HKD 1,995</strong>（使用者本人查得）</td><td class="num">—</td><td class="num"><strong>8,199</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">來源：ITA Matrix，MEL→HKG 2026-09-27 單程，國泰 11:45 PM → 06:55+1（＝CX178，9h10m）。
+  票價結構原文：<code>MEL CX HKG 334.29VR21AUKO NUC 334.29 END ROE 1.441841 XT 70.00AU 10.50WG 33.75WY 247.70YR</code>。
+  匯率 1 AUD = 22.7706 TWD、1 USD = 32.2175 TWD（xe.com，2026-08-07 13:49 UTC 中價）。</p>
+  <div class="callout ok">
+    <strong>★ 已由實際訂位頁證實。</strong>2026-08-07 使用者本人在亞萬訂位頁查到 CX178（MEL 23:45 → HKG 06:55+1，9h10m）
+    20,000 里數的 <strong>Taxes/fees/surcharges ＝ HKD 1,995</strong>。
+    換算 <strong>NT$8,199</strong>（1 HKD = 4.10993 TWD，xe.com 2026-08-07 14:52 UTC）。
+    <br>我先前從公開資料逐項推導出的是 <strong>NT$8,242</strong>——<strong>誤差 0.5%（NT$43）</strong>。
+    推導方法（ITA Matrix 票價結構 ＋ 國泰官方燃油公告 ＋ ABF 離境稅）得到驗證。以下計算一律改用實際值。
+  </div>
+  <div class="callout">
+    <strong>三個來源互相對上：</strong>ITA Matrix 票價結構的 YR ＝ AU$247.70（＝USD 175.07）；
+    國泰官網燃油公告 ＝ USD 174.60（差 0.3%）；亞萬訂位頁實際總稅費 ＝ HKD 1,995（與推導差 0.5%）。
+  </div>
+  <p class="note">為什麼現金票的稅可以套用到酬賓票：國泰官網原文「A fuel surcharge is included on <strong>all</strong> Cathay Pacific tickets.
+  The surcharge is on a per flight sector basis <strong>irrespective of fare type</strong>」，且哩程表頁註明「Required Asia Miles do <strong>not</strong> include fuel surcharges and taxes」。
+  AU／WG／WY 三項是政府與機場規費，與票種無關。</p>
+  <div class="callout warn">
+    <strong>這筆數字翻轉了原本的判斷。</strong>CX178（MEL 23:45 → HKG）看起來是「只要 20,000 亞萬哩」的好康，
+    但實際要再掏 <strong>NT$8,199</strong> 現金（亞萬訂位頁實測 HKD 1,995），其中光燃油附加費就 NT$5,640。
+    <br>對照 <strong>泰航 TG462（MEL 23:30 → BKK）商務艙，ANA 48,000 哩 ＋ NT$2,827 全部含稅</strong>——
+    <strong>國泰經濟艙的現金支出是泰航商務艙的 2.9 倍</strong>。
+    <span class="tag t-warn">注意</span>國泰 2026-08-01 剛調漲燃油費（USD 123.70 → 174.60，漲 41%），這是近期才發生的。
+  </div>
+  <p class="note">順帶取得同日 MEL→HKG 現金票價（ITA Matrix，經濟艙含稅）：
+  香港航空 12:00 AU$728／國泰 07:25 與 14:25 AU$766／澳航 10:15 AU$821／<strong>國泰 CX178 23:45 AU$844</strong>。
+  ＝ CX178 現金全額 NT$19,217；扣掉仍須自付的稅費 NT$8,199，20,000 里數實際換到 NT$11,018，
+  換算<strong>每哩約 NT$0.55</strong>——比泰航 TG462 那條的每哩價值差很多。</p>
+
+  <h3>★★★ 2026-08-08：亞萬 東京⇄新加坡缺口——已補完</h3>
+  <div class="callout ok">
+    <strong>結果：東京 → 新加坡 經濟艙，9/15–9/21 整週無獎勵位。</strong>
+    <br>畫面日期條（Lowest miles shown on the calendar）：9/16、9/17、<strong>9/18</strong>、9/19、9/20、9/21 全部標
+    <code>Not available</code>；9/15 無數值。
+    <br>與既有資料一致：亞萬先前查 HND→SIN 9/18 經濟亦為 0（9/17–21 整週皆無）。兩次獨立查詢結論相同。
+    <br><strong>這格的意義</strong>：原本想確認「拆開買時，東京⇄新加坡那段能否用亞萬換」——答案是<strong>不能，沒有位子</strong>，
+    所以動態價格是多少已無實際意義。<span class="tag t-ok">缺口關閉</span>
+  </div>
+  <p class="note"><strong>怎麼繞過壞掉的元件（方法記錄，日後可重用）：</strong>
+  從 React fiber 內部查明——<strong>機場清單其實載入成功了</strong>
+  （<code>originListStatus="succeeded"</code>、出發地 1,312 筆、目的地 1,304 筆），壞的只是下拉選單的<u>渲染</u>。
+  於是直接取目的地欄位的 fiber，沿 <code>f.return</code> 往上找到帶 <code>onChangeDestination</code> 的元件，
+  從它的 <code>destinationList</code> 撈出新加坡的機場物件，直接呼叫該處理器 → React state 正確寫入、欄位顯示 "Singapore, (SIN)"。
+  日期用日曆點選，最後按<strong>「Redeem flights」</strong>（不是頁首那個「Search」——我一度點錯，頁面原地不動），
+  成功轉跳到 <code>book.cathaypacific.com/CathayPacificAwardV3/…/availability</code>。</p>
+
+  <h3>2026-08-07 深夜：亞萬的固定哩程表（保留紀錄）</h3>
+  <p class="note">國泰訂位頁故障、IBE 端點又需登入，所以東京⇄新加坡的亞萬價格一直補不上。
+  今晚在沒故障的 <code>flights.cathaypacific.com</code> 上把哩程表頁的四個分頁全部打開，把這件事查清楚了。</p>
+  <div class="callout warn">
+    <strong>結論：不是我查不到，是國泰根本沒有公布這條的固定價格。</strong>
+    官網原文寫得很直白——「For standard, partner, mixed-carrier and oneworld multi-carrier awards,
+    <strong>visit our Redeem flight awards page</strong> to check how many miles are required.」
+    <br>東京⇄新加坡若走日航直飛，屬<strong>單一夥伴（Airline partners award）</strong>，
+    國泰已改為<strong>動態計價、無表可查</strong>，價格只存在於那個故障中的訂位頁。
+    <span class="tag t-no">無替代來源</span>這一條在國泰修復前，任何人（不只我）都查不到。
+  </div>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">但有一張固定表確實還在：oneworld multi-carrier award</h4>
+  <p class="note">適用條件（官網原文）：行程涵蓋<strong>兩家 oneworld 航空且國泰不在其中</strong>；
+  或<strong>三家以上 oneworld 航空且國泰是其中之一</strong>。單程總距離上限 50,000 哩。以下為<strong>來回</strong>所需哩程。</p>
+  <div class="tablewrap">
+  <table data-sortable id="amOwChart">
+    <thead><tr><th>區間</th><th>實際距離（哩）</th><th class="num">經濟</th><th class="num">商務</th><th class="num">頭等</th></tr></thead>
+    <tbody>
+      <tr><td>01</td><td>0 – 1,000</td><td class="num">30,000</td><td class="num">60,000</td><td class="num">75,000</td></tr>
+      <tr><td>02</td><td>1,001 – 1,500</td><td class="num">35,000</td><td class="num">65,000</td><td class="num">85,000</td></tr>
+      <tr><td>03</td><td>1,501 – 2,000</td><td class="num">40,000</td><td class="num">70,000</td><td class="num">95,000</td></tr>
+      <tr><td>04</td><td>2,001 – 4,000</td><td class="num">45,000</td><td class="num">80,000</td><td class="num">110,000</td></tr>
+      <tr><td>05</td><td>4,001 – 7,500</td><td class="num">63,000</td><td class="num">100,000</td><td class="num">150,000</td></tr>
+      <tr><td>06</td><td>7,501 – 9,000</td><td class="num">68,000</td><td class="num">120,000</td><td class="num">165,000</td></tr>
+      <tr><td>07</td><td>9,001 – 10,000</td><td class="num">77,000</td><td class="num">135,000</td><td class="num">175,000</td></tr>
+      <tr><td><strong>08</strong></td><td><strong>10,001 – 14,000</strong></td><td class="num"><strong>95,000</strong></td><td class="num"><strong>170,000</strong></td><td class="num"><strong>250,000</strong></td></tr>
+      <tr><td>09</td><td>14,001 – 18,000</td><td class="num">105,000</td><td class="num">210,000</td><td class="num">310,000</td></tr>
+      <tr><td>10</td><td>18,001 – 20,000</td><td class="num">115,000</td><td class="num">230,000</td><td class="num">330,000</td></tr>
+      <tr><td>11</td><td>20,001 – 25,000</td><td class="num">126,000</td><td class="num">250,000</td><td class="num">350,000</td></tr>
+      <tr><td>12</td><td>25,001 – 35,000</td><td class="num">140,000</td><td class="num">265,000</td><td class="num">365,000</td></tr>
+      <tr><td>13</td><td>35,001 – 50,000</td><td class="num">160,000</td><td class="num">280,000</td><td class="num">380,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h4 style="font-size:14px;margin:18px 0 4px;color:var(--muted)">套用到你的行程，並和日航比</h4>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>行程</th><th class="num">TPM</th><th class="num">亞萬 經濟／商務／頭等</th><th class="num">日航 經濟／商務／頭等</th><th>誰便宜</th></tr></thead>
+    <tbody>
+      <tr><td>東京⇄墨爾本 直達來回</td><td class="num">10,182</td><td class="num">95,000 ／ 170,000 ／ 250,000</td><td class="num">60,000 ／ 110,000 ／ 160,000</td><td><strong>日航便宜</strong>（商務差 60,000）</td></tr>
+      <tr><td>東京⇄香港⇄墨爾本 來回</td><td class="num">12,874</td><td class="num">95,000 ／ 170,000 ／ 250,000</td><td class="num">70,000 ／ 115,000 ／ 165,000</td><td><strong>日航便宜</strong>（商務差 55,000）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>寰宇一家這一整條路都可以放掉了。</strong>亞萬的 multi-carrier 表比日航貴 55,000–60,000 哩（商務），
+    而日航那邊<u>三個引擎查完一個位子都沒有</u>；亞萬自己的標準酬賓票東京⇄墨爾本也是全零。
+    兩家都貴又都沒位——星盟（ANA／長榮／新航）才是這趟的主戰場。
+  </div>
+  <p class="note"><strong>順帶取得：國泰夥伴兌換資格矩陣</strong>（官網表格）——日本航空可兌換頭等、商務與經濟，
+  亦可用於 Partner (mixed-carrier) 與 oneworld multi-carrier；豪華經濟艙不可兌換。
+  另：阿拉斯加、美航、英航、國泰、斐濟、芬蘭、伊比利亞、馬航、阿曼、澳航、卡達、皇家摩洛哥、皇家約旦、斯里蘭卡等亦在名單內。</p>
+
+  <h3>★ 2026-08-07 補查：新加坡 → 墨爾本 9/19（經濟）</h3>
+  <p class="note">已登入寰宇一家獎勵搜尋。<strong>有位，27,000 里數</strong>，但 9 組全部繞經香港（往北再往南折返），
+  <strong>沒有任何一班能在 9/19 21:30 前抵達</strong>——最早的也要 22:15。</p>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>航班</th><th>出發 → 抵達</th><th class="num">時間</th><th>轉機</th><th class="num">里數</th><th>是否符合抵達時段</th></tr></thead>
+    <tbody>
+      <tr><td>CX714 + CX163</td><td>SIN 01:45 → MEL 22:15</td><td class="num">18h30</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">22:15 超過 21:30</span></td></tr>
+      <tr><td>CX758 + CX135</td><td>SIN 13:25 → MEL 05:55+1</td><td class="num">14h30</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX652 + CX135</td><td>SIN 12:45 → MEL 05:55+1</td><td class="num">15h10</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX716 + CX135</td><td>SIN 18:00 → MEL 11:15+1</td><td class="num">15h15</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX734 + CX135</td><td>SIN 16:05 → MEL 11:15+1</td><td class="num">17h10</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX658 + CX135</td><td>SIN 09:45 → MEL 05:55+1</td><td class="num">18h10</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX758 + CX163</td><td>SIN 13:25 → MEL 11:15+1</td><td class="num">19h50</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX636 + CX163</td><td>SIN 20:05 → MEL 22:15+1</td><td class="num">24h10</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+      <tr><td>CX716 + CX163</td><td>SIN 18:00 → MEL 22:15+1</td><td class="num">26h15</td><td>HKG</td><td class="num">27,000</td><td><span class="tag t-no">隔日抵達</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    東京⇄墨爾本直通全無空位（9/17–9/21 整週「不適用」，經 HKG 的路線也涵蓋在內）；
+    新加坡→墨爾本雖有 27,000 里數的位子，但繞香港最快也要 14h30，沒有一班趕得上 9/19 21:30。
+    <strong>但回程的墨爾本→香港是另一回事——見下。</strong>
+  </div>
+
+  <h3>★★ 2026-08-07 補查：墨爾本 → 香港 9/27（回程，寰宇一家獎勵）</h3>
+  <div class="tablewrap">
+  <table data-sortable id="cxMelHkgTable">
+    <thead><tr><th>艙等</th><th>航班</th><th>出發 → 抵達</th><th class="num">時間</th><th>轉機</th><th class="num">里數</th><th>時段</th></tr></thead>
+    <tbody>
+      <tr><td><strong>經濟</strong></td><td><strong>CX178</strong></td><td class="wrapcell"><strong>MEL 23:45 → HKG 06:55+1</strong></td><td class="num">9h10</td><td>直飛</td><td class="num"><strong>20,000</strong></td><td><span class="tag t-ok">✓ 符合</span></td></tr>
+      <tr><td>經濟</td><td>CX104</td><td class="wrapcell">MEL 14:25 → HKG 21:45（標示 Only a few seats left）</td><td class="num">9h20</td><td>直飛</td><td class="num">20,000</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>經濟</td><td>CX134</td><td class="wrapcell">MEL 07:25 → HKG 14:55</td><td class="num">9h30</td><td>直飛</td><td class="num">20,000</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>豪華經濟</td><td>CX134</td><td class="wrapcell">MEL 07:25 → HKG 14:55（僅此一班）</td><td class="num">9h30</td><td>直飛</td><td class="num">39,000</td><td><span class="tag t-no">時段不符</span></td></tr>
+      <tr><td>商務／頭等</td><td>—</td><td class="wrapcell">結果頁只出現 Economy 與 Premium Economy 兩個艙等分頁</td><td class="num">—</td><td>—</td><td class="num">—</td><td><span class="tag t-no">無位</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout">
+    <strong>★ 這是全案里程數最低的回程解：CX178，20,000 里數，直飛 9 小時 10 分，23:45 出發正好在時段內。</strong>
+    對比 ANA 的 TG462 商務 43,500 哩（到曼谷，還要再接一段到東京）——亞萬只要不到一半的里程，而且是直飛香港，
+    香港→東京的現金票只要 NT$4,788。代價是經濟艙。
+  </div>
+  <p class="note">⚠️ <strong>稅金未取得</strong>——需點進旅客資料步驟才會顯示，本次未進入該步驟。國泰經濟艙獎勵的取消費 USD120／17,000 里數、改期費 USD50／7,500 里數（畫面標示）。</p>
+
+  <h3>★ 2026-08-07 補查：香港相關接駁段</h3>
+  <div class="tablewrap">
+  <table data-sortable id="cxHkgLegsTable">
+    <thead><tr><th>航段</th><th>日期</th><th>艙等</th><th class="num">里數</th><th>可訂航班</th><th>結果</th></tr></thead>
+    <tbody>
+      <tr><td>香港 → 東京</td><td>9/28</td><td>經濟</td><td class="num">—</td><td class="wrapcell">畫面訊息：「Economy class not available for your selected date」</td><td><span class="tag t-no">無位</span></td></tr>
+      <tr><td>香港 → 東京</td><td>9/28</td><td>商務</td><td class="num">33,000</td><td class="wrapcell">CX564+CX450 08:10→NRT 17:15（8h05）／CX530+CX450 08:35→17:15（7h40）／CX466+CX450 09:00→17:15（7h15，Only a few seats left）——全部經台北，無直飛</td><td><span class="tag t-ok">可訂</span></td></tr>
+      <tr><td>東京 → 香港</td><td>9/18</td><td>全艙等</td><td class="num">—</td><td class="wrapcell">日期條 9/16–9/20 全部標示 Not available，結果頁無任何航班</td><td><span class="tag t-no">無位</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">香港→東京 9/28 的日期條：9/26、9/27、9/30、10/1 皆 Not available；9/28、9/29 有商務。
+  <strong>但這段現金只要 NT$4,788（香港快運直飛 4h20），用 33,000 里數換一張經台北 7–8 小時的商務票並不划算。</strong></p>
+</section>
+
+<!-- ================= 哩程表 ================= -->
+<section id="chart" hidden>
+  <h2>ANA 提携航空会社特典航空券 · 必要哩程表</h2>
+  <p class="note">來源：ANA 官網 <code>ana.co.jp/ja/jp/guide/amc/award/tk/zone/</code>，2026-08-06 讀取。
+  澳洲屬 <strong>Zone 10（大洋洲、密克羅尼西亞）</strong>；新加坡／泰國／馬來西亞／越南／印尼／印度屬 <strong>Zone 4</strong>；台灣／香港／中國／菲律賓／關島屬 <strong>Zone 3</strong>。
+  下表為「改定後」數字，適用於 2024/4/18 之後的預約發券。單程表自 2025/6/24 起可用。</p>
+
+  <h3>來回必要哩程</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>區間</th><th class="num">經濟</th><th class="num">商務</th><th class="num">頭等</th></tr></thead>
+    <tbody>
+      <tr><td>日本 Zone 1-A ⇄ 澳洲 Zone 10</td><td class="num">45,000</td><td class="num">85,000</td><td class="num">135,000</td></tr>
+      <tr><td>日本 Zone 1-B ⇄ 澳洲 Zone 10</td><td class="num">50,000</td><td class="num">91,000</td><td class="num">150,000</td></tr>
+      <tr><td>新加坡 Zone 4 ⇄ 澳洲 Zone 10</td><td class="num">46,000</td><td class="num">87,000</td><td class="num">166,000</td></tr>
+      <tr><td>台灣/香港 Zone 3 ⇄ 澳洲 Zone 10</td><td class="num">50,000</td><td class="num">96,000</td><td class="num">180,000</td></tr>
+      <tr><td>日本 Zone 1-A ⇄ 新加坡 Zone 4</td><td class="num">35,000</td><td class="num">60,000</td><td class="num">105,000</td></tr>
+      <tr><td>日本 Zone 1-B ⇄ 新加坡 Zone 4</td><td class="num">38,000</td><td class="num">63,000</td><td class="num">114,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>單程必要哩程</h3>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>區間</th><th class="num">經濟</th><th class="num">商務</th><th class="num">頭等</th></tr></thead>
+    <tbody>
+      <tr><td>日本 Zone 1-A ⇄ 澳洲 Zone 10</td><td class="num">22,500</td><td class="num">42,500</td><td class="num">67,500</td></tr>
+      <tr><td>日本 Zone 1-B ⇄ 澳洲 Zone 10</td><td class="num">25,000</td><td class="num">45,500</td><td class="num">75,000</td></tr>
+      <tr><td>新加坡 Zone 4 ⇄ 澳洲 Zone 10</td><td class="num">23,000</td><td class="num">43,500</td><td class="num">83,000</td></tr>
+      <tr><td>台灣/香港 Zone 3 ⇄ 澳洲 Zone 10</td><td class="num">25,000</td><td class="num">48,000</td><td class="num">90,000</td></tr>
+      <tr><td>日本 Zone 1-A ⇄ 新加坡 Zone 4</td><td class="num">17,500</td><td class="num">30,000</td><td class="num">52,500</td></tr>
+      <tr><td>日本 Zone 1-B ⇄ 新加坡 Zone 4</td><td class="num">19,000</td><td class="num">31,500</td><td class="num">57,000</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout">
+    <strong>Zone 1-A / 1-B 判定（官網原文）：</strong>
+    1-A＝「国際線往復2区間のみの旅程、国際線往復2区間に加え日本国内のみで乗り継ぎをしている旅程」；
+    1-B＝「Zone 1-Aの設定がない場合」；兩者不可混用。
+    星盟沒有東京–墨爾本直飛，行程必須在 SIN 或 BKK 轉機（國際線 4 個航段），照字面應適用 1-B。
+    <em>此判定未經實搜驗證。</em>
+  </div>
+  <div class="callout warn">
+    <strong>ANA 夥伴票規則：</strong>「空席待ちはお預かりできません（ANA便含む）」＝不接受候補，全航段必須確認有位；
+    稅金「最低 $57 起」，依行程與艙等變動。
+  </div>
+
+  <h2>長榮 星空聯盟酬賓機票 · 實測哩程（經濟艙單程）</h2>
+  <p class="note">下列數字為本次實際點入「抵扣哩程」頁讀取，非引用公告表。</p>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>區間</th><th class="num">經濟單程</th><th class="nosort">驗證來源</th></tr></thead>
+    <tbody>
+      <tr><td>日本 ⇄ 新加坡</td><td class="num">25,000</td><td class="wrapcell">NRT→SIN、HND→SIN、SIN→NRT、SIN→HND 四筆一致</td></tr>
+      <tr><td>日本 ⇄ 澳洲</td><td class="num">52,500</td><td class="wrapcell">NRT→MEL、HND→MEL 兩筆一致</td></tr>
+      <tr><td>新加坡 ⇄ 澳洲</td><td class="num">52,500</td><td class="wrapcell">SIN→MEL、MEL→SIN 兩筆一致</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout bad">
+    <strong>商務／頭等哩程未取得。</strong>查完 8 條經濟艙後，長榮跳出「本日查詢次數已達上限，暫停 24 小時」。
+  </div>
+</section>
+
+<!-- ================= 缺口 ================= -->
+<section id="gaps" hidden>
+  <h2>缺口盤點（2026-08-07 更新）</h2>
+
+  <h3>已關閉 · 不必再查</h3>
+  <ul class="tight">
+    <li><strong>日航 JMB</strong>——2026-08-07 已完成簡訊驗證登入並查完三個引擎（自家／提携社 CX·QF／寰宇一家）。
+      東京⇄墨爾本 9/18＋9/27 <strong>經濟與商務全部無位</strong>，並以 TYO→SIN 正對照證明查法有效。詳見「日航 · 亞萬」分頁。<span class="tag t-ok">已完成</span></li>
+    <li><strong>現金票價</strong>——四段單程已全部補齊並逐筆核對時段，見「現金票價」分頁。<span class="tag t-ok">已完成</span></li>
+    <li><strong>9/27 20:00–23:59 從 MEL 出發的星盟班機</strong>——只有兩班：新航 SQ218 23:35→SIN、泰航 23:30→BKK（直飛 9h30）。SQ218 在 ANA 與長榮都是候補；泰航那班尚未查。</li>
+  </ul>
+
+  <h3>ANA · 已查完</h3>
+  <ul class="tight">
+    <li>共 <strong>43 次搜尋</strong>。回程掃了 SIN／BKK／KUL／HKG／TPE／SGN／MNL／DPS／ICN／TYO 十個目的地 × 各艙等；去程掃了 TYO→BKK／HKG／SIN、BKK／HKG／KUL／SIN→MEL、9/18 與 9/19 兩天；接駁段掃了 BKK→TYO、HKG→TYO、SIN→TYO 各艙等。<span class="tag t-ok">完成</span></li>
+    <li>Zone 1-A vs 1-B 的實際適用仍未直接驗證（TYO⇄MEL 直通全程無位，拿不到單一票價來比對），但各拆段的實搜哩數與單程表完全吻合（Zone 4⇄10 = 23,000／43,500，Zone 3⇄10 = 25,000／48,000，Zone 1⇄3 = 10,000／26,500，Zone 1⇄4 = 19,000／31,500）。</li>
+  </ul>
+
+  <h3>亞洲萬里通 · 關鍵缺口已補</h3>
+  <ul class="tight">
+    <li><strong>墨爾本 → 香港 9/27 已查完</strong>：經濟 20,000 里數（CX178 23:45 直飛，符合時段）、豪經 39,000（僅 07:25 一班）、商務／頭等無位。<span class="tag t-ok">完成</span></li>
+    <li>東京⇄墨爾本 9/17–9/21 整週「不適用」、新加坡→墨爾本 27,000 里數但趕不上抵達時段。<span class="tag t-ok">完成</span></li>
+    <li>未取得：<strong>CX178 的稅金</strong>。
+      取得方式（約 30 秒）：國泰官網開「Redeem with miles」→ 單程 → Melbourne → Hong Kong → 9/27 → 選 CX178 → 進入下一步，畫面就會顯示 taxes/fees。
+      <em>2026-08-07 當下國泰的機場自動完成 API 反覆失效（先前同一 session 內成功過兩次），六種輸入方式都卡在同一個後端呼叫，因此未能取得。</em></li>
+    <li><strong>香港→東京 9/28 已查完</strong>：經濟無位、商務 33,000 里數（經台北）。<span class="tag t-ok">完成</span></li>
+    <li><strong>東京→香港 9/18 已查完</strong>：9/16–9/20 整段 Not available。<span class="tag t-ok">完成</span></li>
+    <li><strong>香港→墨爾本 9/18：已不需查。</strong>亞萬「東京→香港 9/18」已確認無位，整條「東京→香港→墨爾本」的獎勵去程本來就不成立，這段查了也組不起來。<span class="tag t-ok">邏輯排除</span></li>
+    <li>未查：東京⇄新加坡。同樣卡在上述自動完成失效。實用價值低——亞萬 SIN→MEL 已知趕不上抵達時段，這段查到也組不出可行的去程。</li>
+  </ul>
+  <div class="callout bad">
+    <strong>亞萬結論：去程完全不成立</strong>（東京⇄墨爾本無位、東京→香港無位、新加坡→墨爾本趕不上時段）。
+    <strong>唯一有價值的是回程 CX178</strong>——墨爾本 23:45 直飛香港，20,000 里數，符合時段。
+    後續接香港→東京請用現金（NT$4,788），不要用里程（經濟無位、商務要 33,000 里數還得經台北）。
+  </div>
+
+  <h3>仍待查 · 需要你登入帳號或等時間</h3>
+  <ul class="tight">
+    <li><strong>日本航空 JMB</strong>：SIN→TYO 9/28、SIN⇄MEL、BKK／HKG 相關段。需重新登入＋簡訊驗證碼，這兩樣我不能代做。（信用卡點數可補里程，所以這塊仍有價值）</li>
+    <li><strong>長榮 商務／頭等艙</strong>（8 條航線）——2026-08-07 中午觸發「查詢次數已達本日上限，暫停 24 小時」。
+      當日稍晚再確認時長榮已登出，<strong>鎖定是否解除無法判定</strong>（鎖定綁在帳號上，需登入才測得出來）。</li>
+    <li>長榮酬賓票的稅金與燃油附加費（本次只走到確認頁，未進付款頁）。</li>
+  </ul>
+  <div class="callout warn">
+    <strong>四個未完成項目的阻塞原因（均已實測確認，非推測）：</strong>
+    <ul class="tight" style="margin-top:6px">
+      <li><strong>CX178 稅金、亞萬 東京⇄新加坡 → 國泰網站故障（2026-08-07 22:2x 再次確認仍壞）。</strong>
+        已用三種輸入法（<code>form_input</code>／合成 React 事件／真實鍵盤輸入）、兩個站別（zh_TW、en_HK）測試：
+        欄位值都能正確寫入（顯示 "Hong Kong"），但機場建議清單<strong>一個選項都不出現</strong>，
+        且 DevTools 顯示<strong>完全沒有發出任何機場查詢的網路請求</strong>——不是 API 慢，是頁面事件鏈斷了。
+        Console 錯誤指向國泰的分析腳本 <code>quantum-cathaypacific.js</code>：<code>TypeError: Cannot read properties of null (reading 'qresponse')</code>，
+        其上報端點 <code>ingestap.quantummetric.com</code> 回 <strong>HTTP 503</strong>，每次事件都丟例外。
+        另外亞萬公開哩程表頁 <code>award-charts.html</code> 也回「似乎出現技術問題」。
+        <span class="tag t-no">站方問題，非本機可解</span>
+        <br><strong>→ CX178 稅金已改由兩條替代路徑完整取得，此項<span class="tag t-ok">已完成</span>：</strong>
+        ①<code>flights.cathaypacific.com</code>（未受故障影響）上的國泰官方燃油費公告 ＋ 澳洲 ABF 官網離境稅；
+        ②ITA Matrix 拉出 CX178 完整票價結構，逐項到齊：AU 70.00 ／ WG 10.50 ／ WY 33.75 ／ YR 247.70 = AU$361.95 ＝ NT$8,242。
+        <br><strong>③ 2026-08-07 使用者本人在亞萬訂位頁查到實際值 HKD 1,995 ＝ NT$8,199</strong>，與推導僅差 0.5%（NT$43）——
+        推導方法獲證實，網頁計算已全面改用實際值。<span class="tag t-ok">已完成</span>
+        <br><strong>亞萬 東京⇄新加坡：已查到能查的極限。</strong>2026-08-07 深夜在未故障的 <code>flights.cathaypacific.com</code>
+        把哩程表頁四個分頁全開，確認國泰官網原文明講單一夥伴票<strong>「visit our Redeem flight awards page」</strong>——
+        即<strong>動態計價、無表可查</strong>，價格只存在於故障中的訂位頁。
+        <span class="tag t-ok">2026-08-08 已補完</span><strong>最終突破：</strong>從 React fiber 內部發現機場清單其實載入成功
+        （壞的只是下拉選單渲染），直接呼叫 <code>onChangeDestination</code> 寫入 React state，繞過故障元件，
+        成功送出查詢並進入亞萬訂位引擎。<strong>結果：東京→新加坡 經濟艙 9/15–9/21 整週無位</strong>（見「日航 · 亞萬」分頁）。
+        <br><em>以下為突破前的排查紀錄，保留供參考：</em>
+        <br><strong>你登入國泰後曾試過四種方式：</strong>
+        ①直接打 IBE 端點（登入後、日期用原生格式）——<u>端點接受了</u>，無錯誤碼、伺服器還自行補上 <code>isChecked=TRUE</code>，但回空白頁不跳轉；
+        ②設定表單隱藏欄位後點<u>真實</u> Search 鍵——頁面原地不動，因為 React 驗證自身 state，沒有「從下拉選單選取的機場物件」就拒絕送出；
+        ③④重試自動完成（en_HK、登入後）仍是 0 個選項。
+        <br>已排除：不是登入問題、不是參數格式問題、不是瀏覽器問題（兩個獨立瀏覽器與全新設定檔皆同）。
+        <br>同時<strong>取得了唯一還存在的固定表：oneworld multi-carrier award</strong>（見「日航 · 亞萬」分頁），
+        並據以證明寰宇一家整條路線比日航貴 55,000–60,000 哩（商務）且兩家都沒位——此路可放掉。</li>
+      <li><del>日航 JMB → 未登入，且登入需簡訊驗證碼。</del> <strong>2026-08-07 已解除：使用者完成驗證碼，三個引擎全部查完（結果：全無位）。</strong></li>
+      <li><del>長榮 → 已登出，需登入才能確認鎖定狀態。</del>
+        <strong>2026-08-07 晚間已查明：session 其實還活著</strong>（成功送出 NRT→MEL 9/18 商務查詢並到達選擇航班頁），
+        真正的阻塞是站方的每日查詢上限——原文「您的查詢次數已達本日上限，本頁面將暫停查詢功能24小時」。
+        <br><strong>核對後發現這個缺口比原本以為的小很多：</strong>東京⇄墨爾本的商務（77,500，可訂無候補）與頭等（雙向 0 組）
+        先前那輪就查過了；哩程數也已由官方兌換表補齊並四度交叉驗證。
+        真正還沒查的只有<strong>經新加坡拆段那 6 條</strong>，而官方表已證明拆開商務要 117,500 哩、直飛只要 77,500 哩——
+        <strong>就算 6 條全有位也不會改變結論</strong>。<span class="tag t-ok">不影響決策</span></li>
+    </ul>
+  </div>
+
+  <h2>查詢方法與判讀規則</h2>
+  <ul class="tight">
+    <li><strong>長榮</strong>：清單頁<em>不會</em>顯示候補。必須一路點到「旅客資料 → 確認」頁，才會出現「機位狀態：候補 / 確認」。網站原文提示：「您所選擇的行程目前僅供查詢，機位狀態為確認或候補需待您填寫完旅客資料才可確認。」</li>
+    <li><strong>ANA</strong>：無結果回傳 <code>E_A01P01_0006</code>；艙等不提供回傳 <code>E_A01P01_0007</code>。夥伴票不接受候補，畫面標示 <code>Eligibility for waitlisted: Not permitted</code>。</li>
+    <li><strong>新航</strong>：卡片上標「Waitlist」＝候補，無標籤＝可直接訂。三層級 Saver / Advantage / Access。</li>
+    <li><strong>日航</strong>：顯示「残席 N」＝實際剩餘座位，國際線特典無候補機制。</li>
+    <li><strong>亞萬</strong>：無候補機制，「不適用」或「你所選的日期並無可供選擇的航班」＝零。</li>
+    <li>所有空位為<strong>即時變動</strong>，隔日可能不同；本頁為查詢當下快照。</li>
+  </ul>
+
+  <h2>時區換算基準</h2>
+  <p class="note">東京 UTC+9　·　新加坡 UTC+8　·　墨爾本 UTC+10（2026 年 9 月，澳洲夏令時 10/4 才開始）。</p>
+</section>
+
+<footer>
+  本頁所有數字均為查詢當下自各航空公司官網或 Google Flights 直接讀取，無推估、無虛構；未取得的項目一律標示為「未查／未取回」。
+  空位與票價為即時變動資訊，實際以訂位當下為準。
+</footer>
+
+</div>
+
+<button class="themebtn" id="themebtn">切換深/淺色</button>
+
+<script>
+// tabs
+const tabs=document.querySelectorAll('#tabs button');
+const secs=id=>document.getElementById(id);
+tabs.forEach(b=>b.addEventListener('click',()=>{
+  tabs.forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('section').forEach(s=>s.hidden=true);
+  secs(b.dataset.t).hidden=false;
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+
+// sortable tables
+function cellVal(td){
+  const t=td.textContent.trim();
+  const n=t.replace(/[^\d.]/g,'');
+  if(n && /^[\d,\.\s]*(NT\$|JPY)?[\d,\.]+/.test(t.replace(/\s/g,''))) {
+    const f=parseFloat(n); if(!isNaN(f)) return f;
+  }
+  const hm=t.match(/^(\d+)h(\d+)$/); if(hm) return (+hm[1])*60+(+hm[2]);
+  return t.toLowerCase();
+}
+document.querySelectorAll('table[data-sortable]').forEach(tbl=>{
+  tbl.querySelectorAll('th:not(.nosort)').forEach((th,i)=>{
+    th.addEventListener('click',()=>{
+      const dir=th.dataset.dir==='asc'?'desc':'asc';
+      tbl.querySelectorAll('th').forEach(x=>x.removeAttribute('data-dir'));
+      th.dataset.dir=dir;
+      const tb=tbl.tBodies[0];
+      const rows=[...tb.rows];
+      rows.sort((a,b)=>{
+        const x=cellVal(a.cells[i]),y=cellVal(b.cells[i]);
+        if(typeof x==='number'&&typeof y==='number') return dir==='asc'?x-y:y-x;
+        return dir==='asc'?String(x).localeCompare(String(y),'zh-Hant'):String(y).localeCompare(String(x),'zh-Hant');
+      });
+      rows.forEach(r=>tb.appendChild(r));
+    });
+  });
+});
+
+// EVA filters
+const ef=document.getElementById('evaFilter'), es=document.getElementById('evaSearch');
+function applyEva(){
+  const st=ef.value, q=es.value.trim().toLowerCase();
+  document.querySelectorAll('#evaTable tbody tr').forEach(tr=>{
+    const okSt = !st || tr.dataset.st===st;
+    const okQ  = !q || tr.textContent.toLowerCase().includes(q);
+    tr.style.display = (okSt&&okQ)?'':'none';
+  });
+}
+ef&&ef.addEventListener('change',applyEva);
+es&&es.addEventListener('input',applyEva);
+
+// theme
+const tb=document.getElementById('themebtn');
+tb.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  const sysDark=matchMedia('(prefers-color-scheme:dark)').matches;
+  const next=cur? (cur==='dark'?'light':'dark') : (sysDark?'light':'dark');
+  document.documentElement.setAttribute('data-theme',next);
+});
+</script>
+</body>
+</html>
