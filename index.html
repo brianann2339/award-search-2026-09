@@ -302,7 +302,8 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
   <div class="fcards" id="obuild-cards"></div>
   <div class="callout" style="margin-top:16px">
     <strong>沒做成卡片的選項（紀錄裡只有彙總、缺逐班時刻）：</strong>
-    新航 KrisFlyer 東京→墨爾本直通（經 SIN）經濟 Saver 44,500 起共 20 組、商務 17 組——多為候補，詳見「新航 KrisFlyer」分頁。
+    新航 KrisFlyer 直通組合中，<strong>Saver 候補且符合時段的已做成卡片</strong>（44,500 起）；
+    其餘 Advantage／Access 層級與不符時段的組合（去程共 20 組經濟、17 組商務）詳見「新航 KrisFlyer」分頁。
     長榮商務／頭等空位因 24 小時查詢上限未取得。日航三引擎與 ANA 直通東京⇄墨爾本皆無位。
   </div>
 </section>
@@ -316,7 +317,8 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
   <div class="callout" style="margin-top:16px">
     <strong>沒做成卡片的選項：</strong>墨爾本→東京直通里程（ANA／日航／亞萬）全無位；
     ANA 曼谷→東京商務 42,500 哩全候補（NH806 07:00 等，逐班抵達時刻未記錄）；
-    新航 KrisFlyer 回程直通（經 SIN）經濟 20 組多為候補，詳見「新航 KrisFlyer」分頁。
+    新航 KrisFlyer 回程直通：SQ218（23:35）系 Saver 候補已做成卡片；SQ208 18:25 系雖有 Saver 候補＋Adv 可訂，
+    但 18:25 出發不在 20:00–23:59 內，未列卡；其餘見「新航 KrisFlyer」分頁。
     MEL→SIN 的 SQ208 18:25／SQ228 15:20／SQ238 09:15／SQ248 05:55 出發時刻不在 20:00–23:59，未列卡。
   </div>
 </section>
@@ -1574,6 +1576,11 @@ const OUT=[
  // 長榮全程候補直通
  {id:'o52',from:'NRT',to:'MEL',dep:[0,'19:45'],arr:[1,'17:10'],air:'OZ105＋SQ605＋SQ207',type:'wait',miles:52500,prog:'長榮',tax:null,dur:'20h25',stops:'2轉 首爾/新加坡',bag:'incl',note:'三段全候補；稅費未查'},
  {id:'o53',from:'HND',to:'MEL',dep:[0,'09:00'],arr:[1,'11:00'],air:'OZ1055＋SQ601＋SQ237',type:'wait',miles:52500,prog:'長榮',tax:null,dur:'25h00',stops:'2轉 首爾/新加坡',bag:'incl',note:'全候補；稅費未查'},
+ // 新航直通獎勵（單一兌換、經 SIN；Saver 候補，07-12 查）
+ {id:'o55',from:'HND',to:'MEL',dep:[0,'17:05'],arr:[1,'17:10'],air:'新航 SQ633＋SQ207',type:'wait',miles:44500,prog:'新航',tax:null,dur:'23h05',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 亦候補；稅費未查'},
+ {id:'o56',from:'HND',to:'MEL',dep:[0,'17:05'],arr:[1,'20:35'],air:'新航 SQ633＋SQ217',type:'wait',miles:44500,prog:'新航',tax:null,dur:'26h30',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 亦候補；稅費未查'},
+ {id:'o57',from:'HND',to:'MEL',dep:[0,'17:05'],arr:[1,'11:00'],air:'新航 SQ633＋SQ237',type:'wait',miles:44500,prog:'新航',tax:null,dur:'16h55',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；稅費未查'},
+ {id:'o58',from:'NRT',to:'MEL',dep:[0,'10:55'],arr:[1,'04:40'],air:'新航 SQ637＋SQ247',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:null,dur:'16h45',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 商務 Saver 候補；稅費未查'},
  // 來回一張票
  {id:'o54',from:'HND',to:'MEL',dep:[0,'15:40'],arr:[1,'08:40'],air:'中國南方 CZ',type:'rt',price:40433,dur:'16h00',stops:'1停廣州',bag:'incl',src:'08-08',note:'來回票 NT$40,433 已含 9/27 回程（回程頁同卡）'},
 ];
@@ -1628,6 +1635,12 @@ const RET=[
  {id:'r41',from:'HKG',to:'NRT',dep:[1,'23:55'],arr:[2,'05:25'],est:1,air:'全日空 NH814',type:'wait',miles:10000,prog:'ANA',tax:5217,dur:'直飛',stops:'直飛',bag:'incl'},
  {id:'r42',from:'HKG',to:'NRT',dep:[1,'14:35'],arr:[1,'20:05'],est:1,air:'全日空 NH860',type:'wait',miles:10000,prog:'ANA',tax:5217,dur:'直飛',stops:'直飛',bag:'incl'},
  {id:'r43',from:'HKG',to:'NRT',dep:[1,'09:30'],arr:[1,'15:00'],est:1,air:'全日空 NH812',type:'wait',miles:10000,prog:'ANA',tax:5217,dur:'直飛',stops:'直飛',bag:'incl'},
+ // 新航直通獎勵（單一兌換、經 SIN；SQ218 23:35 系 Saver 候補，07-12 查）
+ {id:'r44',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'15:45'],air:'新航 SQ218＋SQ632',type:'wait',miles:44500,prog:'新航',tax:null,dur:'17h10',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
+ {id:'r45',from:'MEL',to:'NRT',dep:[0,'23:35'],arr:[1,'17:30'],air:'新航 SQ218＋SQ12',type:'wait',miles:44500,prog:'新航',tax:null,dur:'18h55',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
+ {id:'r46',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',type:'wait',miles:44500,prog:'新航',tax:null,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
+ {id:'r47',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[2,'06:45'],air:'新航 SQ218＋SQ636',type:'wait',miles:44500,prog:'新航',tax:null,dur:'32h10',stops:'1停新加坡（隔夜）',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
+ {id:'r48',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:null,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 商務 Saver 候補；稅費未查'},
 ];
 
 const NUM=n=>n.toLocaleString('en-US');
