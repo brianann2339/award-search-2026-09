@@ -378,10 +378,31 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
   </table>
   </div>
 
-  <div class="callout bad">
-    <strong>商務艙未能查到。</strong>長榮在查完 8 條經濟艙後跳出：
-    「親愛的會員，您的查詢次數已達本日上限，本頁面將暫停查詢功能 24 小時。」
-    商務／頭等艙的哩程與空位<strong>本次未取得</strong>，需隔日再查或洽會員中心。
+  <h3>★ 2026-08-08 補查完成：商務艙 8 條航線（逐筆走到確認頁讀機位狀態）</h3>
+  <p class="note">昨日 24 小時查詢上限已解除，使用者重新登入後查畢。每筆皆實際走到「旅客資料 → 確認」頁讀取機位狀態。
+  匯率：JPY 0.2038／AUD 22.7706／SGD 25.1652（xe.com）。</p>
+  <div class="tablewrap">
+  <table data-sortable id="evaBizTable">
+    <thead><tr><th>航線 · 日期</th><th class="num">哩程</th><th>走過的行程</th><th>各段狀態</th><th class="num">稅費</th></tr></thead>
+    <tbody>
+      <tr><td>MEL → SIN 9/27</td><td class="num">77,500</td><td class="wrapcell">SQ218 MEL 23:35 → SIN 05:30+1（直飛，符合 20:00–23:59）</td><td><span class="tag t-wait">候補</span></td><td class="num">AUD 114.25＝2,602</td></tr>
+      <tr><td>NRT → MEL 9/18</td><td class="num">77,500</td><td class="wrapcell">BR183+SQ879+SQ237　13:25 → 9/19 11:00（經 TPE、SIN）</td><td><span class="tag t-wait">三段全候補</span></td><td class="num">JPY 39,550＝8,060</td></tr>
+      <tr><td>NRT → MEL 9/18</td><td class="num">77,500</td><td class="wrapcell">OZ107+OZ751+SQ237　09:00 → 9/19 11:00（經 ICN、SIN）</td><td><span class="tag t-wait">三段全候補</span></td><td class="num">JPY 46,690＝9,515</td></tr>
+      <tr><td>HND → MEL 9/18</td><td class="num">—</td><td class="wrapcell">「您所選擇的行程，不符合星空聯盟酬賓機票之兌換標準」</td><td><span class="tag t-no">無可兌換組合</span></td><td class="num">—</td></tr>
+      <tr><td>SIN → MEL 9/19</td><td class="num">77,500</td><td class="wrapcell">TK168　10:25 → 19:40（直飛）</td><td><span class="tag t-wait">候補</span></td><td class="num">SGD 394.50＝9,928</td></tr>
+      <tr><td>SIN → MEL 9/19</td><td class="num">77,500</td><td class="wrapcell">SQ207　07:50 → 17:10（直飛）</td><td><span class="tag t-wait">候補</span></td><td class="num">SGD 95.70＝2,408</td></tr>
+      <tr><td>SIN → NRT 9/28</td><td class="num">40,000</td><td class="wrapcell">SQ012　09:25 → 17:30（直飛；另 15 組未逐一走）</td><td><span class="tag t-wait">候補</span></td><td class="num">SGD 65.20＝1,641</td></tr>
+      <tr><td>SIN → HND 9/28</td><td class="num">40,000</td><td class="wrapcell">SQ634　13:55 → 21:55（直飛；另 17 組未逐一走）</td><td><span class="tag t-wait">候補</span></td><td class="num">SGD 65.20＝1,641</td></tr>
+      <tr><td>NRT → SIN 9/18</td><td class="num">40,000</td><td class="wrapcell">BR183+SQ879　13:25 → 22:15（經 TPE；另 5 組未逐一走）</td><td><span class="tag t-wait">兩段候補</span></td><td class="num">JPY 33,940＝6,917</td></tr>
+      <tr><td>HND → SIN 9/18</td><td class="num">40,000</td><td class="wrapcell">BR189+SQ879　10:50 → 22:15（經 TPE；另 17 組未逐一走）</td><td><span class="tag t-wait">兩段候補</span></td><td class="num">JPY 33,730＝6,874</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>結論：長榮商務 8 條航線，走過的每一組全部候補，連長榮自家 BR183／BR189 的商務段也是候補；一個確認位都沒有。</strong>
+    而長榮規則明訂「酬賓機票僅限在全程機位確認才可開票」——候補在成位前連票都開不出來。
+    哩程數與官方兌換表四度交叉驗證的數字一致（日本⇄新加坡商務 40,000／日本⇄澳洲・新加坡⇄澳洲商務 77,500）。
+    <span class="tag t-warn">未逐一走</span>SIN→NRT／SIN→HND／NRT→SIN／HND→SIN 各還有多組轉機組合只列於清單頁未走到確認頁，狀態未讀。
   </div>
 
   <h3>各航線可選行程數（清單頁）</h3>
@@ -1416,7 +1437,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
         <br><strong>核對後發現這個缺口比原本以為的小很多：</strong>東京⇄墨爾本的商務（77,500，可訂無候補）與頭等（雙向 0 組）
         先前那輪就查過了；哩程數也已由官方兌換表補齊並四度交叉驗證。
         真正還沒查的只有<strong>經新加坡拆段那 6 條</strong>，而官方表已證明拆開商務要 117,500 哩、直飛只要 77,500 哩——
-        <strong>就算 6 條全有位也不會改變結論</strong>。<span class="tag t-ok">不影響決策</span></li>
+        <strong>就算 6 條全有位也不會改變結論</strong>。<span class="tag t-ok">不影響決策</span><br><strong>2026-08-08 已補查完成：</strong>8 條商務全數查畢——走過的每組皆候補（含長榮自家 BR 段），HND→MEL 無可兌換組合。詳見「長榮（最新）」分頁。<span class="tag t-ok">缺口關閉</span></li>
     </ul>
   </div>
 
@@ -1581,6 +1602,13 @@ const OUT=[
  {id:'o56',from:'HND',to:'MEL',dep:[0,'17:05'],arr:[1,'20:35'],air:'新航 SQ633＋SQ217',type:'wait',miles:44500,prog:'新航',tax:null,dur:'26h30',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 亦候補；稅費未查'},
  {id:'o57',from:'HND',to:'MEL',dep:[0,'17:05'],arr:[1,'11:00'],air:'新航 SQ633＋SQ237',type:'wait',miles:44500,prog:'新航',tax:null,dur:'16h55',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；稅費未查'},
  {id:'o58',from:'NRT',to:'MEL',dep:[0,'10:55'],arr:[1,'04:40'],air:'新航 SQ637＋SQ247',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:null,dur:'16h45',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 商務 Saver 候補；稅費未查'},
+ // 長榮星盟 商務（08-08 實查，全候補）
+ {id:'o59',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:9928,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 394.50（土航收燃油費）'},
+ {id:'o60',from:'SIN',to:'MEL',dep:[1,'07:50'],arr:[1,'17:10'],air:'新航 SQ207',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:2408,dur:'7h20',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 95.70'},
+ {id:'o61',from:'NRT',to:'MEL',dep:[0,'13:25'],arr:[1,'11:00'],air:'長榮 BR183＋新航 SQ879＋SQ237',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:8060,dur:'20h35',stops:'2轉 台北/新加坡',bag:'incl',src:'08-08',note:'三段全候補（含長榮自家段）；稅 JPY 39,550'},
+ {id:'o62',from:'NRT',to:'MEL',dep:[0,'09:00'],arr:[1,'11:00'],air:'韓亞 OZ107＋OZ751＋新航 SQ237',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:9515,dur:'25h00',stops:'2轉 首爾/新加坡',bag:'incl',src:'08-08',note:'三段全候補；稅 JPY 46,690'},
+ {id:'o63',from:'NRT',to:'SIN',dep:[0,'13:25'],arr:[0,'22:15'],air:'長榮 BR183＋新航 SQ879',cabin:'商務',type:'wait',miles:40000,prog:'長榮',tax:6917,dur:'9h50',stops:'1停台北',bag:'incl',src:'08-08',note:'兩段候補；稅 JPY 33,940'},
+ {id:'o64',from:'HND',to:'SIN',dep:[0,'10:50'],arr:[0,'22:15'],air:'長榮 BR189＋新航 SQ879',cabin:'商務',type:'wait',miles:40000,prog:'長榮',tax:6874,dur:'12h25',stops:'1停台北',bag:'incl',src:'08-08',note:'兩段候補；稅 JPY 33,730'},
  // 來回一張票
  {id:'o54',from:'HND',to:'MEL',dep:[0,'15:40'],arr:[1,'08:40'],air:'中國南方 CZ',type:'rt',price:40433,dur:'16h00',stops:'1停廣州',bag:'incl',src:'08-08',note:'來回票 NT$40,433 已含 9/27 回程（回程頁同卡）'},
 ];
@@ -1641,6 +1669,10 @@ const RET=[
  {id:'r46',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',type:'wait',miles:44500,prog:'新航',tax:null,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
  {id:'r47',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[2,'06:45'],air:'新航 SQ218＋SQ636',type:'wait',miles:44500,prog:'新航',tax:null,dur:'32h10',stops:'1停新加坡（隔夜）',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
  {id:'r48',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:2982,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'08-08',note:'稅費 AUD 130.95 為訂位頁實測（2026-08-08）；候補若起飛前兩週未成位將自動取消'},
+ // 長榮星盟 商務（08-08 實查，全候補）
+ {id:'r49',from:'MEL',to:'SIN',dep:[0,'23:35'],arr:[1,'05:30'],air:'新航 SQ218',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:2602,dur:'7h55',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 AUD 114.25'},
+ {id:'r50',from:'SIN',to:'NRT',dep:[1,'09:25'],arr:[1,'17:30'],air:'新航 SQ012',cabin:'商務',type:'wait',miles:40000,prog:'長榮',tax:1641,dur:'7h05',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 65.20'},
+ {id:'r51',from:'SIN',to:'HND',dep:[1,'13:55'],arr:[1,'21:55'],air:'新航 SQ634',cabin:'商務',type:'wait',miles:40000,prog:'長榮',tax:1641,dur:'7h00',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 65.20'},
 ];
 
 const NUM=n=>n.toLocaleString('en-US');
