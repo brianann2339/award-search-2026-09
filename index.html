@@ -288,32 +288,54 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     <div class="kpi"><div class="lbl">★ 最佳里程用法</div><div class="val">48,000 哩<br><span style="font-size:13px">＋NT$33,848</span></div><div class="fine">TG462+TG600 MEL→HKG 商務，取代 NT$77,945 現金票（每哩 NT$1.56）；其餘三段全傳統航空含行李</div></div>
   </div>
 
-  <h2>每哩價值換算（2026-08-08）</h2>
-  <p class="note">算法：<strong>（同段現金票價 − 里程票仍要自付的稅金）÷ 哩程</strong>。現金票價為 2026-08-08 Google Flights 含稅快照。
-  <span class="tag t-warn">重要</span>只有標「同艙比較」的列是乾淨的對比；其餘列的現金價與里程票艙等不同，數字會偏高或偏低，已逐列註明。</p>
+  <h2>每哩價值換算（2026-08-08，同艙對比）</h2>
+  <div class="callout warn">
+    <strong>⚠️ 本表已於 2026-08-08 重做。舊版拿<u>經濟艙</u>現金價去除<u>商務艙</u>里程，那不是「偏低的值」，是無效的值</strong>——
+    我卻給它標個「偏低」就放進表裡一起排序，等於讓沒有意義的數字看起來像可比較的資料。
+    現已全部改用<strong>同艙現金價</strong>重查重算，商務那幾列從 0.27–0.33 變成 <strong>1.31–1.57</strong>，結論完全不同。
+  </div>
+  <p class="note">算法：<strong>（同艙現金票價 − 里程票仍要自付的稅金）÷ 哩程</strong>。現金為 2026-08-08 Google Flights 含稅快照。</p>
   <div class="tablewrap">
   <table data-sortable id="permile">
-    <thead><tr><th>航段 · 艙等</th><th>狀態</th><th class="num">同段現金</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">每哩</th><th class="nosort">比較是否對等</th></tr></thead>
+    <thead><tr><th>航段</th><th>艙等</th><th>狀態</th><th class="num">同艙現金</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">每哩</th><th class="nosort">對應的現金航班</th></tr></thead>
     <tbody>
-      <tr><td>NH843 HND→SIN 豪華經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">91,288</td><td class="num">25,500</td><td class="num">8,199</td><td class="num"><strong>3.26</strong></td><td class="wrapcell">⚠ 分母的現金 91,288 是<u>商務艙</u>票價，豪經現金未查 → <strong>此值偏高</strong></td></tr>
-      <tr><td><strong>NH843 HND→SIN 商務</strong></td><td><span class="tag t-wait">候補</span></td><td class="num">91,288</td><td class="num">42,500</td><td class="num">8,199</td><td class="num"><strong>1.96</strong></td><td class="wrapcell">✅ 同班同艙，乾淨對比</td></tr>
-      <tr><td>CX178 MEL→HKG 經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">19,217</td><td class="num">20,000</td><td class="num">8,199</td><td class="num">0.55</td><td class="wrapcell">✅ 同班同艙</td></tr>
-      <tr><td>TG462+TG600 MEL→HKG 商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">18,678</td><td class="num">48,000</td><td class="num">2,827</td><td class="num">0.33</td><td class="wrapcell">⚠ 現金為同段<u>經濟</u>價，商務現金更高 → <strong>此值偏低</strong></td></tr>
-      <tr><td>VN778+VN592 MEL→HKG 商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">18,678</td><td class="num">48,000</td><td class="num">2,688</td><td class="num">0.33</td><td class="wrapcell">⚠ 同上，僅供參考</td></tr>
-      <tr><td>SQ218 MEL→SIN 商務（長榮兌換）</td><td><span class="tag t-wait">候補</span></td><td class="num">24,119</td><td class="num">77,500</td><td class="num">2,602</td><td class="num">0.28</td><td class="wrapcell">⚠ 現金為經濟價 → 偏低</td></tr>
-      <tr><td>TG462 MEL→BKK 商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">14,478</td><td class="num">43,500</td><td class="num">2,827</td><td class="num">0.27</td><td class="wrapcell">⚠ 現金為經濟價 → 偏低</td></tr>
-      <tr><td>JL028 HKG→HND 經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">7,074</td><td class="num">11,000</td><td class="num">4,616</td><td class="num">0.22</td><td class="wrapcell">現金為香港航空同段（含行李）</td></tr>
-      <tr><td>SQ218+SQ634 MEL→HND 商務（新航兌換）</td><td><span class="tag t-wait">候補</span></td><td class="num">24,119</td><td class="num">108,500</td><td class="num">2,982</td><td class="num">0.19</td><td class="wrapcell">⚠ 現金為經濟價 → 偏低</td></tr>
-      <tr><td>TK168 SIN→MEL 經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">10,833</td><td class="num">23,000</td><td class="num">7,659</td><td class="num">0.14</td><td class="wrapcell">✅ 同班同艙——<strong>稅金 7,659 已吃掉現金票 10,833 的七成</strong></td></tr>
-      <tr><td>JL736 HKG→NRT 經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">7,074</td><td class="num">24,000</td><td class="num">4,616</td><td class="num">0.10</td><td class="wrapcell">現金為香港航空同段</td></tr>
+      <tr><td><strong>NH843 HND→SIN</strong></td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">91,288</td><td class="num">42,500</td><td class="num">8,199</td><td class="num"><strong>1.96</strong></td><td class="wrapcell">全日空／新航 00:40→06:40，<strong>同班同艙</strong></td></tr>
+      <tr><td><strong>TG462＋TG600 MEL→HKG</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">78,233</td><td class="num">48,000</td><td class="num">2,827</td><td class="num"><strong>1.57</strong></td><td class="wrapcell">THAI 23:30→11:45<sup>+1</sup> 商務 14h15，<strong>同一組行程</strong></td></tr>
+      <tr><td><strong>TG462 MEL→BKK</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">62,325</td><td class="num">43,500</td><td class="num">2,827</td><td class="num"><strong>1.37</strong></td><td class="wrapcell">THAI 23:30→06:00<sup>+1</sup> 商務直飛，<strong>同班同艙</strong></td></tr>
+      <tr><td>SQ218 MEL→SIN（長榮兌換）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">104,175</td><td class="num">77,500</td><td class="num">2,602</td><td class="num"><strong>1.31</strong></td><td class="wrapcell">新航／維珍 23:35→05:30<sup>+1</sup> 商務直飛，<strong>同班同艙</strong></td></tr>
+      <tr><td>CX178 MEL→HKG</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">19,217</td><td class="num">20,000</td><td class="num">8,199</td><td class="num">0.55</td><td class="wrapcell">同班同艙</td></tr>
+      <tr><td>JL028 HKG→HND</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">7,074</td><td class="num">11,000</td><td class="num">4,616</td><td class="num">0.22</td><td class="wrapcell">香港航空同段最低（同艙、不同航空）</td></tr>
+      <tr><td>TK168 SIN→MEL</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">10,833</td><td class="num">23,000</td><td class="num">7,659</td><td class="num">0.14</td><td class="wrapcell">同班同艙——<strong>稅金已吃掉票價七成</strong></td></tr>
+      <tr><td>JL736 HKG→NRT</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">7,074</td><td class="num">24,000</td><td class="num">4,616</td><td class="num">0.10</td><td class="wrapcell">同艙、不同航空</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="callout warn">
-    <strong>三個一眼可見的結論。</strong>
-    <br>① <strong>NH843 商務每哩 1.96，是全表最高</strong>——同班同艙的乾淨對比，現金要 NT$91,288，用 42,500 哩＋NT$8,199 就搭到。可惜<u>只有候補</u>。
-    <br>② <strong>TK168 每哩只有 0.14</strong>：23,000 哩換一張現金 NT$10,833 的票，但你還要自付 NT$7,659 的稅——<strong>稅金吃掉票價的七成</strong>，等於用 23,000 哩只省下 NT$3,174。<u>這段用現金買才對</u>。
-    <br>③ 回程長程商務（TG462／VN778）每哩 0.27–0.33 看似不高，但分母用的是<u>經濟艙</u>現金價；換成商務現金（東京⇄墨爾本商務來回 NT$156,884 起）實際價值遠高於此。這是全表<strong>最被低估</strong>的一列。
+
+  <h3>取不到同艙現金的三列——不給單一數字，只給區間</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>航段 · 艙等</th><th class="num">哩程＋稅</th><th class="nosort">依不同現金基準的每哩值</th></tr></thead>
+    <tbody>
+      <tr><td>VN778＋VN592 MEL→HKG 商務</td><td class="num">48,000<br>＋2,688</td>
+        <td class="wrapcell">越航自家商務現金未出現在搜尋結果。以同城對商務現金推算：<br>
+        汶萊皇家 27h05 NT$51,697 → <strong>1.02</strong>／THAI 同型 14h15 NT$78,233 → <strong>1.57</strong>／國泰直飛 9h10 NT$83,630 → <strong>1.69</strong></td></tr>
+      <tr><td>SQ218＋SQ634 MEL→HND 商務（新航兌換）</td><td class="num">108,500<br>＋2,982</td>
+        <td class="wrapcell">此組合無對應的商務通票在售。以 MEL→東京商務現金推算：<br>
+        海南 18h50 NT$52,528 → <strong>0.46</strong>／國泰 14h55 NT$89,319 → <strong>0.80</strong>／中華 16h25 NT$91,651 → <strong>0.82</strong></td></tr>
+      <tr><td>NH843 HND→SIN 豪華經濟</td><td class="num">25,500<br>＋8,199</td>
+        <td class="wrapcell"><strong>豪華經濟艙現金價未取得</strong>（Google Flights 該查詢未解析成功）。<br>
+        不給每哩數字——舊版曾用商務價 91,288 去除，得出 3.26，那是灌水的。</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout ok">
+    <strong>改用同艙比較之後的三個結論。</strong>
+    <br>① <strong>回程長程商務才是里程的主戰場</strong>：TG462+TG600 每哩 <strong>1.57</strong>、TG462 <strong>1.37</strong>、SQ218 <strong>1.31</strong>。
+    舊版誤用經濟價算出 0.27–0.33，把最划算的選項看成最差的。
+    <br>② <strong>NH843 商務 1.96 仍是全表最高</strong>，但它<u>只有候補</u>；TG462 系是<u>可訂</u>的 1.37–1.57，實務上更有價值。
+    <br>③ <strong>短程經濟一律不要換</strong>：TK168 0.14、JL736 0.10、JL028 0.22。
+    TK168 那段 23,000 哩只省下 NT$3,174，稅金就吃掉票價七成——<strong>用現金買</strong>。
   </div>
 
   <h2>各計畫在這條線的實際結果</h2>
