@@ -175,21 +175,25 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     <span class="tag t-warn">里程空位未驗證</span>ANA 網站已登出，9/19 的里程空位還沒查——下方數字是依分區表推算，不是實查。
   </div>
   <div class="tablewrap">
-  <table data-sortable>
-    <thead><tr><th>9/19 當日出發組合</th><th class="num">推算里程（經濟）</th><th>時刻</th><th>狀態</th></tr></thead>
+  <table data-sortable id="d919">
+    <thead><tr><th>9/19 當日出發組合</th><th class="num">哩程</th><th>時刻</th><th>ANA 實查狀態（08-08 22:00–22:05 JST）</th></tr></thead>
     <tbody>
-      <tr><td><strong>全日空 NH877 ＋ 泰航 TG461（經曼谷）</strong><br><span style="font-size:11px;color:var(--muted)">轉機僅 2h15，四組中最短</span></td><td class="num">19,000 ＋ 23,000 = <strong>42,000</strong></td><td>HND 01:25 → MEL 20:00<br><strong>總旅程 17h35</strong></td><td><span class="tag t-warn">空位未查</span></td></tr>
-      <tr><td>泰航 TG661 ＋ TG461（經曼谷）</td><td class="num">19,000 ＋ 23,000 = <strong>42,000</strong></td><td>HND 00:20 → MEL 20:00<br>總旅程 18h40</td><td><span class="tag t-warn">空位未查</span></td></tr>
-      <tr><td>全日空 NH849 ＋ 泰航 TG461（經曼谷）</td><td class="num">19,000 ＋ 23,000 = <strong>42,000</strong></td><td>HND 00:15 → MEL 20:00<br>總旅程 18h45</td><td><span class="tag t-warn">空位未查</span></td></tr>
-      <tr><td>全日空 NH843 ＋ 新航 SQ217（經新加坡）</td><td class="num">17,500 ＋ 23,000 = <strong>40,500</strong></td><td>HND 00:40 → MEL 20:35<br>總旅程 18h55</td><td><span class="tag t-warn">空位未查</span></td></tr>
+      <tr><td><strong>NH843 ＋ TK168（經新加坡）</strong><br><span style="font-size:11px;color:var(--muted)">唯一還活著的組合</span></td>
+        <td class="num">商務 42,500 ＋ 經濟 23,000 = <strong>65,500</strong><br><span style="font-size:11px">（前段改豪經則 25,500＋23,000 = 48,500）</span></td>
+        <td>HND 00:40 → SIN 06:40（轉 3h45）<br>SIN 10:25 → <strong>MEL 19:40</strong></td>
+        <td>前段 <span class="tag t-wait">候補</span>（商務／豪經皆候補，<strong>經濟連候補都沒有</strong>）<br>後段 <span class="tag t-yes">可訂</span></td></tr>
+      <tr><td>NH877 ＋ TG461（經曼谷）</td><td class="num">商務 42,500 ＋ —</td><td>HND 01:25 → BKK 05:55</td><td>前段 <span class="tag t-wait">商務候補</span>／<strong>後段 TG461 完全無位</strong> → <span class="tag t-no">走不通</span></td></tr>
+      <tr><td>NH849 ＋ TG461（經曼谷）</td><td class="num">—</td><td>HND 00:15 → BKK 04:35</td><td><span class="tag t-no">連候補都沒有</span></td></tr>
+      <tr><td>TG661 ＋ TG461（經曼谷）</td><td class="num">—</td><td>HND 00:20 → BKK 04:50</td><td><span class="tag t-no">連候補都沒有</span></td></tr>
+      <tr><td>NH843 ＋ SQ217（經新加坡）</td><td class="num">—</td><td>SIN 11:10 → MEL 20:35</td><td>SQ217 <span class="tag t-no">連候補都沒有</span>（同航線改用 TK168 才有位）</td></tr>
     </tbody>
   </table>
   </div>
-  <p class="note"><strong>三組經曼谷的都接同一班 TG461（BKK 08:10 → MEL 20:00）</strong>，差別只在前段幾點離開東京、在曼谷等多久。
-  總旅程以各機場時區換算：NH877 那組 17h35 最短。
-  <br>依據：ANA 2026-08-07 掃描已記錄 <code>TG461 可訂 23,000</code>、<code>NH843 可訂 17,500</code>、<code>TYO→BKK 19,000</code>（皆 9/18）；
-  <strong>但 NH849 與 NH877 在 9/18 是「全候補」</strong>。<strong>9/19 該日全部需重查</strong>——上表哩程僅依同分區推算，不是實查結果。
-  TG661 此班先前完全未記錄。</p>
+  <p class="note"><strong>使用者於 2026-08-08 22:00–22:05 JST 在 ANA 引擎逐筆人工查證</strong>（有截圖者為實見畫面；未出現者＝連候補都沒有）。
+  稅金：NH843 JPY 40,230＝NT$8,199／NH877 JPY 40,520＝NT$8,258／TK168 JPY 37,580＝NT$7,659。
+  <br><strong>結論：四組裡三組出局</strong>——經曼谷的三組全部倒在 TG461 該日無位；SQ217 也沒有。
+  只剩 <strong>NH843 ＋ TK168</strong>，但前段僅有候補（且經濟艙連候補都沒有，得用商務或豪經），後段 TK168 是可訂的。
+  <br>ANA 畫面註記：<em>The availability status may change prior to making a ticket purchase.</em></p>
 
   <div class="callout ok">
     <strong>★★ 2026-08-08 依你的兩個條件全部重算：不搭香港快運 ＋ 廉航要加行李費。</strong>
@@ -329,12 +333,12 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     這個門檻算得沒問題。錯在下一句「<u>無此班次</u>」。
     <br>實際上 <strong>00:15、00:20、00:40、01:25 這四班全都遠早於 10:25</strong>，完全滿足我自己算出的條件。
     我當時只看 Google Flights 回傳的 24 筆結果（多為白天出發、隔日抵達），就把它當成班表全集下了斷言。
-    <br><strong>可當日抵達的四組（使用者提供班表佐證）：</strong>
-    NH877 01:25→BKK→<strong>MEL 20:00</strong>（總 17h35）／TG661 00:20→BKK→MEL 20:00（18h40）／
-    NH849 00:15→BKK→MEL 20:00（18h45）／NH843 00:40→SIN→<strong>MEL 20:35</strong>（18h55）。
-    三組經曼谷者共用 TG461 BKK 08:10→MEL 20:00。
-    <br>下方卡片已收錄這些航段（標「里程·空位未查」）；<strong>9/19 的里程空位尚未實查</strong>，ANA 網站已登出。
-  </div>
+    <br><strong>班表上可當日抵達的有四組，但里程空位查完後只剩一組：</strong>
+    <br>✅ <strong>NH843 HND 00:40 → SIN 06:40（轉 3h45）→ TK168 SIN 10:25 → MEL 19:40</strong>
+    ——前段商務／豪經<u>候補</u>、經濟無；後段 TK168 <u>可訂</u>。
+    <br>❌ 經曼谷三組（NH877／NH849／TG661 ＋ TG461）：<strong>TG461 該日完全無位</strong>，整條路線 9/19 走不通。
+    <br>❌ SQ217：連候補都沒有。
+    <br>現金票不受影響——這只講 ANA 里程。</div>
   <p class="note">點卡片＝加入行程，再點＝移除。選了航段後，下方只留下<strong>接得上</strong>的卡片
   （時間不重疊、且與已選段的城市前後銜接——例如選了抵達香港的段，就只剩香港出發的段）；其餘暫時隱藏，移除已選即恢復。
   現金票價 2026-08-08 快照（標 08-07 者未重查）；里程空位 ANA 08-06～07／長榮 08-07／新航 07-12。
@@ -1600,7 +1604,7 @@ const OUT=[
  {id:'o17',from:'SIN',to:'MEL',dep:[1,'11:05'],arr:[1,'20:20'],air:'酷航 TR',type:'cash',price:7368,dur:'7h15',stops:'直飛',bag:'extra',src:'08-08'},
  {id:'o18',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',type:'cash',price:10833,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08'},
  {id:'o19',from:'SIN',to:'MEL',dep:[1,'01:45'],arr:[1,'11:00'],air:'新航 SQ',type:'cash',price:19927,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08'},
- {id:'o20',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',type:'mile',miles:23000,prog:'ANA',tax:7637,dur:'7h15',stops:'直飛',bag:'incl'},
+ {id:'o20',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168（359）',type:'mile',miles:23000,prog:'ANA',tax:7659,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08',note:'★08-08 22:05 JST 實查 9/19：無 Waitlisted 標記＝可訂。稅 JPY 37,580。9/19 當日 19:40 抵達，符合 21:30 前'},
  {id:'o21',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',type:'mile',miles:52500,prog:'長榮',tax:null,dur:'7h15',stops:'直飛',bag:'incl',note:'同班 ANA 只要 23,000；稅費未查'},
  {id:'o22',from:'SIN',to:'MEL',dep:[1,'01:45'],arr:[1,'11:00'],air:'新航 SQ237',type:'wait',miles:29000,prog:'新航',tax:null,dur:'7h15',stops:'直飛',bag:'incl',note:'Saver 候補；Access 87,000 可訂'},
  {id:'o23',from:'SIN',to:'MEL',dep:[1,'07:50'],arr:[1,'17:10'],air:'新航 SQ207',type:'wait',miles:29000,prog:'新航',tax:null,dur:'7h20',stops:'直飛',bag:'incl',note:'Saver 候補；Access 87,000 可訂'},
@@ -1647,12 +1651,9 @@ const OUT=[
  {id:'o58',from:'NRT',to:'MEL',dep:[0,'10:55'],arr:[1,'04:40'],air:'新航 SQ637＋SQ247',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:null,dur:'16h45',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 商務 Saver 候補；稅費未查'},
 
  // ★ 9/19 當日出發（使用者 08-08 提供班表；里程數依 ANA 分區表推算，9/19 空位未查）
- {id:'o71',from:'HND',to:'BKK',dep:[1,'01:25'],arr:[1,'05:55'],air:'全日空 NH877（Air Japan 承運）',type:'unk',miles:19000,prog:'ANA',tax:6605,dur:'6h30',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日出發。接 TG461 僅停 2h15、總旅程 17h35，是四組裡最短的。9/18 該班 ANA 為候補，9/19 未查'},
- {id:'o66',from:'HND',to:'BKK',dep:[1,'00:15'],arr:[1,'04:35'],air:'全日空 NH849',type:'unk',miles:19000,prog:'ANA',tax:6605,dur:'6h20',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日出發。接 TG461 停 3h35。9/18 該班 ANA 為候補，9/19 未查'},
- {id:'o67',from:'HND',to:'BKK',dep:[1,'00:20'],arr:[1,'04:50'],air:'泰航 TG661',type:'unk',miles:19000,prog:'ANA',tax:6605,dur:'6h30',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日出發。接 TG461 停 3h20。此班先前未記錄，里程狀態未查'},
- {id:'o68',from:'BKK',to:'MEL',dep:[1,'08:10'],arr:[1,'20:00'],air:'泰航 TG461',type:'unk',miles:23000,prog:'ANA',tax:5929,dur:'8h50',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日 20:00 抵達，符合 21:30 前。9/18 該班 ANA 為可訂 23,000；9/19 未查'},
- {id:'o69',from:'HND',to:'SIN',dep:[1,'00:40'],arr:[1,'06:40'],air:'全日空 NH843',type:'unk',miles:17500,prog:'ANA',tax:null,dur:'7h00',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日出發。接 SQ217 停 4h30。9/18 該班 ANA 為可訂 17,500；9/19 未查'},
- {id:'o70',from:'SIN',to:'MEL',dep:[1,'11:10'],arr:[1,'20:35'],air:'新航 SQ217',type:'unk',miles:23000,prog:'ANA',tax:7637,dur:'7h25',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日 20:35 抵達。ANA 於 SIN→MEL 9/19 查到可訂的是 TK168；SQ217 個別狀態未查'},
+ {id:'o71',from:'HND',to:'BKK',dep:[1,'01:25'],arr:[1,'05:55'],air:'全日空 NH877（788, AirJapan 承運）',cabin:'商務',type:'wait',miles:42500,prog:'ANA',tax:8258,dur:'6h30',stops:'直飛',bag:'incl',src:'08-08',note:'⚠ 08-08 22:04 JST 實查：Waitlisted，但後段 TG461 該日完全無位——此路線 9/19 走不通。稅 JPY 40,520'},
+ {id:'o69',from:'HND',to:'SIN',dep:[1,'00:40'],arr:[1,'06:40'],air:'全日空 NH843（787-9）',cabin:'商務',type:'wait',miles:42500,prog:'ANA',tax:8199,dur:'7h00',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日出發。08-08 22:00 JST 實查：Waitlisted。經濟艙該日連候補都沒有。稅 JPY 40,230'},
+ {id:'o72',from:'HND',to:'SIN',dep:[1,'00:40'],arr:[1,'06:40'],air:'全日空 NH843（787-9）',cabin:'豪經',type:'wait',miles:25500,prog:'ANA',tax:8199,dur:'7h00',stops:'直飛',bag:'incl',src:'08-08',note:'★9/19 當日出發。08-08 22:00 JST 實查：Waitlisted。哩程比商務省 17,000、稅金相同'},
  // 長榮星盟 商務（08-08 實查，全候補）
  {id:'o59',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:9928,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 394.50（土航收燃油費）'},
  {id:'o60',from:'SIN',to:'MEL',dep:[1,'07:50'],arr:[1,'17:10'],air:'新航 SQ207',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:2408,dur:'7h20',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 95.70'},
