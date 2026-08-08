@@ -103,6 +103,30 @@ ul.tight li{margin:4px 0}
   padding:8px 14px;cursor:pointer;box-shadow:0 2px 10px #0001}
 footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
 code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.t-cash{background:var(--cash-bg);color:var(--cash)}
+.psum{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--panel);margin:0 0 16px}
+.psum h3{margin:0 0 10px;font-size:15px}
+.pseg{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;padding:5px 0;font-size:13.5px;border-bottom:1px dashed var(--line)}
+.pseg .t{font-variant-numeric:tabular-nums;color:var(--muted)}
+.pconn{font-size:12px;color:var(--muted);padding:2px 0 2px 16px}
+.pconn.bad{color:var(--no)}
+.ptotals{display:flex;gap:22px;flex-wrap:wrap;margin-top:12px;font-size:13px}
+.ptotals .v{font-size:16px;font-weight:700}
+.pchk{margin-top:8px;font-size:13px}
+.pchk .no{color:var(--no)}
+.pchk .yes{color:var(--ok)}
+.pfilters{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:14px 0;font-size:13px}
+.pfilters select{padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+.pfilters label{display:flex;gap:4px;align-items:center;cursor:pointer}
+.fcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(315px,1fr));gap:10px}
+.fc{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel);cursor:pointer;font-size:13px;line-height:1.55}
+.fc:hover{border-color:var(--accent)}
+.fc.sel{outline:2px solid var(--accent);background:var(--accent-soft)}
+.fc.dis{opacity:.35;pointer-events:none}
+.fc .rt{font-weight:700}
+.fc .meta{color:var(--muted);font-size:12px}
+.fc .price{font-weight:600;margin-top:2px}
+.fc .nt{font-size:11.5px;color:var(--muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -116,6 +140,8 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 
 <nav id="tabs" role="tablist">
   <button role="tab" data-t="sum" aria-selected="true">總覽與結論</button>
+  <button role="tab" data-t="obuild">去程選擇器</button>
+  <button role="tab" data-t="rbuild">回程選擇器</button>
   <button role="tab" data-t="eva">長榮（最新）</button>
   <button role="tab" data-t="ana">ANA</button>
   <button role="tab" data-t="cash">現金票價</button>
@@ -265,6 +291,36 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 </section>
 
 <!-- ================= 長榮 ================= -->
+<!-- ================= 去程/回程 選擇器 ================= -->
+<section id="obuild" hidden>
+  <h2>去程所有的選項（9/18 出發，須於 9/19 21:30 前抵達 MEL）</h2>
+  <p class="note">點卡片＝加入行程，再點＝移除；與已選航班<strong>時間重疊</strong>（依各機場時區換算）的卡片會自動鎖住。
+  現金票價 2026-08-08 快照（標 08-07 者未重查）；里程空位 ANA 08-06～07／長榮 08-07／新航 07-12。
+  「～」＝該班抵達時間未記錄，以同航線典型飛行時間估算（僅供重疊判斷）。廉航行李費另估 NT$1,000–2,000／段。</p>
+  <div class="psum" id="obuild-sum"></div>
+  <div class="pfilters" id="obuild-flt"></div>
+  <div class="fcards" id="obuild-cards"></div>
+  <div class="callout" style="margin-top:16px">
+    <strong>沒做成卡片的選項（紀錄裡只有彙總、缺逐班時刻）：</strong>
+    新航 KrisFlyer 東京→墨爾本直通（經 SIN）經濟 Saver 44,500 起共 20 組、商務 17 組——多為候補，詳見「新航 KrisFlyer」分頁。
+    長榮商務／頭等空位因 24 小時查詢上限未取得。日航三引擎與 ANA 直通東京⇄墨爾本皆無位。
+  </div>
+</section>
+<section id="rbuild" hidden>
+  <h2>回程所有的選項（9/27 自 MEL 出發，限 20:00–23:59）</h2>
+  <p class="note">操作同去程頁。只收錄 MEL 出發時刻落在 20:00–23:59 的航班；9/28 起的接駁段不受時段限制。
+  現金票價 2026-08-08 快照（標 08-07 者未重查）；里程空位 ANA 08-06～07／長榮 08-07／新航 07-12。</p>
+  <div class="psum" id="rbuild-sum"></div>
+  <div class="pfilters" id="rbuild-flt"></div>
+  <div class="fcards" id="rbuild-cards"></div>
+  <div class="callout" style="margin-top:16px">
+    <strong>沒做成卡片的選項：</strong>墨爾本→東京直通里程（ANA／日航／亞萬）全無位；
+    ANA 曼谷→東京商務 42,500 哩全候補（NH806 07:00 等，逐班抵達時刻未記錄）；
+    新航 KrisFlyer 回程直通（經 SIN）經濟 20 組多為候補，詳見「新航 KrisFlyer」分頁。
+    MEL→SIN 的 SQ208 18:25／SQ228 15:20／SQ238 09:15／SQ248 05:55 出發時刻不在 20:00–23:59，未列卡。
+  </div>
+</section>
+
 <section id="eva" hidden>
   <h2>長榮 無限萬哩遊 · 星空聯盟酬賓機票</h2>
   <p class="note">查詢時間 2026-08-07 上午（台北）。單程查詢，經濟艙。<strong>每一筆都實際點進「旅客資料 → 確認」頁讀取機位狀態</strong>，非僅看清單。
@@ -1446,5 +1502,244 @@ tb.addEventListener('click',()=>{
   document.documentElement.setAttribute('data-theme',next);
 });
 </script>
+<script>
+(()=>{
+const TZ={NRT:9,HND:9,SIN:8,HKG:8,BKK:7,DMK:7,MEL:10};
+const CITY={NRT:'東京',HND:'東京',SIN:'新加坡',HKG:'香港',BKK:'曼谷',DMK:'曼谷',MEL:'墨爾本'};
+const TYPE={cash:['現金','t-cash'],mile:['里程·可訂','t-yes'],wait:['里程·候補','t-wait'],rt:['來回票','t-cash']};
+const BAG={incl:'含行李',extra:'行李另計',unk:'行李待確認'};
+const mm=s=>{const[h,m]=s.split(':').map(Number);return h*60+m};
+const utc=(ap,day,t)=>day*1440+mm(t)-TZ[ap]*60;
+const fmtD=(base,day)=>`9/${base+day}`;
+
+// dep/arr: [day, 'HH:MM'] 當地時間；day 0 = 基準日
+const OUT=[
+ // 東京 → 新加坡
+ {id:'o1',from:'NRT',to:'SIN',dep:[0,'14:55'],arr:[1,'01:40'],air:'廈門航空 MF',type:'cash',price:13114,dur:'11h45',stops:'1停廈門',bag:'incl',src:'08-08'},
+ {id:'o2',from:'NRT',to:'SIN',dep:[0,'10:30'],arr:[0,'23:25'],air:'濟州航空 7C',type:'cash',price:10865,dur:'13h55',stops:'1停釜山',bag:'extra',src:'08-08'},
+ {id:'o3',from:'NRT',to:'SIN',dep:[0,'12:30'],arr:[0,'20:45'],air:'酷航 TR',type:'cash',price:12416,dur:'9h15',stops:'1停台北',bag:'extra',src:'08-08'},
+ {id:'o4',from:'NRT',to:'SIN',dep:[0,'14:30'],arr:[1,'00:35'],air:'中華航空 CI',type:'cash',price:13973,dur:'11h05',stops:'1停台北',bag:'incl',src:'08-08'},
+ {id:'o5',from:'NRT',to:'SIN',dep:[0,'08:20'],arr:[0,'14:35'],air:'酷航 TR',type:'cash',price:18367,dur:'7h15',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'o6',from:'NRT',to:'SIN',dep:[0,'00:40'],arr:[0,'07:55'],est:1,air:'全日空 NH843',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未記錄'},
+ {id:'o7',from:'NRT',to:'SIN',dep:[0,'17:15'],arr:[1,'00:30'],est:1,air:'全日空 NH803',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未記錄'},
+ {id:'o8',from:'NRT',to:'SIN',dep:[0,'18:40'],arr:[1,'01:55'],est:1,air:'全日空 NH801',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未記錄'},
+ {id:'o9',from:'NRT',to:'SIN',dep:[0,'19:00'],arr:[1,'06:10'],air:'深圳航空 ZH652＋新航 SQ857',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'12h10',stops:'1停深圳',bag:'incl',note:'段1候補·段2確認；稅費未查'},
+ {id:'o10',from:'NRT',to:'SIN',dep:[0,'09:00'],arr:[0,'21:30'],air:'韓亞 OZ107＋OZ751',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'13h30',stops:'1停首爾',bag:'incl',note:'兩段全候補；稅費未查'},
+ {id:'o11',from:'HND',to:'SIN',dep:[0,'09:00'],arr:[0,'21:30'],air:'韓亞 OZ1055＋OZ751',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'13h30',stops:'1停首爾',bag:'incl',note:'候補；稅費未查'},
+ {id:'o12',from:'NRT',to:'SIN',dep:[0,'10:55'],arr:[0,'16:55'],air:'新航 SQ637',type:'mile',miles:49500,prog:'新航',tax:null,dur:'7h00',stops:'直飛',bag:'incl',note:'Advantage 層級；稅費未查'},
+ {id:'o13',from:'NRT',to:'SIN',dep:[0,'19:00'],arr:[1,'00:55'],air:'新航 SQ11',type:'wait',miles:49500,prog:'新航',tax:null,dur:'6h55',stops:'直飛',bag:'incl'},
+ {id:'o14',from:'HND',to:'SIN',dep:[0,'17:05'],arr:[0,'23:05'],air:'新航 SQ633',type:'wait',miles:49500,prog:'新航',tax:null,dur:'7h00',stops:'直飛',bag:'incl'},
+ {id:'o15',from:'HND',to:'SIN',dep:[0,'08:55'],arr:[0,'15:00'],air:'新航 SQ631',type:'wait',miles:49500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'另有頭等 Access 256,000 可訂'},
+ {id:'o16',from:'HND',to:'SIN',dep:[0,'22:55'],arr:[1,'05:25'],air:'新航 SQ635',type:'wait',miles:49500,prog:'新航',tax:null,dur:'7h30',stops:'直飛',bag:'incl'},
+ // 新加坡 → 墨爾本（9/19）
+ {id:'o17',from:'SIN',to:'MEL',dep:[1,'11:05'],arr:[1,'20:20'],air:'酷航 TR',type:'cash',price:7368,dur:'7h15',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'o18',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',type:'cash',price:10833,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'o19',from:'SIN',to:'MEL',dep:[1,'01:45'],arr:[1,'11:00'],air:'新航 SQ',type:'cash',price:19927,dur:'7h15',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'o20',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',type:'mile',miles:23000,prog:'ANA',tax:7637,dur:'7h15',stops:'直飛',bag:'incl'},
+ {id:'o21',from:'SIN',to:'MEL',dep:[1,'10:25'],arr:[1,'19:40'],air:'土耳其航空 TK168',type:'mile',miles:52500,prog:'長榮',tax:null,dur:'7h15',stops:'直飛',bag:'incl',note:'同班 ANA 只要 23,000；稅費未查'},
+ {id:'o22',from:'SIN',to:'MEL',dep:[1,'01:45'],arr:[1,'11:00'],air:'新航 SQ237',type:'wait',miles:29000,prog:'新航',tax:null,dur:'7h15',stops:'直飛',bag:'incl',note:'Saver 候補；Access 87,000 可訂'},
+ {id:'o23',from:'SIN',to:'MEL',dep:[1,'07:50'],arr:[1,'17:10'],air:'新航 SQ207',type:'wait',miles:29000,prog:'新航',tax:null,dur:'7h20',stops:'直飛',bag:'incl',note:'Saver 候補；Access 87,000 可訂'},
+ {id:'o24',from:'SIN',to:'MEL',dep:[1,'11:10'],arr:[1,'20:35'],air:'新航 SQ217',type:'wait',miles:29000,prog:'新航',tax:null,dur:'7h25',stops:'直飛',bag:'incl',note:'Saver 候補；Access 87,000 可訂'},
+ // 東京 → 香港
+ {id:'o25',from:'NRT',to:'HKG',dep:[0,'15:15'],arr:[0,'19:20'],air:'香港航空 HX',type:'cash',price:11973,dur:'5h05',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'o26',from:'NRT',to:'HKG',dep:[0,'15:50'],arr:[0,'19:45'],air:'大灣區航空 HB',type:'cash',price:11559,dur:'4h55',stops:'直飛',bag:'unk',src:'08-08'},
+ {id:'o27',from:'NRT',to:'HKG',dep:[0,'15:45'],arr:[0,'19:40'],air:'香港快運 UO',type:'cash',price:10887,dur:'4h55',stops:'直飛',bag:'extra',hk:1,src:'08-08'},
+ {id:'o28',from:'HND',to:'HKG',dep:[0,'01:35'],arr:[0,'05:15'],air:'全日空 NH813',type:'mile',miles:10000,prog:'ANA',tax:4351,dur:'4h40',stops:'直飛',bag:'incl',note:'去程最省的起手段（10,000 哩）'},
+ {id:'o29',from:'NRT',to:'HKG',dep:[0,'08:35'],arr:[0,'12:30'],est:1,air:'全日空 NH859',type:'wait',miles:10000,prog:'ANA',tax:4351,dur:'直飛',stops:'直飛',bag:'incl'},
+ {id:'o30',from:'NRT',to:'HKG',dep:[0,'18:45'],arr:[0,'22:40'],est:1,air:'全日空 NH811',type:'wait',miles:10000,prog:'ANA',tax:4351,dur:'直飛',stops:'直飛',bag:'incl'},
+ // 香港 → 墨爾本
+ {id:'o31',from:'HKG',to:'MEL',dep:[0,'14:40'],arr:[1,'05:30'],air:'汶萊皇家 BI',type:'cash',price:11193,dur:'12h50',stops:'1停汶萊',bag:'incl',src:'08-08'},
+ {id:'o32',from:'HKG',to:'MEL',dep:[0,'20:45'],arr:[1,'20:20'],air:'酷航 TR',type:'cash',price:12398,dur:'21h35',stops:'1停新加坡',bag:'extra',src:'08-08'},
+ {id:'o33',from:'HKG',to:'MEL',dep:[0,'20:05'],arr:[1,'07:20'],air:'澳洲航空 QF',type:'cash',price:20638,dur:'9h15',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'o34',from:'HKG',to:'MEL',dep:[0,'11:20'],arr:[0,'22:15'],air:'國泰 CX',type:'cash',price:21028,dur:'8h55',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'o35',from:'HKG',to:'MEL',dep:[0,'15:30'],arr:[1,'07:30'],air:'泰航 TG629＋TG465',type:'mile',miles:25000,prog:'ANA',tax:7455,dur:'19h00',stops:'1停曼谷',bag:'incl'},
+ {id:'o36',from:'HKG',to:'MEL',dep:[0,'18:45'],arr:[1,'08:35'],air:'越南航空 VN595＋VN781',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2605,dur:'16h50',stops:'1停胡志明市',bag:'incl'},
+ // 東京 → 曼谷
+ {id:'o37',from:'NRT',to:'BKK',dep:[0,'08:55'],arr:[0,'13:45'],air:'泰越捷 VZ',type:'cash',price:23667,dur:'6h50',stops:'直飛',bag:'extra',src:'08-07'},
+ {id:'o38',from:'HND',to:'BKK',dep:[0,'01:20'],arr:[0,'05:45'],air:'日航 JL',type:'cash',price:29051,dur:'6h25',stops:'直飛',bag:'incl',src:'08-07'},
+ {id:'o39',from:'HND',to:'BKK',dep:[0,'06:35'],arr:[0,'15:30'],air:'香港快運 UO',type:'cash',price:12972,dur:'10h55',stops:'1停香港',bag:'extra',hk:1,src:'08-07'},
+ {id:'o40',from:'HND',to:'BKK',dep:[0,'01:35'],arr:[0,'09:35'],air:'全日空 NH813＋泰航 TG603',type:'mile',miles:19000,prog:'ANA',tax:6605,dur:'10h00',stops:'1停香港',bag:'incl'},
+ {id:'o41',from:'HND',to:'BKK',dep:[0,'01:35'],arr:[0,'09:35'],air:'全日空 NH813＋泰航 TG603',cabin:'商務',type:'mile',miles:31500,prog:'ANA',tax:7520,dur:'10h00',stops:'1停香港',bag:'incl'},
+ {id:'o42',from:'NRT',to:'BKK',dep:[0,'19:20'],arr:[0,'23:55'],air:'全日空 NH805',type:'wait',miles:19000,prog:'ANA',tax:6605,dur:'6h35',stops:'直飛',bag:'incl'},
+ {id:'o43',from:'NRT',to:'BKK',dep:[0,'17:30'],arr:[0,'22:15'],air:'全日空 NH807',type:'wait',miles:19000,prog:'ANA',tax:6605,dur:'6h45',stops:'直飛',bag:'incl'},
+ {id:'o44',from:'HND',to:'BKK',dep:[0,'10:50'],arr:[0,'15:30'],air:'全日空 NH847',type:'wait',miles:19000,prog:'ANA',tax:6605,dur:'6h40',stops:'直飛',bag:'incl'},
+ {id:'o45',from:'HND',to:'BKK',dep:[0,'00:15'],arr:[0,'04:35'],air:'全日空 NH849',type:'wait',miles:19000,prog:'ANA',tax:6605,dur:'6h20',stops:'直飛',bag:'incl'},
+ {id:'o46',from:'HND',to:'BKK',dep:[0,'01:25'],arr:[0,'05:55'],air:'全日空 NH877',type:'wait',miles:19000,prog:'ANA',tax:6605,dur:'6h30',stops:'直飛',bag:'incl'},
+ // 曼谷 → 墨爾本
+ {id:'o47',from:'BKK',to:'MEL',dep:[0,'21:40'],arr:[1,'09:25'],air:'捷星／澳航',type:'cash',price:8080,dur:'8h45',stops:'直飛',bag:'extra',src:'08-07'},
+ {id:'o48',from:'BKK',to:'MEL',dep:[0,'19:40'],arr:[1,'07:30'],air:'泰航 TG465',type:'cash',price:14810,dur:'8h50',stops:'直飛',bag:'incl',src:'08-07'},
+ {id:'o49',from:'BKK',to:'MEL',dep:[1,'08:10'],arr:[1,'20:00'],air:'泰航 TG461',type:'cash',price:19975,dur:'8h50',stops:'直飛',bag:'incl',src:'08-07'},
+ {id:'o50',from:'BKK',to:'MEL',dep:[0,'19:40'],arr:[1,'07:30'],air:'泰航 TG465',type:'mile',miles:23000,prog:'ANA',tax:5929,dur:'8h50',stops:'直飛',bag:'incl'},
+ {id:'o51',from:'BKK',to:'MEL',dep:[0,'08:10'],arr:[0,'20:00'],air:'泰航 TG461',type:'mile',miles:23000,prog:'ANA',tax:5929,dur:'8h50',stops:'直飛',bag:'incl',note:'9/18 當天 20:00 抵達'},
+ // 長榮全程候補直通
+ {id:'o52',from:'NRT',to:'MEL',dep:[0,'19:45'],arr:[1,'17:10'],air:'OZ105＋SQ605＋SQ207',type:'wait',miles:52500,prog:'長榮',tax:null,dur:'20h25',stops:'2轉 首爾/新加坡',bag:'incl',note:'三段全候補；稅費未查'},
+ {id:'o53',from:'HND',to:'MEL',dep:[0,'09:00'],arr:[1,'11:00'],air:'OZ1055＋SQ601＋SQ237',type:'wait',miles:52500,prog:'長榮',tax:null,dur:'25h00',stops:'2轉 首爾/新加坡',bag:'incl',note:'全候補；稅費未查'},
+ // 來回一張票
+ {id:'o54',from:'HND',to:'MEL',dep:[0,'15:40'],arr:[1,'08:40'],air:'中國南方 CZ',type:'rt',price:40433,dur:'16h00',stops:'1停廣州',bag:'incl',src:'08-08',note:'來回票 NT$40,433 已含 9/27 回程（回程頁同卡）'},
+];
+const RET=[
+ // 墨爾本 → 曼谷
+ {id:'r1',from:'MEL',to:'BKK',dep:[0,'23:30'],arr:[1,'06:00'],air:'泰航 TG462',cabin:'商務',type:'mile',miles:43500,prog:'ANA',tax:2827,dur:'9h30',stops:'直飛',bag:'incl',note:'掃描 10 個目的地後，20:00–23:59 唯一可訂的里程班'},
+ {id:'r2',from:'MEL',to:'BKK',dep:[0,'23:30'],arr:[1,'06:00'],air:'泰航 TG462',type:'cash',price:14478,dur:'9h30',stops:'直飛',bag:'incl',src:'08-07'},
+ {id:'r3',from:'MEL',to:'BKK',dep:[0,'21:35'],arr:[1,'14:25'],air:'酷航 TR',type:'cash',price:10246,dur:'19h50',stops:'1停新加坡',bag:'extra',src:'08-07'},
+ // 墨爾本 → 香港
+ {id:'r4',from:'MEL',to:'HKG',dep:[0,'23:30'],arr:[1,'11:45'],air:'泰航 TG462＋TG600',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2827,dur:'14h15',stops:'1停曼谷',bag:'incl',note:'多 4,500 哩把 BKK→HKG 也包進里程票'},
+ {id:'r5',from:'MEL',to:'HKG',dep:[0,'23:45'],arr:[1,'06:55'],air:'國泰 CX178',type:'mile',miles:20000,prog:'亞萬',tax:8199,dur:'9h10',stops:'直飛',bag:'incl',note:'稅費 HKD 1,995 為訂位頁實測；每哩價值僅 NT$0.55'},
+ {id:'r6',from:'MEL',to:'HKG',dep:[0,'23:45'],arr:[1,'06:55'],air:'國泰 CX178',type:'cash',price:19074,dur:'9h10',stops:'直飛',bag:'incl',src:'08-07'},
+ {id:'r7',from:'MEL',to:'HKG',dep:[0,'23:30'],arr:[1,'11:45'],air:'泰航（同 TG462＋TG600）',type:'cash',price:18678,dur:'14h15',stops:'1停曼谷',bag:'incl',src:'08-07'},
+ {id:'r8',from:'MEL',to:'HKG',dep:[0,'21:35'],arr:[1,'19:45'],air:'酷航 TR',type:'cash',price:11551,dur:'24h10',stops:'1停新加坡',bag:'extra',src:'08-07'},
+ // 墨爾本 → 新加坡
+ {id:'r9',from:'MEL',to:'SIN',dep:[0,'21:35'],arr:[1,'03:40'],air:'酷航 TR',type:'cash',price:10082,dur:'8h05',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'r10',from:'MEL',to:'SIN',dep:[0,'23:35'],arr:[1,'05:30'],air:'新航／維珍澳洲',type:'cash',price:24119,dur:'7h55',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'r11',from:'MEL',to:'SIN',dep:[0,'23:35'],arr:[1,'05:30'],air:'新航 SQ218',type:'wait',miles:29000,prog:'新航',tax:null,dur:'7h55',stops:'直飛',bag:'incl',note:'Saver 候補；Access 87,000 可訂'},
+ {id:'r12',from:'MEL',to:'SIN',dep:[0,'23:35'],arr:[1,'05:30'],air:'新航 SQ218',type:'wait',miles:52500,prog:'長榮',tax:null,dur:'7h55',stops:'直飛',bag:'incl',note:'候補；稅費未查'},
+ {id:'r13',from:'MEL',to:'SIN',dep:[0,'21:20'],arr:[1,'12:20'],air:'深圳航空（United 開票）',type:'mile',miles:35000,prog:'UA',tax:3231,dur:'17h00',stops:'1停深圳',bag:'incl',note:'需聯合航空里程——你的 UA 帳戶目前 0 哩'},
+ // 來回一張票
+ {id:'r14',from:'MEL',to:'HND',dep:[0,'21:10'],arr:[1,'19:55'],air:'中國南方 CZ',type:'rt',price:40433,dur:'23h45',stops:'1停廣州',bag:'incl',src:'08-08',note:'來回票 NT$40,433 已含 9/18 去程（去程頁同卡）'},
+ // 新加坡 → 東京（9/28）
+ {id:'r15',from:'SIN',to:'NRT',dep:[1,'23:00'],arr:[2,'11:05'],air:'德威航空 TW',type:'cash',price:10454,dur:'11h05',stops:'1停首爾',bag:'extra',src:'08-08'},
+ {id:'r16',from:'SIN',to:'NRT',dep:[1,'18:15'],arr:[2,'06:20'],air:'泰航 TG',type:'cash',price:13116,dur:'11h05',stops:'1停曼谷',bag:'incl',src:'08-08'},
+ {id:'r17',from:'SIN',to:'NRT',dep:[1,'00:30'],arr:[1,'08:50'],air:'ZIPAIR',type:'cash',price:10730,dur:'7h20',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'r18',from:'SIN',to:'NRT',dep:[1,'23:05'],arr:[2,'07:05'],air:'酷航 TR',type:'cash',price:11249,dur:'7h00',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'r19',from:'SIN',to:'NRT',dep:[1,'20:50'],arr:[2,'08:10'],air:'泰航 TG410＋TG642',type:'mile',miles:19000,prog:'ANA',tax:6261,dur:'11h20',stops:'1停曼谷',bag:'incl'},
+ {id:'r20',from:'SIN',to:'NRT',dep:[1,'23:55'],arr:[2,'08:00'],air:'新航 SQ638',type:'mile',miles:49500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Advantage 可訂；稅費未查'},
+ {id:'r21',from:'SIN',to:'HND',dep:[1,'13:55'],arr:[1,'21:55'],air:'新航 SQ634',type:'mile',miles:49500,prog:'新航',tax:null,dur:'7h00',stops:'直飛',bag:'incl',note:'Advantage 可訂；稅費未查'},
+ {id:'r22',from:'SIN',to:'NRT',dep:[1,'09:25'],arr:[1,'17:30'],air:'新航 SQ12',type:'wait',miles:25500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Saver 候補；Adv 49,500 可訂'},
+ {id:'r23',from:'SIN',to:'HND',dep:[1,'07:40'],arr:[1,'15:45'],air:'新航 SQ632',type:'wait',miles:25500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Saver 候補'},
+ {id:'r24',from:'SIN',to:'HND',dep:[1,'22:50'],arr:[2,'06:45'],air:'新航 SQ636',type:'wait',miles:49500,prog:'新航',tax:null,dur:'6h55',stops:'直飛',bag:'incl',note:'Advantage 候補'},
+ {id:'r25',from:'SIN',to:'NRT',dep:[1,'09:25'],arr:[1,'17:30'],air:'新航 SQ012',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'候補；稅費未查'},
+ {id:'r26',from:'SIN',to:'HND',dep:[1,'07:40'],arr:[1,'15:45'],air:'新航 SQ632',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'候補；稅費未查'},
+ // 曼谷 → 東京（9/28）
+ {id:'r27',from:'BKK',to:'NRT',dep:[1,'15:55'],arr:[2,'14:15'],air:'香港航空 HX',type:'cash',price:8324,dur:'20h20',stops:'1停香港',bag:'incl',src:'08-08'},
+ {id:'r28',from:'BKK',to:'NRT',dep:[1,'23:35'],arr:[2,'07:55'],air:'泰越捷 VZ',type:'cash',price:9173,dur:'6h20',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'r29',from:'BKK',to:'NRT',dep:[1,'23:10'],arr:[2,'07:30'],air:'ZIPAIR',type:'cash',price:10422,dur:'6h20',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'r30',from:'DMK',to:'NRT',dep:[1,'23:30'],arr:[2,'08:00'],air:'泰國亞航X XJ',type:'cash',price:9241,dur:'6h30',stops:'直飛',bag:'extra',src:'08-08',note:'自廊曼機場 DMK 出發'},
+ {id:'r31',from:'BKK',to:'NRT',dep:[1,'23:50'],arr:[2,'08:10'],air:'泰航 TG642',type:'mile',miles:17500,prog:'ANA',tax:8759,dur:'6h20',stops:'直飛',bag:'incl',note:'稅金 NT$8,759 ≈ 現金票價，換了不划算'},
+ {id:'r32',from:'BKK',to:'NRT',dep:[1,'21:55'],arr:[2,'06:20'],air:'泰航 TG640',type:'mile',miles:17500,prog:'ANA',tax:8759,dur:'6h25',stops:'直飛',bag:'incl',note:'稅金 ≈ 現金票價'},
+ {id:'r33',from:'BKK',to:'HND',dep:[1,'21:35'],arr:[2,'06:00'],air:'全日空 NH850',type:'mile',miles:17500,prog:'ANA',tax:8759,dur:'6h25',stops:'直飛',bag:'incl',note:'稅金 ≈ 現金票價'},
+ {id:'r34',from:'BKK',to:'NRT',dep:[1,'07:00'],arr:[1,'15:20'],air:'全日空 NH806',type:'mile',miles:17500,prog:'ANA',tax:8759,dur:'6h20',stops:'直飛',bag:'incl',note:'稅金 ≈ 現金票價'},
+ // 香港 → 東京（9/28）
+ {id:'r35',from:'HKG',to:'NRT',dep:[1,'14:20'],arr:[1,'20:05'],air:'香港航空 HX',type:'cash',price:7074,dur:'4h45',stops:'直飛',bag:'incl',src:'08-08',note:'接 TG462＋TG600（11:45 抵港）轉機 2h35'},
+ {id:'r36',from:'HKG',to:'NRT',dep:[1,'09:10'],arr:[1,'14:55'],air:'香港航空 HX',type:'cash',price:7371,dur:'4h45',stops:'直飛',bag:'incl',src:'08-08',note:'接 CX178（06:55 抵港）轉機 2h15'},
+ {id:'r37',from:'HKG',to:'NRT',dep:[1,'00:55'],arr:[1,'06:15'],air:'捷星日本 GK',type:'cash',price:5441,dur:'4h20',stops:'直飛',bag:'extra',src:'08-08'},
+ {id:'r38',from:'HKG',to:'NRT',dep:[1,'13:15'],arr:[2,'11:05'],air:'德威航空 TW',type:'cash',price:6846,dur:'20h50',stops:'1停首爾',bag:'extra',src:'08-08'},
+ {id:'r39',from:'HKG',to:'NRT',dep:[1,'14:35'],arr:[1,'20:00'],air:'全日空（Air Japan 承運）',type:'cash',price:23204,dur:'4h25',stops:'直飛',bag:'incl',src:'08-08'},
+ {id:'r40',from:'HKG',to:'HND',dep:[1,'20:00'],arr:[2,'01:20'],air:'香港快運 UO',type:'cash',price:4787,dur:'4h20',stops:'直飛',bag:'extra',hk:1,src:'08-08'},
+ {id:'r41',from:'HKG',to:'NRT',dep:[1,'23:55'],arr:[2,'05:25'],est:1,air:'全日空 NH814',type:'wait',miles:10000,prog:'ANA',tax:5217,dur:'直飛',stops:'直飛',bag:'incl'},
+ {id:'r42',from:'HKG',to:'NRT',dep:[1,'14:35'],arr:[1,'20:05'],est:1,air:'全日空 NH860',type:'wait',miles:10000,prog:'ANA',tax:5217,dur:'直飛',stops:'直飛',bag:'incl'},
+ {id:'r43',from:'HKG',to:'NRT',dep:[1,'09:30'],arr:[1,'15:00'],est:1,air:'全日空 NH812',type:'wait',miles:10000,prog:'ANA',tax:5217,dur:'直飛',stops:'直飛',bag:'incl'},
+];
+
+const NUM=n=>n.toLocaleString('en-US');
+function build(cfg){
+  const sec=document.getElementById(cfg.sec);
+  if(!sec) return;
+  const base=cfg.baseDay, cards=cfg.cards;
+  cards.forEach(c=>{c.u0=utc(c.from,c.dep[0],c.dep[1]);c.u1=utc(c.to,c.arr[0],c.arr[1]);c.cabin=c.cabin||'經濟'});
+  let sel=[];
+  try{sel=JSON.parse(localStorage.getItem(cfg.key)||'[]').filter(id=>cards.some(c=>c.id===id))}catch(e){}
+  const flt={route:'',types:{cash:true,mile:true,wait:true,rt:true},cabin:'',bagOnly:false,hk:false};
+
+  const fltBox=document.getElementById(cfg.sec+'-flt');
+  const routes=[...new Set(cards.map(c=>CITY[c.from]+' → '+CITY[c.to]))];
+  fltBox.innerHTML=
+    '<select id="'+cfg.sec+'-route"><option value="">全部航段</option>'+routes.map(r=>'<option>'+r+'</option>').join('')+'</select>'+
+    ['cash','mile','wait','rt'].map(t=>'<label><input type="checkbox" data-t="'+t+'" checked>'+TYPE[t][0]+'</label>').join('')+
+    '<select id="'+cfg.sec+'-cabin"><option value="">全部艙等</option><option>經濟</option><option>商務</option></select>'+
+    '<label><input type="checkbox" id="'+cfg.sec+'-bag">只看含行李</label>'+
+    '<label><input type="checkbox" id="'+cfg.sec+'-hk">顯示香港快運</label>'+
+    '<button class="btn-clear" id="'+cfg.sec+'-clr" style="padding:3px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--no);cursor:pointer">清除已選</button>';
+  fltBox.querySelector('#'+cfg.sec+'-route').onchange=e=>{flt.route=e.target.value;paint()};
+  fltBox.querySelectorAll('input[data-t]').forEach(cb=>cb.onchange=()=>{flt.types[cb.dataset.t]=cb.checked;paint()});
+  fltBox.querySelector('#'+cfg.sec+'-cabin').onchange=e=>{flt.cabin=e.target.value;paint()};
+  fltBox.querySelector('#'+cfg.sec+'-bag').onchange=e=>{flt.bagOnly=e.target.checked;paint()};
+  fltBox.querySelector('#'+cfg.sec+'-hk').onchange=e=>{flt.hk=e.target.checked;paint()};
+  fltBox.querySelector('#'+cfg.sec+'-clr').onclick=()=>{sel=[];save();paint()};
+
+  const save=()=>localStorage.setItem(cfg.key,JSON.stringify(sel));
+  const byId=id=>cards.find(c=>c.id===id);
+  const overlaps=(a,b)=>!(a.u1<=b.u0||b.u1<=a.u0);
+
+  function summary(){
+    const box=document.getElementById(cfg.sec+'-sum');
+    const s=sel.map(byId).sort((a,b)=>a.u0-b.u0);
+    if(!s.length){box.innerHTML='<h3>我選擇的行程</h3><p class="note" style="margin:0">尚未選擇——點下方卡片加入行程。</p>';return}
+    let rows='',cash=0,tax=0,bagN=0,waitN=0,taxMiss=0;const miles={};
+    s.forEach((c,i)=>{
+      if(i>0){
+        const p=s[i-1],gap=c.u0-p.u1,g=Math.floor(gap/60)+'h'+String(gap%60).padStart(2,'0');
+        if(p.to===c.from)rows+='<div class="pconn">⤷ 轉機於 '+p.to+'　'+g+'</div>';
+        else if(CITY[p.to]===CITY[c.from])rows+='<div class="pconn bad">⤷ ⚠ 同城換機場 '+p.to+' → '+c.from+'（'+g+'）</div>';
+        else rows+='<div class="pconn bad">⤷ ⚠ 行程不連貫：抵達 '+p.to+'，下一段從 '+c.from+' 出發</div>';
+      }
+      const pr=c.type==='mile'||c.type==='wait'
+        ?NUM(c.miles)+' '+c.prog+(c.tax!=null?' ＋ NT$'+NUM(c.tax):' ＋ 稅費未查')
+        :'NT$'+NUM(c.price)+(c.type==='rt'?'（來回）':'');
+      rows+='<div class="pseg"><span class="t">'+fmtD(base,c.dep[0])+' '+c.dep[1]+' → '+fmtD(base,c.arr[0])+' '+c.arr[1]+'</span>'+
+        '<b>'+c.from+'→'+c.to+'</b> '+c.air+(c.cabin==='商務'?'（商務）':'')+
+        ' <span class="tag '+TYPE[c.type][1]+'">'+TYPE[c.type][0]+'</span><span class="t">'+pr+'</span></div>';
+      if(c.type==='mile'||c.type==='wait'){miles[c.prog]=(miles[c.prog]||0)+c.miles;if(c.tax!=null)tax+=c.tax;else taxMiss++}
+      else cash+=c.price;
+      if(c.bag==='extra')bagN++;
+      if(c.type==='wait')waitN++;
+    });
+    const tot=cash+tax;
+    let t='<div class="ptotals"><div>現金合計<br><span class="v">NT$'+NUM(tot)+'</span>'+(bagN?'<br><span class="t" style="font-size:12px">＋廉航行李估 NT$'+NUM(bagN*1000)+'–'+NUM(bagN*2000)+'</span>':'')+(taxMiss?'<br><span class="t" style="font-size:12px">另有 '+taxMiss+' 段稅費未查</span>':'')+'</div>';
+    const mk=Object.keys(miles);
+    if(mk.length)t+='<div>里程合計<br><span class="v">'+mk.map(k=>NUM(miles[k])+' '+k).join('＋')+'</span></div>';
+    const first=s[0],last=s[s.length-1],el=last.u1-first.u0;
+    t+='<div>總旅程<br><span class="v">'+Math.floor(el/60)+'h'+String(el%60).padStart(2,'0')+'</span></div></div>';
+    let chk='<div class="pchk">';
+    if(cfg.dir==='out'){
+      const melArr=s.filter(c=>c.to==='MEL').map(c=>c.u1);
+      const dl=utc('MEL',1,'21:30');
+      chk+=melArr.length?(Math.max(...melArr)<=dl?'<span class="yes">✓ 於 9/19 21:30 前抵達墨爾本</span>':'<span class="no">✗ 抵達墨爾本晚於 9/19 21:30</span>'):'<span class="no">尚未有抵達墨爾本的航段</span>';
+      chk+='　·　'+(CITY[first.from]==='東京'?'<span class="yes">✓ 自東京出發</span>':'<span class="no">✗ 起點不是東京</span>');
+    }else{
+      const mel=s.find(c=>c.from==='MEL');
+      chk+=mel?(mel.dep[0]===0&&mm(mel.dep[1])>=1200?'<span class="yes">✓ 9/27 '+mel.dep[1]+' 自墨爾本出發（20:00–23:59 內）</span>':'<span class="no">✗ 墨爾本出發時刻不在 9/27 20:00–23:59</span>'):'<span class="no">尚未選擇自墨爾本出發的航段</span>';
+      chk+='　·　'+(CITY[last.to]==='東京'?'<span class="yes">✓ 已接回東京</span>':'<span class="no">尚未接回東京（目前終點：'+CITY[last.to]+'）</span>');
+    }
+    if(waitN)chk+='　·　<span class="tag t-wait">含 '+waitN+' 段候補——不保證成位</span>';
+    if(s.some(c=>c.type==='rt'))chk+='　·　<span class="tag t-cash">含來回票：另一方向包含在同一張票</span>';
+    box.innerHTML='<h3>我選擇的行程（'+s.length+' 段）</h3>'+rows+t+chk+'</div>';
+  }
+  function paint(){
+    summary();
+    const grid=document.getElementById(cfg.sec+'-cards');
+    const selCards=sel.map(byId);
+    grid.innerHTML=cards.filter(c=>{
+      if(!flt.hk&&c.hk&&!sel.includes(c.id))return false;
+      if(flt.route&&CITY[c.from]+' → '+CITY[c.to]!==flt.route)return false;
+      if(!flt.types[c.type])return false;
+      if(flt.cabin&&c.cabin!==flt.cabin)return false;
+      if(flt.bagOnly&&c.bag!=='incl')return false;
+      return true;
+    }).map(c=>{
+      const isSel=sel.includes(c.id);
+      const dis=!isSel&&selCards.some(s=>overlaps(s,c));
+      const pr=c.type==='mile'||c.type==='wait'
+        ?NUM(c.miles)+' '+c.prog+' 哩'+(c.tax!=null?' ＋ NT$'+NUM(c.tax):'')
+        :'NT$'+NUM(c.price)+(c.type==='rt'?'（來回）':'');
+      return '<div class="fc'+(isSel?' sel':'')+(dis?' dis':'')+'" data-id="'+c.id+'">'+
+        '<div><span class="rt">'+c.from+' → '+c.to+'</span> <span class="tag '+TYPE[c.type][1]+'">'+TYPE[c.type][0]+'</span>'+(c.cabin==='商務'?' <span class="tag t-yes">商務</span>':'')+'</div>'+
+        '<div>'+fmtD(base,c.dep[0])+' '+c.dep[1]+' → '+fmtD(base,c.arr[0])+' '+(c.est?'～':'')+c.arr[1]+'　<span class="meta">'+c.dur+' · '+c.stops+'</span></div>'+
+        '<div class="meta">'+c.air+'</div>'+
+        '<div class="price">'+pr+'　<span class="meta">'+BAG[c.bag]+(c.src?' · 票價 '+c.src:'')+'</span></div>'+
+        (c.note?'<div class="nt">'+c.note+'</div>':'')+'</div>';
+    }).join('')||'<p class="note">沒有符合篩選的航班。</p>';
+    grid.querySelectorAll('.fc').forEach(el=>el.onclick=()=>{
+      const id=el.dataset.id;
+      sel=sel.includes(id)?sel.filter(x=>x!==id):[...sel,id];
+      save();paint();
+    });
+  }
+  paint();
+}
+build({sec:'obuild',key:'aw-pick-out',cards:OUT,baseDay:18,dir:'out'});
+build({sec:'rbuild',key:'aw-pick-ret',cards:RET,baseDay:27,dir:'ret'});
+})();
+</script>
+
 </body>
 </html>
