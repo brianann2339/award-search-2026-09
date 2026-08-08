@@ -122,7 +122,6 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 .fc{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel);cursor:pointer;font-size:13px;line-height:1.55}
 .fc:hover{border-color:var(--accent)}
 .fc.sel{outline:2px solid var(--accent);background:var(--accent-soft)}
-.fc.dis{opacity:.35;pointer-events:none}
 .fc .rt{font-weight:700}
 .fc .meta{color:var(--muted);font-size:12px}
 .fc .price{font-weight:600;margin-top:2px}
@@ -294,7 +293,8 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 <!-- ================= 去程/回程 選擇器 ================= -->
 <section id="obuild" hidden>
   <h2>去程所有的選項（9/18 出發，須於 9/19 21:30 前抵達 MEL）</h2>
-  <p class="note">點卡片＝加入行程，再點＝移除；與已選航班<strong>時間重疊</strong>（依各機場時區換算）的卡片會自動鎖住。
+  <p class="note">點卡片＝加入行程，再點＝移除。選了航段後，下方只留下<strong>接得上</strong>的卡片
+  （時間不重疊、且與已選段的城市前後銜接——例如選了抵達香港的段，就只剩香港出發的段）；其餘暫時隱藏，移除已選即恢復。
   現金票價 2026-08-08 快照（標 08-07 者未重查）；里程空位 ANA 08-06～07／長榮 08-07／新航 07-12。
   「～」＝該班抵達時間未記錄，以同航線典型飛行時間估算（僅供重疊判斷）。廉航行李費另估 NT$1,000–2,000／段。</p>
   <div class="psum" id="obuild-sum"></div>
@@ -308,7 +308,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 </section>
 <section id="rbuild" hidden>
   <h2>回程所有的選項（9/27 自 MEL 出發，限 20:00–23:59）</h2>
-  <p class="note">操作同去程頁。只收錄 MEL 出發時刻落在 20:00–23:59 的航班；9/28 起的接駁段不受時段限制。
+  <p class="note">操作同去程頁（接不上的卡片會暫時隱藏）。只收錄 MEL 出發時刻落在 20:00–23:59 的航班；9/28 起的接駁段不受時段限制。
   現金票價 2026-08-08 快照（標 08-07 者未重查）；里程空位 ANA 08-06～07／長榮 08-07／新航 07-12。</p>
   <div class="psum" id="rbuild-sum"></div>
   <div class="pfilters" id="rbuild-flt"></div>
@@ -1707,8 +1707,17 @@ function build(cfg){
   function paint(){
     summary();
     const grid=document.getElementById(cfg.sec+'-cards');
-    const selCards=sel.map(byId);
+    const selCards=sel.map(byId).sort((a,b)=>a.u0-b.u0);
+    const fits=c=>{
+      if(selCards.some(s=>overlaps(s,c)))return false;
+      const prev=[...selCards].reverse().find(s=>s.u1<=c.u0);
+      const next=selCards.find(s=>s.u0>=c.u1);
+      if(prev&&CITY[prev.to]!==CITY[c.from])return false;
+      if(next&&CITY[c.to]!==CITY[next.from])return false;
+      return true;
+    };
     grid.innerHTML=cards.filter(c=>{
+      if(!sel.includes(c.id)&&!fits(c))return false;
       if(!flt.hk&&c.hk&&!sel.includes(c.id))return false;
       if(flt.route&&CITY[c.from]+' → '+CITY[c.to]!==flt.route)return false;
       if(!flt.types[c.type])return false;
@@ -1717,17 +1726,16 @@ function build(cfg){
       return true;
     }).map(c=>{
       const isSel=sel.includes(c.id);
-      const dis=!isSel&&selCards.some(s=>overlaps(s,c));
       const pr=c.type==='mile'||c.type==='wait'
         ?NUM(c.miles)+' '+c.prog+' 哩'+(c.tax!=null?' ＋ NT$'+NUM(c.tax):'')
         :'NT$'+NUM(c.price)+(c.type==='rt'?'（來回）':'');
-      return '<div class="fc'+(isSel?' sel':'')+(dis?' dis':'')+'" data-id="'+c.id+'">'+
+      return '<div class="fc'+(isSel?' sel':'')+'" data-id="'+c.id+'">'+
         '<div><span class="rt">'+c.from+' → '+c.to+'</span> <span class="tag '+TYPE[c.type][1]+'">'+TYPE[c.type][0]+'</span>'+(c.cabin==='商務'?' <span class="tag t-yes">商務</span>':'')+'</div>'+
         '<div>'+fmtD(base,c.dep[0])+' '+c.dep[1]+' → '+fmtD(base,c.arr[0])+' '+(c.est?'～':'')+c.arr[1]+'　<span class="meta">'+c.dur+' · '+c.stops+'</span></div>'+
         '<div class="meta">'+c.air+'</div>'+
         '<div class="price">'+pr+'　<span class="meta">'+BAG[c.bag]+(c.src?' · 票價 '+c.src:'')+'</span></div>'+
         (c.note?'<div class="nt">'+c.note+'</div>':'')+'</div>';
-    }).join('')||'<p class="note">沒有符合篩選的航班。</p>';
+    }).join('')||'<p class="note">沒有符合條件的航班——已選航段可能佔滿了可銜接的時段，移除一段試試。</p>';
     grid.querySelectorAll('.fc').forEach(el=>el.onclick=()=>{
       const id=el.dataset.id;
       sel=sel.includes(id)?sel.filter(x=>x!==id):[...sel,id];
