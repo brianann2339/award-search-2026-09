@@ -285,7 +285,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     <div class="kpi"><div class="lbl">★ 純現金最佳（符合兩個時段）</div><div class="val">NT$40,433</div><div class="fine">中國南方直通 · 單一機票、含行李、有轉機保障</div></div>
     <div class="kpi"><div class="lbl">現金 · 自己拆四段（經 SIN）</div><div class="val">NT$42,769–46,769</div><div class="fine">票面 38,769 ＋ 四段廉航行李費 → 已比直通貴</div></div>
     <div class="kpi"><div class="lbl">現金 · 商務艙來回最低</div><div class="val">NT$156,884</div><div class="fine">國泰 15h45（NT$103,924 為菲航 39h）</div></div>
-    <div class="kpi"><div class="lbl">★ 最佳里程用法（可訂）</div><div class="val">48,000 哩<br><span style="font-size:13px">＋NT$33,848</span></div><div class="fine">TG462+TG600 MEL→HKG 商務，取代 NT$78,233 同班同艙現金票（<strong>每哩 NT$1.57</strong>）；其餘三段全傳統航空含行李。全表最高是 NH843 豪經 2.12，但只有候補</div></div>
+    <div class="kpi"><div class="lbl">★ 最佳里程用法（可訂）</div><div class="val">48,000 哩<br><span style="font-size:13px">＋NT$33,848</span></div><div class="fine">TG462+TG600 MEL→HKG 商務，取代 NT$78,233 同班同艙現金票（<strong>每哩 NT$1.57</strong>）；其餘三段全傳統航空含行李。候補側更高的有 NH843 豪經 2.12／商務 1.96、SQ632 經濟 1.88（見換算表）</div></div>
   </div>
 
   <h2>每哩價值換算（2026-08-08，同艙對比）</h2>
@@ -294,22 +294,30 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     我卻給它標個「偏低」就放進表裡一起排序，等於讓沒有意義的數字看起來像可比較的資料。
     現已全部改用<strong>同艙現金價</strong>重查重算，商務那幾列從 0.27–0.33 變成 <strong>1.31–1.57</strong>，結論完全不同。
   </div>
-  <p class="note">算法：<strong>（同艙現金票價 − 里程票仍要自付的稅金）÷ 哩程</strong>。現金為 2026-08-08 Google Flights 含稅快照。</p>
+  <p class="note">依你 08-09 定的兩層算法：<strong>每哩·同班＝（同一航班同艙現金 − 自付稅）÷ 哩程</strong>——這張票本身值多少；
+  <strong>每哩·替代＝（同起迄機場、起飛 ±3h 內最便宜任意航班含行李 − 自付稅）÷ 哩程</strong>——為了到達你最少要花多少。
+  替代規則：廉航加行李 NT$1,000（取你 1,000–2,000 區間下緣，用 2,000 算值會更低）；香港快運與 9/29 才抵達的班不列入替代。現金為 08-08／08-09 Google Flights 含稅快照。</p>
   <div class="tablewrap">
   <table data-sortable id="permile">
-    <thead><tr><th>航段</th><th>艙等</th><th>狀態</th><th class="num">同艙現金</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">每哩</th><th class="nosort">對應的現金航班</th></tr></thead>
+    <thead><tr><th>航段</th><th>艙等</th><th>狀態</th><th class="num">同班現金</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">每哩·同班</th><th class="nosort">±3h 最省替代（含行李）</th><th class="num">每哩·替代</th></tr></thead>
     <tbody>
-      <tr><td><strong>NH843 HND→SIN</strong></td><td>豪華經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">62,380</td><td class="num">25,500</td><td class="num">8,199</td><td class="num"><strong>2.12</strong></td><td class="wrapcell">全日空 787 <strong>NH843 00:40→06:40 豪經</strong>，同班同艙<br><span style="color:var(--warn)">⚠ 現金為 <strong>9/18</strong> 出發，里程票是 9/19——差一天</span></td></tr>
-      <tr><td><strong>NH843 HND→SIN</strong></td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">91,288</td><td class="num">42,500</td><td class="num">8,199</td><td class="num"><strong>1.96</strong></td><td class="wrapcell">全日空／新航 00:40→06:40，<strong>同班同艙</strong>（9/19）</td></tr>
-      <tr><td><strong>TG462＋TG600 MEL→HKG</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">78,233</td><td class="num">48,000</td><td class="num">2,827</td><td class="num"><strong>1.57</strong></td><td class="wrapcell">THAI 23:30→11:45<sup>+1</sup> 商務 14h15，<strong>同一組行程</strong></td></tr>
-      <tr><td><strong>VN778＋VN592 MEL→HKG</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">71,713</td><td class="num">48,000</td><td class="num">2,688</td><td class="num"><strong>1.44</strong></td><td class="wrapcell">越航 <strong>VN778 00:25→HAN 07:05 ＋ VN592 10:25→HKG 13:30 商務</strong>，同一組行程、同艙</td></tr>
-      <tr><td><strong>TG462 MEL→BKK</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">62,325</td><td class="num">43,500</td><td class="num">2,827</td><td class="num"><strong>1.37</strong></td><td class="wrapcell">THAI 23:30→06:00<sup>+1</sup> 商務直飛，<strong>同班同艙</strong></td></tr>
-      <tr><td>SQ218 MEL→SIN（長榮兌換）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">104,175</td><td class="num">77,500</td><td class="num">2,602</td><td class="num"><strong>1.31</strong></td><td class="wrapcell">新航／維珍 23:35→05:30<sup>+1</sup> 商務直飛，<strong>同班同艙</strong></td></tr>
-      <tr><td>SQ218＋SQ634 MEL→HND（新航兌換）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">116,135</td><td class="num">108,500</td><td class="num">2,982</td><td class="num"><strong>1.04</strong></td><td class="wrapcell">新航 <strong>SQ218 23:35→SIN 05:30<sup>+1</sup> ＋ SQ634 13:55<sup>+1</sup>→HND 21:55<sup>+1</sup> 商務</strong>，同一組行程、同艙（含 SIN 停 8h25）</td></tr>
-      <tr><td>CX178 MEL→HKG</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">19,217</td><td class="num">20,000</td><td class="num">8,199</td><td class="num">0.55</td><td class="wrapcell">同班同艙</td></tr>
-      <tr><td>JL028 HKG→HND</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">7,074</td><td class="num">11,000</td><td class="num">4,616</td><td class="num">0.22</td><td class="wrapcell">香港航空同段最低（同艙、不同航空）</td></tr>
-      <tr><td>TK168 SIN→MEL</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">10,833</td><td class="num">23,000</td><td class="num">7,659</td><td class="num">0.14</td><td class="wrapcell">同班同艙——<strong>稅金已吃掉票價七成</strong></td></tr>
-      <tr><td>JL736 HKG→NRT</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">7,074</td><td class="num">24,000</td><td class="num">4,616</td><td class="num">0.10</td><td class="wrapcell">同艙、不同航空</td></tr>
+      <tr><td><strong>NH843／803／801 東京→SIN</strong>（9/18）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">44,488–46,074</td><td class="num">17,500</td><td class="num">未查*</td><td class="num"><strong>≥2.07</strong></td><td class="wrapcell">NRT 班：中華 14:30 直開 13,973／HND 00:40 班：酷航 02:20 22,555＋1,000</td><td class="num">0.33–0.88</td></tr>
+      <tr><td><strong>NH843 HND→SIN</strong>（9/19）</td><td>豪華經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">62,380</td><td class="num">25,500</td><td class="num">8,199</td><td class="num"><strong>2.12</strong></td><td class="wrapcell">9/19 ±3h 經濟未查<br><span style="color:var(--warn)">⚠ 同班現金為 9/18 快照，差一天</span></td><td class="num">未查</td></tr>
+      <tr><td><strong>NH843 HND→SIN</strong>（9/19）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">91,288</td><td class="num">42,500</td><td class="num">8,199</td><td class="num"><strong>1.96</strong></td><td class="wrapcell">9/19 ±3h 經濟未查</td><td class="num">未查</td></tr>
+      <tr><td><strong>SQ632 SIN→HND</strong>（9/28）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">49,467</td><td class="num">25,500</td><td class="num">1,641*</td><td class="num"><strong>1.88</strong></td><td class="wrapcell">亞航X 07:55（經 KUL、22:35 到）11,890＋1,000。*KF 稅未實查，借長榮同段 1,641；長榮 25,000 版同班 1.91</td><td class="num">0.44</td></tr>
+      <tr><td>JL028 HKG→HND（23:45）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">23,825</td><td class="num">11,000</td><td class="num">4,616</td><td class="num">1.75</td><td class="wrapcell">全日空 NH814 23:55 現金 23,204（無快運下）；若接受快運 23:35 6,020 → 0.13<br><span style="color:var(--warn)">⚠ 04:55 抵達＝9/29，你已排除</span></td><td class="num">1.69</td></tr>
+      <tr><td><strong>TG462＋TG600 MEL→HKG</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">78,233</td><td class="num">48,000</td><td class="num">2,827</td><td class="num"><strong>1.57</strong></td><td class="wrapcell">酷航 21:35（19:45<sup>+1</sup> 到）11,551＋1,000；願搭傳統的話 CX178 現金 19,074 → 0.34</td><td class="num">0.20</td></tr>
+      <tr><td><strong>VN778＋VN592 MEL→HKG</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">71,713</td><td class="num">48,000</td><td class="num">2,688</td><td class="num"><strong>1.44</strong></td><td class="wrapcell">酷航 21:35 11,551＋1,000<br><span style="color:var(--warn)">⚠ 13:30 抵港後當天到不了東京 → 出局</span></td><td class="num">0.21</td></tr>
+      <tr><td>VN595＋VN781 HKG→MEL（9/18 去程）</td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">51,120–123,910</td><td class="num">48,000</td><td class="num">2,605</td><td class="num">1.01–1.70</td><td class="wrapcell">同班：越航自家 GF 未售，下限汶萊 51,120、同時刻越航混搭 84,168 → 1.70。替代：酷航 20:45 12,398＋1,000</td><td class="num">0.22</td></tr>
+      <tr><td><strong>TG462 MEL→BKK</strong></td><td>商務</td><td><span class="tag t-yes">可訂</span></td><td class="num">62,325</td><td class="num">43,500</td><td class="num">2,827</td><td class="num"><strong>1.37</strong></td><td class="wrapcell">酷航 21:35（14:25<sup>+1</sup> 到）10,246＋1,000</td><td class="num">0.19</td></tr>
+      <tr><td>SQ218 MEL→SIN（長榮兌換）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">104,175</td><td class="num">77,500</td><td class="num">2,602</td><td class="num"><strong>1.31</strong></td><td class="wrapcell">酷航 21:35 10,082＋1,000（同班經濟現金 24,119 → 0.28）</td><td class="num">0.11</td></tr>
+      <tr><td>SQ218＋SQ634 MEL→HND（新航兌換）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">116,135</td><td class="num">108,500</td><td class="num">2,982</td><td class="num"><strong>1.04</strong></td><td class="wrapcell">±3h 內同城僅中國南方「來回票」40,433，無可比單程</td><td class="num">—</td></tr>
+      <tr><td>JL736 HKG→NRT（10:30）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">23,825</td><td class="num">24,000</td><td class="num">4,616</td><td class="num">0.80</td><td class="wrapcell">香港航空 09:10 現金 7,371</td><td class="num">0.11</td></tr>
+      <tr><td>SQ634 SIN→HND（Adv 可訂）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">37,732</td><td class="num">49,500</td><td class="num">1,641*</td><td class="num">0.73</td><td class="wrapcell">全日空 NH844 11:05（19:15 到）21,203。*稅借長榮同段實測</td><td class="num">0.40</td></tr>
+      <tr><td>JL026 HKG→HND（15:15）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">23,825</td><td class="num">27,000</td><td class="num">4,616</td><td class="num">0.71</td><td class="wrapcell">全日空 14:35 現金 23,204（無快運下）；若接受快運 17:35 6,020 → 0.05</td><td class="num">0.69</td></tr>
+      <tr><td>CX178 MEL→HKG</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">19,217</td><td class="num">20,000</td><td class="num">8,199</td><td class="num">0.55</td><td class="wrapcell">酷航 21:35 11,551＋1,000</td><td class="num">0.22</td></tr>
+      <tr><td>JL774 MEL→NRT（9/28 07:25）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">32,288</td><td class="num">32,000</td><td class="num">18,161</td><td class="num">0.44</td><td class="wrapcell">±3h 無其他班。稅 ¥89,110＝18,161 <strong>吃掉現金價 56%</strong> → 要搭就付現</td><td class="num">—</td></tr>
+      <tr><td>TK168 SIN→MEL</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">10,833</td><td class="num">23,000</td><td class="num">7,659</td><td class="num">0.14</td><td class="wrapcell">酷航 11:05（20:20 到）7,368＋1,000</td><td class="num">0.03</td></tr>
     </tbody>
   </table>
   </div>
@@ -329,15 +337,13 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
   </div>
 
   <div class="callout ok">
-    <strong>改用同艙比較之後的四個結論。</strong>
-    <br>① <strong>回程長程商務才是里程的主戰場</strong>：TG462+TG600 每哩 <strong>1.57</strong>、VN778+VN592 <strong>1.44</strong>、TG462 <strong>1.37</strong>、SQ218 <strong>1.31</strong>。
-    舊版誤用經濟價算出 0.27–0.33，把最划算的選項看成最差的。
-    <br>② <strong>全表最高換成 NH843 豪華經濟 2.12</strong>（舊版第一名 NH843 商務 1.96 退居第二）。
-    同一班機上，豪經比商務<u>少花 17,000 哩</u>、現金只差 NT$28,908 —— 那 17,000 哩的邊際價值 NT$1.70／哩，
-    仍高於 TG462 系，所以<u>要換就換商務</u>；但兩者都<u>只有候補</u>。（此段邊際計算混用了 9/18 與 9/19 兩天的現金價。）
-    <br>③ <strong>可訂的裡面 TG462+TG600 的 1.57 仍是第一</strong>，VN778+VN592 的 1.44 次之——而後者 00:25 出發，在你的時段窗外 26 分鐘。
-    <br>④ <strong>短程經濟一律不要換</strong>：TK168 0.14、JL736 0.10、JL028 0.22。
-    TK168 那段 23,000 哩只省下 NT$3,174，稅金就吃掉票價七成——<strong>用現金買</strong>。
+    <strong>兩層每哩價值怎麼讀（08-09 依你的定義重算）。</strong>
+    「同班」答的是<u>這張票本身值多少</u>；「±3h 替代」答的是<u>你為了到達最少要花多少</u>。兩層差距越大＝哩程買的是「艙等與航空公司」，不是「省錢」。
+    <br>① 回程可訂商務組：<strong>TG462+TG600 同班 1.57／替代 0.20</strong>、TG462 1.37／0.19——換它們＝用哩程買平躺過夜，運輸本身酷航 1.2 萬就有。VN778+VN592 1.44 另因當天到不了東京出局。
+    <br>② <strong>SQ632 是兩層都及格的少數：同班 1.88、替代 0.44</strong>——就算對上最便宜的亞航X（要 22:35 才到、經 KUL），25,500 哩仍省約 1.1 萬還早 7 小時到。可惜是候補。
+    <br>③ NH 東京→SIN 經濟同班 ≥2.07、替代僅 0.33–0.88：NH 自家單程定價貴，中華 14:30 只要 13,973。
+    <br>④ <strong>JL774 同班僅 0.44、±3h 無替代</strong>：稅吃掉現金 56%，要搭就付現 32,288。
+    <br>⑤ 短程對替代全滅：TK168 0.03、TG系 0.19–0.20、CX178 0.22、JL 系除 JL028（1.69，但抵 9/29 出局）外 0.11–0.69 → <strong>純運輸段一律現金</strong>。
   </div>
 
   <h2>各計畫在這條線的實際結果</h2>
@@ -1646,9 +1652,9 @@ const OUT=[
  {id:'o3',from:'NRT',to:'SIN',dep:[0,'12:30'],arr:[0,'20:45'],air:'酷航 TR',type:'cash',price:12416,dur:'9h15',stops:'1停台北',bag:'extra',src:'08-08'},
  {id:'o4',from:'NRT',to:'SIN',dep:[0,'14:30'],arr:[1,'00:35'],air:'中華航空 CI',type:'cash',price:13973,dur:'11h05',stops:'1停台北',bag:'incl',src:'08-08'},
  {id:'o5',from:'NRT',to:'SIN',dep:[0,'08:20'],arr:[0,'14:35'],air:'酷航 TR',type:'cash',price:18367,dur:'7h15',stops:'直飛',bag:'extra',src:'08-08'},
- {id:'o6',from:'NRT',to:'SIN',dep:[0,'00:40'],arr:[0,'07:55'],est:1,air:'全日空 NH843',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未記錄'},
- {id:'o7',from:'NRT',to:'SIN',dep:[0,'17:15'],arr:[1,'00:30'],est:1,air:'全日空 NH803',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未記錄'},
- {id:'o8',from:'NRT',to:'SIN',dep:[0,'18:40'],arr:[1,'01:55'],est:1,air:'全日空 NH801',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未記錄'},
+ {id:'o6',from:'NRT',to:'SIN',dep:[0,'00:40'],arr:[0,'07:55'],est:1,air:'全日空 NH843',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未查。★08-09 同班現金 44,488 → 每哩 ≥2.07（稅以同線商務 8,199 上限推）；同線 LCC 1.1 萬起'},
+ {id:'o7',from:'NRT',to:'SIN',dep:[0,'17:15'],arr:[1,'00:30'],est:1,air:'全日空 NH803',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未查。★08-09 同班現金 46,074 → 每哩 ≥2.16（稅以同線商務上限推）；可接隔天 TK168（SIN 過夜約 10h）'},
+ {id:'o8',from:'NRT',to:'SIN',dep:[0,'18:40'],arr:[1,'01:55'],est:1,air:'全日空 NH801',type:'mile',miles:17500,prog:'ANA',tax:null,dur:'直飛',stops:'直飛',bag:'incl',note:'稅金未查。★08-09 同班現金 46,074 → 每哩 ≥2.16（稅以同線商務上限推）；可接隔天 TK168（SIN 過夜約 8h30）'},
  {id:'o9',from:'NRT',to:'SIN',dep:[0,'19:00'],arr:[1,'06:10'],air:'深圳航空 ZH652＋新航 SQ857',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'12h10',stops:'1停深圳',bag:'incl',note:'段1候補·段2確認；稅費未查'},
  {id:'o10',from:'NRT',to:'SIN',dep:[0,'09:00'],arr:[0,'21:30'],air:'韓亞 OZ107＋OZ751',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'13h30',stops:'1停首爾',bag:'incl',note:'兩段全候補；稅費未查'},
  {id:'o11',from:'HND',to:'SIN',dep:[0,'09:00'],arr:[0,'21:30'],air:'韓亞 OZ1055＋OZ751',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'13h30',stops:'1停首爾',bag:'incl',note:'候補；稅費未查'},
@@ -1674,12 +1680,13 @@ const OUT=[
  {id:'o29',from:'NRT',to:'HKG',dep:[0,'08:35'],arr:[0,'12:30'],est:1,air:'全日空 NH859',type:'wait',miles:10000,prog:'ANA',tax:4351,dur:'直飛',stops:'直飛',bag:'incl'},
  {id:'o30',from:'NRT',to:'HKG',dep:[0,'18:45'],arr:[0,'22:40'],est:1,air:'全日空 NH811',type:'wait',miles:10000,prog:'ANA',tax:4351,dur:'直飛',stops:'直飛',bag:'incl'},
  // 香港 → 墨爾本
+ {id:'o73',from:'NRT',to:'HKG',dep:[0,'09:25'],arr:[0,'13:15'],air:'國泰／日航（09:25 早班）',type:'cash',price:19346,dur:'4h50',stops:'直飛',bag:'incl',src:'08-09',note:'9/18 早班；接 VN595（18:45 起飛）轉 5h30。非快運早班裡最便宜的有價班；HX 09:30 GF 無價'},
  {id:'o31',from:'HKG',to:'MEL',dep:[0,'14:40'],arr:[1,'05:30'],air:'汶萊皇家 BI',type:'cash',price:11193,dur:'12h50',stops:'1停汶萊',bag:'incl',src:'08-08'},
  {id:'o32',from:'HKG',to:'MEL',dep:[0,'20:45'],arr:[1,'20:20'],air:'酷航 TR',type:'cash',price:12398,dur:'21h35',stops:'1停新加坡',bag:'extra',src:'08-08'},
  {id:'o33',from:'HKG',to:'MEL',dep:[0,'20:05'],arr:[1,'07:20'],air:'澳洲航空 QF',type:'cash',price:20638,dur:'9h15',stops:'直飛',bag:'incl',src:'08-08'},
  {id:'o34',from:'HKG',to:'MEL',dep:[0,'11:20'],arr:[0,'22:15'],air:'國泰 CX',type:'cash',price:21028,dur:'8h55',stops:'直飛',bag:'incl',src:'08-08'},
  {id:'o35',from:'HKG',to:'MEL',dep:[0,'15:30'],arr:[1,'07:30'],air:'泰航 TG629＋TG465',type:'mile',miles:25000,prog:'ANA',tax:7455,dur:'19h00',stops:'1停曼谷',bag:'incl'},
- {id:'o36',from:'HKG',to:'MEL',dep:[0,'18:45'],arr:[1,'08:35'],air:'越南航空 VN595＋VN781',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2605,dur:'16h50',stops:'1停胡志明市',bag:'incl'},
+ {id:'o36',from:'HKG',to:'MEL',dep:[0,'18:45'],arr:[1,'08:35'],air:'越南航空 VN595＋VN781',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2605,dur:'16h50',stops:'1停胡志明市',bag:'incl',note:'08-09 查同艙現金：越航自家組合 GF 未售；同日商務 51,120（汶萊）～123,910（國泰直飛）、同時刻越航混搭 84,168 → 每哩 1.01–1.70。⚠ 接駁缺口：9/18 便宜的下午班都 19:20 後才抵港（趕不上 18:45）；非快運早班僅 CX/JL 09:25→13:15 現金 19,346，或 NH813 凌晨 award 10,000＋4,351（港停 13h30）'},
  // 東京 → 曼谷
  {id:'o37',from:'NRT',to:'BKK',dep:[0,'08:55'],arr:[0,'13:45'],air:'泰越捷 VZ',type:'cash',price:23667,dur:'6h50',stops:'直飛',bag:'extra',src:'08-07'},
  {id:'o38',from:'HND',to:'BKK',dep:[0,'01:20'],arr:[0,'05:45'],air:'日航 JL',type:'cash',price:29051,dur:'6h25',stops:'直飛',bag:'incl',src:'08-07'},
@@ -1747,12 +1754,12 @@ const RET=[
  {id:'r18',from:'SIN',to:'NRT',dep:[1,'23:05'],arr:[2,'07:05'],air:'酷航 TR',type:'cash',price:11249,dur:'7h00',stops:'直飛',bag:'extra',src:'08-08'},
  {id:'r19',from:'SIN',to:'NRT',dep:[1,'20:50'],arr:[2,'08:10'],air:'泰航 TG410＋TG642',type:'mile',miles:19000,prog:'ANA',tax:6261,dur:'11h20',stops:'1停曼谷',bag:'incl'},
  {id:'r20',from:'SIN',to:'NRT',dep:[1,'23:55'],arr:[2,'08:00'],air:'新航 SQ638',type:'mile',miles:49500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Advantage 可訂；稅費未查'},
- {id:'r21',from:'SIN',to:'HND',dep:[1,'13:55'],arr:[1,'21:55'],air:'新航 SQ634',type:'mile',miles:49500,prog:'新航',tax:null,dur:'7h00',stops:'直飛',bag:'incl',note:'Advantage 可訂；稅費未查'},
+ {id:'r21',from:'SIN',to:'HND',dep:[1,'13:55'],arr:[1,'21:55'],air:'新航 SQ634',type:'mile',miles:49500,prog:'新航',tax:null,dur:'7h00',stops:'直飛',bag:'incl',note:'Advantage 可訂；稅費未查。★08-09 同班現金 37,732 → 每哩約 0.73（稅借長榮同段實測 1,641）'},
  {id:'r22',from:'SIN',to:'NRT',dep:[1,'09:25'],arr:[1,'17:30'],air:'新航 SQ12',type:'wait',miles:25500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Saver 候補；Adv 49,500 可訂'},
- {id:'r23',from:'SIN',to:'HND',dep:[1,'07:40'],arr:[1,'15:45'],air:'新航 SQ632',type:'wait',miles:25500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Saver 候補'},
+ {id:'r23',from:'SIN',to:'HND',dep:[1,'07:40'],arr:[1,'15:45'],air:'新航 SQ632',type:'wait',miles:25500,prog:'新航',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'Saver 候補。★08-09 同班現金 49,467（早班 SQ 特貴）→ 每哩約 1.88（KF 稅未實查，借長榮同段 SGD65.20＝1,641）。候補沒清的同日現金備案：亞航X 07:55→22:35 11,890／國泰 09:45→21:35 18,018／NH844 11:05→19:15 21,203'},
  {id:'r24',from:'SIN',to:'HND',dep:[1,'22:50'],arr:[2,'06:45'],air:'新航 SQ636',type:'wait',miles:49500,prog:'新航',tax:null,dur:'6h55',stops:'直飛',bag:'incl',note:'Advantage 候補'},
  {id:'r25',from:'SIN',to:'NRT',dep:[1,'09:25'],arr:[1,'17:30'],air:'新航 SQ012',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'候補；稅費未查'},
- {id:'r26',from:'SIN',to:'HND',dep:[1,'07:40'],arr:[1,'15:45'],air:'新航 SQ632',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'候補；稅費未查'},
+ {id:'r26',from:'SIN',to:'HND',dep:[1,'07:40'],arr:[1,'15:45'],air:'新航 SQ632',type:'wait',miles:25000,prog:'長榮',tax:null,dur:'7h05',stops:'直飛',bag:'incl',note:'候補；稅費未查。★同班現金 49,467 → 每哩約 1.91'},
  // 曼谷 → 東京（9/28）
  {id:'r27',from:'BKK',to:'NRT',dep:[1,'15:55'],arr:[2,'14:15'],air:'香港航空 HX',type:'cash',price:8324,dur:'20h20',stops:'1停香港',bag:'incl',src:'08-08'},
  {id:'r28',from:'BKK',to:'NRT',dep:[1,'23:35'],arr:[2,'07:55'],air:'泰越捷 VZ',type:'cash',price:9173,dur:'6h20',stops:'直飛',bag:'extra',src:'08-08'},
@@ -1778,12 +1785,15 @@ const RET=[
  {id:'r46',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',type:'wait',miles:44500,prog:'新航',tax:null,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
  {id:'r47',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[2,'06:45'],air:'新航 SQ218＋SQ636',type:'wait',miles:44500,prog:'新航',tax:null,dur:'32h10',stops:'1停新加坡（隔夜）',bag:'incl',src:'07-12',note:'直通獎勵 Saver 候補；Adv 90,500 可訂；稅費未查'},
  {id:'r48',from:'MEL',to:'HND',dep:[0,'23:35'],arr:[1,'21:55'],air:'新航 SQ218＋SQ634',cabin:'商務',type:'wait',miles:108500,prog:'新航',tax:2982,dur:'23h20',stops:'1停新加坡',bag:'incl',src:'08-08',note:'稅費 AUD 130.95 為訂位頁實測（2026-08-08）；候補若起飛前兩週未成位將自動取消。★同組同艙現金 NT$116,135 → 每哩 1.04'},
+ {id:'r56',from:'MEL',to:'NRT',dep:[1,'07:25'],arr:[1,'16:20'],air:'日航 JL774（788）',type:'mile',miles:32000,prog:'日航',tax:18161,dur:'9h55',stops:'直飛',bag:'incl',src:'08-09',note:'★9/28 07:25 出發（窗外）、16:20 抵 NRT。JAL 自家特典可訂；稅 ¥89,110＝18,161——吃掉同班現金 32,288 的 56% → 每哩僅 0.44，要搭建議直接付現。9/26 要 39,000 哩、9/30 同 32,000'},
+ {id:'r57',from:'MEL',to:'NRT',dep:[1,'07:25'],arr:[1,'16:20'],air:'日航 JL774（788）',type:'cash',price:32288,dur:'9h55',stops:'直飛',bag:'incl',src:'08-09',note:'使用者 08-09 實查。⚠ 07:25 起飛＝約 05:15 到機場；MEL 23:00–05:00 無信用卡貴賓室'},
+ {id:'r58',from:'SIN',to:'HND',dep:[1,'07:55'],arr:[1,'22:35'],air:'亞洲航空＋亞航X（經吉隆坡）',type:'cash',price:11890,dur:'13h40',stops:'1停吉隆坡',bag:'extra',src:'08-09',note:'SQ632 候補沒清時的同日備案，22:35 當天抵達'},
  // 日航自家特典 HKG→東京 9/28（08-08 使用者實查，○＝可訂）
- {id:'r53',from:'HKG',to:'HND',dep:[1,'23:45'],arr:[2,'04:55'],air:'日航 JL028（787-8）',type:'mile',miles:11000,prog:'日航',tax:4616,dur:'4h10',stops:'直飛',bag:'incl',src:'08-08',note:'★畫面紅底標記＝該日最低哩程。稅 ¥22,650。11,000 哩省下 NT$2,458（對照現金 7,074）→ 每哩僅 NT$0.22'},
- {id:'r54',from:'HKG',to:'NRT',dep:[1,'10:30'],arr:[1,'15:55'],air:'日航 JL736（787-8）',type:'mile',miles:24000,prog:'日航',tax:4616,dur:'4h25',stops:'直飛',bag:'incl',src:'08-08',note:'○可訂。稅 ¥22,650。每哩僅 NT$0.10，比 JL028 差很多。接 CX178（06:55 抵港）轉機 3h35'},
- {id:'r55',from:'HKG',to:'HND',dep:[1,'15:15'],arr:[1,'20:25'],air:'日航 JL026（787-9，SKY 787 共掛）',type:'mile',miles:27000,prog:'日航',tax:4616,dur:'4h10',stops:'直飛',bag:'incl',src:'08-08',note:'○可訂。稅 ¥22,650。三班中哩程最貴。接 TG462+TG600（11:45 抵港）轉機 3h30'},
+ {id:'r53',from:'HKG',to:'HND',dep:[1,'23:45'],arr:[2,'04:55'],air:'日航 JL028（787-8）',type:'mile',miles:11000,prog:'日航',tax:4616,dur:'4h10',stops:'直飛',bag:'incl',src:'08-08',note:'★畫面紅底標記＝該日最低哩程。稅 ¥22,650。08-09 同班現金 23,825 → 每哩 1.75；±3h 替代 NH814 23,204 → 1.69（若接受快運 23:35 6,020 → 0.13）。⚠ 04:55 抵達＝9/29，依你 08-09 的規則出局'},
+ {id:'r54',from:'HKG',to:'NRT',dep:[1,'10:30'],arr:[1,'15:55'],air:'日航 JL736（787-8）',type:'mile',miles:24000,prog:'日航',tax:4616,dur:'4h25',stops:'直飛',bag:'incl',src:'08-08',note:'○可訂。稅 ¥22,650。08-09 同班現金 23,825 → 每哩 0.80（對同段 HX 7,371 僅 0.10）。接 CX178（06:55 抵港）轉機 3h35'},
+ {id:'r55',from:'HKG',to:'HND',dep:[1,'15:15'],arr:[1,'20:25'],air:'日航 JL026（787-9，SKY 787 共掛）',type:'mile',miles:27000,prog:'日航',tax:4616,dur:'4h10',stops:'直飛',bag:'incl',src:'08-08',note:'○可訂。稅 ¥22,650。08-09 同班現金 23,825 → 每哩 0.71。接 TG462+TG600（11:45 抵港）轉機 3h30'},
  // ANA 越航商務（08-08 使用者於 ANA 引擎實查，可訂）
- {id:'r52',from:'MEL',to:'HKG',dep:[1,'00:25'],arr:[1,'13:30'],air:'越南航空 VN778＋VN592',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2688,dur:'15h05',stops:'1停河內 3h20',bag:'incl',src:'08-08',note:'⚠ 9/28 凌晨 00:25 出發——在 9/27 20:00–23:59 窗外 26 分鐘，依你要求列入。稅 JPY 13,190（ANA 引擎實查）；ANA 不收候補＝顯示即可訂。★同組同艙現金 NT$71,713 → 每哩 1.44'},
+ {id:'r52',from:'MEL',to:'HKG',dep:[1,'00:25'],arr:[1,'13:30'],air:'越南航空 VN778＋VN592',cabin:'商務',type:'mile',miles:48000,prog:'ANA',tax:2688,dur:'15h05',stops:'1停河內 3h20',bag:'incl',src:'08-08',note:'⚠ 9/28 凌晨 00:25 出發——在 9/27 20:00–23:59 窗外 26 分鐘，依你要求列入。稅 JPY 13,190（ANA 引擎實查）；ANA 不收候補＝顯示即可訂。★同組同艙現金 NT$71,713 → 每哩 1.44。⚠ 08-09 追查接駁：13:30 抵港後當天到東京——HX 14:20 轉 50 分不可行、快運 17:35 已排除、國泰 16:20→21:35 要 25,347、JL026 15:15 轉 1h45 高風險 → 依「不接受 9/29 抵達」實質出局'},
  // 長榮星盟 商務（08-08 實查，全候補）
  {id:'r49',from:'MEL',to:'SIN',dep:[0,'23:35'],arr:[1,'05:30'],air:'新航 SQ218',cabin:'商務',type:'wait',miles:77500,prog:'長榮',tax:2602,dur:'7h55',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 AUD 114.25'},
  {id:'r50',from:'SIN',to:'NRT',dep:[1,'09:25'],arr:[1,'17:30'],air:'新航 SQ012',cabin:'商務',type:'wait',miles:40000,prog:'長榮',tax:1641,dur:'7h05',stops:'直飛',bag:'incl',src:'08-08',note:'候補；稅 SGD 65.20'},
