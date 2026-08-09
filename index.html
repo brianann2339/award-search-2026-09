@@ -141,6 +141,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
   <button role="tab" data-t="sum" aria-selected="true">總覽與結論</button>
   <button role="tab" data-t="obuild">去程選擇器</button>
   <button role="tab" data-t="rbuild">回程選擇器</button>
+  <button role="tab" data-t="value">每哩價值</button>
   <button role="tab" data-t="eva">長榮（最新）</button>
   <button role="tab" data-t="ana">ANA</button>
   <button role="tab" data-t="cash">現金票價</button>
@@ -152,148 +153,149 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 
 <!-- ================= 總覽 ================= -->
 <section id="sum">
-  <h2>一句話結論</h2>
+  <h2>現在的答案（2026-08-09 版）</h2>
   <div class="callout">
-    <strong>經曼谷轉機，ANA 里程可以完整訂完整趟行程，而且回程那段是商務艙。</strong>
-    2026-08-07 補查發現：東京⇄墨爾本「直通」確實全無空位，但<strong>拆成經 BKK 的四段，每一段都有確認位（非候補）</strong>。
-    其中 <strong>TG462 墨爾本 23:30 → 曼谷 商務艙直飛</strong> 正好落在你的回程時段內。
+    <strong>去程與回程各剩兩個定案候選，其他都出局了。</strong>
+    <br><strong>去程</strong>——兩條路同一個形狀「後段先鎖、前段賭候補、備案是現金」：
+    <br>　· 經新加坡（省）：<strong>TK168 現金 10,833 先買</strong>＋前段掛 NH843 豪經候補 25,500 → 清了 18h00 當日到；沒清買廈門 13,114
+    <br>　· 經香港（躺）：<strong>VN595＋VN781 商務 48,000 先訂</strong>（唯一免候補的里程票）＋前段掛 NH813 候補 10,000 → 沒清買國泰／日航 19,346
+    <br><strong>回程</strong>——看你要哪種效率：
+    <br>　· 最早到家：<strong>E　CX178＋港航</strong>　16h10、NRT 14:55（亞萬 20,000＋NT$15,570）
+    <br>　· 當天到且全程躺：<strong>B′　TG462 商務＋JL032 豪經</strong>　19h30、HND 18:00（ANA 43,500＋日航 25,000＋NT$11,222）
   </div>
   <div class="callout warn">
-    <strong>但別把每一段都用里程換。</strong>里程的價值集中在「現金很貴」的那一段——也就是墨爾本飛出去的長程商務。
-    其餘短程用里程換反而虧。
-  </div>
-  <div class="callout warn">
-    <strong>★★★ 2026-08-08 重大更正：9/19 當日出發是可行的，我先前寫「不可能」是錯的。</strong>
-    <br>原紀錄有一節標題掛著「依班表資料，非推測」，宣稱所有 9/19 出發的航班最快都要隔日才到墨爾本。
-    <strong>這個結論錯誤</strong>——我把單一引擎回傳的 7 組結果當成班表全集，據此下了物理可能性的判斷。
-    使用者提供 Google Flights 截圖證實，9/19 <strong>凌晨</strong>出發可當日抵達：
-    <br>① <strong>泰航 TG661</strong> HND 00:20 → BKK 04:50（轉 3h20）→ <strong>TG461</strong> BKK 08:10 → <strong>MEL 20:00</strong>　全程 15h40
-    <br>② <strong>全日空 NH843</strong> HND 00:40 → SIN 06:40（轉 4h30）→ <strong>新航 SQ217</strong> SIN 11:10 → <strong>MEL 20:35</strong>
-    <br>③ <strong>全日空 NH877</strong> HND 01:25 → BKK 05:55（轉 2h15）→ TG461 → <strong>MEL 20:00</strong>　④ <strong>全日空 NH849</strong> HND 00:15 → BKK 04:35（轉 3h35）→ TG461 → <strong>MEL 20:00</strong>
-    <br>四組都在 21:30 前抵達。而且這四段裡有三段本來就在我自己的紀錄裡——我有拼圖卻沒接起來。
-    <br><strong>影響</strong>：現行建議方案要 9/18 出發、在新加坡過夜；這兩組讓你<strong>少佔用一整天</strong>。
-    <span class="tag t-warn">里程空位未驗證</span>ANA 網站已登出，9/19 的里程空位還沒查——下方數字是依分區表推算，不是實查。
-  </div>
-  <div class="tablewrap">
-  <table data-sortable id="d919">
-    <thead><tr><th>9/19 當日出發組合</th><th class="num">哩程</th><th>時刻</th><th>ANA 實查狀態（08-08 22:00–22:05 JST）</th></tr></thead>
-    <tbody>
-      <tr><td><strong>NH843 ＋ TK168（經新加坡）</strong><br><span style="font-size:11px;color:var(--muted)">唯一還活著的組合</span></td>
-        <td class="num">商務 42,500 ＋ 經濟 23,000 = <strong>65,500</strong><br><span style="font-size:11px">（前段改豪經則 25,500＋23,000 = 48,500）</span></td>
-        <td>HND 00:40 → SIN 06:40（轉 3h45）<br>SIN 10:25 → <strong>MEL 19:40</strong></td>
-        <td>前段 <span class="tag t-wait">候補</span>（商務／豪經皆候補，<strong>經濟連候補都沒有</strong>）<br>後段 <span class="tag t-yes">可訂</span></td></tr>
-      <tr><td>NH877 ＋ TG461（經曼谷）</td><td class="num">商務 42,500 ＋ —</td><td>HND 01:25 → BKK 05:55</td><td>前段 <span class="tag t-wait">商務候補</span>／<strong>後段 TG461 完全無位</strong> → <span class="tag t-no">走不通</span></td></tr>
-      <tr><td>NH849 ＋ TG461（經曼谷）</td><td class="num">—</td><td>HND 00:15 → BKK 04:35</td><td><span class="tag t-no">連候補都沒有</span></td></tr>
-      <tr><td>TG661 ＋ TG461（經曼谷）</td><td class="num">—</td><td>HND 00:20 → BKK 04:50</td><td><span class="tag t-no">連候補都沒有</span></td></tr>
-      <tr><td>NH843 ＋ SQ217（經新加坡）</td><td class="num">—</td><td>SIN 11:10 → MEL 20:35</td><td>SQ217 <span class="tag t-no">連候補都沒有</span>（同航線改用 TK168 才有位）</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="note"><strong>使用者於 2026-08-08 22:00–22:05 JST 在 ANA 引擎逐筆人工查證</strong>（有截圖者為實見畫面；未出現者＝連候補都沒有）。
-  稅金：NH843 JPY 40,230＝NT$8,199／NH877 JPY 40,520＝NT$8,258／TK168 JPY 37,580＝NT$7,659。
-  <br><strong>結論：四組裡三組出局</strong>——經曼谷的三組全部倒在 TG461 該日無位；SQ217 也沒有。
-  只剩 <strong>NH843 ＋ TK168</strong>，但前段僅有候補（且經濟艙連候補都沒有，得用商務或豪經），後段 TK168 是可訂的。
-  <br>ANA 畫面註記：<em>The availability status may change prior to making a ticket purchase.</em></p>
-
-  <div class="callout ok">
-    <strong>★★ 2026-08-08 依你的兩個條件全部重算：不搭香港快運 ＋ 廉航要加行李費。</strong>
-    所有現金票價已於今日（2026-08-08）用 Google Flights 重查，含稅、TWD、<strong>已排除香港快運</strong>。
-    <br><strong>結論翻轉：拆四段買的優勢完全消失了。</strong>
-    原本「拆四段 NT$38,040 比直通 NT$40,391 省 NT$2,351」——但那四段全是廉航，
-    加上行李費後變成 <strong>NT$42,769–46,769</strong>，反而<strong>比直通一張票貴 NT$2,336–6,336</strong>。
-    <br>而最佳里程方案改成<strong>全程傳統航空、零廉航、零香港快運</strong>：現金 <strong>NT$33,848</strong> ＋ 48,000 ANA 哩。
-  </div>
-  <p class="note"><strong>行李費怎麼算的：</strong>傳統航空經濟艙票價一般已含託運行李，故不加價；
-  廉航（酷航／濟州／德威等）每段以 <strong>NT$1,000–2,000</strong> 估列——這是<u>你提供的區間</u>，我沒有逐家查證實際費率，
-  因為各家依航線、重量、購買時機而異。下表對廉航段同時列出下緣與上緣。</p>
-  <div class="callout warn">
-    <strong>★ CX178 那條被降級了。</strong>
-    原本它掛著「里程最省（20,000 亞萬哩）」，但稅金實際是 <strong>NT$8,199</strong>（亞萬訂位頁 HKD 1,995；其中國泰燃油附加費就 NT$5,640，8/1 剛漲 41%）。
-    用 2026-08-08 的新票價重算：CX178 方案現金 <strong>NT$39,220</strong>、回程長程段是經濟；ANA/TG462 方案現金只要 <strong>NT$33,848</strong> 而且是商務平躺。
-    <strong>少用 28,000 哩，卻要多付 NT$5,372 並降到經濟艙——在你里程充足的前提下不值得。</strong>
-  </div>
-  <div class="tablewrap">
-  <table data-sortable>
-    <thead><tr><th>建議做法</th><th class="num">里程</th><th class="num">現金（已含行李）</th><th class="num">廉航段</th><th class="nosort">逐段班次</th></tr></thead>
-    <tbody>
-      <tr>
-        <td><strong>★★ B　ANA 換 MEL→HKG 商務</strong><br><span style="font-size:11px;color:var(--muted)">全程傳統航空，零廉航、零香港快運</span></td>
-        <td class="num"><strong>48,000</strong><br><span style="font-size:11px">ANA</span></td>
-        <td class="num"><strong>NT$33,848</strong></td><td class="num">0</td>
-        <td class="seg"><ol>
-          <li>9/18　<span class="fno">廈門航空 MF</span>　NRT 14:55 → SIN 01:40<sup>+1</sup>　1 停廈門 11h45<span class="pay pay-cash">NT$13,114 含行李</span></li>
-          <li>9/19　<span class="fno">土耳其航空 TK168</span>　SIN 10:25 → MEL 19:40　直飛 7h15<span class="pay pay-cash">NT$10,833 含行李</span></li>
-          <li>9/27　<span class="fno">泰航 TG462＋TG600</span>　MEL <strong>23:30</strong> → BKK → HKG 11:45<sup>+1</sup>　<strong>商務</strong> 14h15<span class="pay pay-mile">48,000 ANA ＋ NT$2,827</span></li>
-          <li>9/28　<span class="fno">香港航空 HX</span>　HKG 14:20 → NRT 20:05　直飛 4h45<span class="pay pay-cash">NT$7,074 含行李</span></li>
-        </ol>
-        <div class="warnline">轉機：SIN 停 8h45（過夜）、HKG 停 2h35。抵達 MEL 9/19 19:40，符合 21:30 前；回程 23:30 出發，符合 20:00–23:59。</div></td>
-      </tr>
-      <tr>
-        <td>C　ANA 換 MEL→BKK 商務<br><span style="font-size:11px;color:var(--muted)">少用 4,500 哩，但多花現金</span></td>
-        <td class="num">43,500<br><span style="font-size:11px">ANA</span></td>
-        <td class="num">NT$35,098</td><td class="num">0</td>
-        <td class="seg"><ol>
-          <li>9/18　<span class="fno">廈門航空 MF</span>　NRT 14:55 → SIN 01:40<sup>+1</sup>　1 停廈門 11h45<span class="pay pay-cash">NT$13,114 含行李</span></li>
-          <li>9/19　<span class="fno">土耳其航空 TK168</span>　SIN 10:25 → MEL 19:40　直飛 7h15<span class="pay pay-cash">NT$10,833 含行李</span></li>
-          <li>9/27　<span class="fno">泰航 TG462</span>　MEL <strong>23:30</strong> → BKK 06:00<sup>+1</sup>　<strong>商務直飛</strong> 9h30<span class="pay pay-mile">43,500 ANA ＋ NT$2,827</span></li>
-          <li>9/28　<span class="fno">香港航空 HX</span>　BKK 15:55 → NRT 14:15<sup>+1</sup>　1 停香港 20h20<span class="pay pay-cash">NT$8,324 含行李</span></li>
-        </ol>
-        <div class="warnline">比 B 少 4,500 哩，但現金多 NT$1,250，且最後一段要 20 小時。</div></td>
-      </tr>
-      <tr>
-        <td>A　同 B，但去程走香港<br><span style="font-size:11px;color:var(--muted)">含 1 段廉航</span></td>
-        <td class="num">48,000<br><span style="font-size:11px">ANA</span></td>
-        <td class="num">NT$35,272–36,272</td><td class="num">1</td>
-        <td class="seg"><ol>
-          <li>9/18　<span class="fno">香港航空 HX</span>　NRT 15:15 → HKG 19:20　直飛 5h05<span class="pay pay-cash">NT$11,973 含行李</span></li>
-          <li>9/18　<span class="fno">酷航 TR</span>　HKG 20:45 → MEL 20:20<sup>+1</sup>　1 停新加坡 21h35<span class="pay pay-cash">NT$12,398 ＋行李</span></li>
-          <li>9/27　<span class="fno">泰航 TG462＋TG600</span>　MEL <strong>23:30</strong> → HKG 11:45<sup>+1</sup>　<strong>商務</strong> 14h15<span class="pay pay-mile">48,000 ANA ＋ NT$2,827</span></li>
-          <li>9/28　<span class="fno">香港航空 HX</span>　HKG 14:20 → NRT 20:05　直飛 4h45<span class="pay pay-cash">NT$7,074 含行李</span></li>
-        </ol>
-        <div class="warnline">⚠ 第 1→2 段在香港只有 <strong>85 分鐘</strong>，且是兩張分開的票。比 B 貴又比 B 累，列出來只是備案。</div></td>
-      </tr>
-      <tr>
-        <td><strong>E　全現金直通一張票</strong><br><span style="font-size:11px;color:var(--muted)">不想用里程就選這個</span></td>
-        <td class="num">0</td><td class="num"><strong>NT$40,433</strong></td><td class="num">0</td>
-        <td class="seg"><ol>
-          <li>9/18　<span class="fno">中國南方 CZ</span>　HND 15:40 → MEL 08:40<sup>+1</sup>　1 停廣州、轉機 2h05、全程 16h00</li>
-          <li>9/27　<span class="fno">中國南方 CZ</span>　MEL <strong>21:10</strong> → HND 19:55<sup>+1</sup>　全程 23h45</li>
-        </ol>
-        <div class="warnline">單一訂位代號、行李直掛、有轉機保障。<strong>現在比拆四段還便宜。</strong></div></td>
-      </tr>
-      <tr>
-        <td>D　全現金拆四段<br><span style="font-size:11px;color:var(--muted)">四段全廉航——<u>已不再划算</u></span></td>
-        <td class="num">0</td><td class="num">NT$42,769–46,769</td><td class="num">4</td>
-        <td class="seg"><ol>
-          <li>9/18　<span class="fno">濟州航空 7C</span>　NRT 10:30 → SIN 23:25　1 停釜山 13h55<span class="pay pay-cash">NT$10,865 ＋行李</span></li>
-          <li>9/19　<span class="fno">酷航 TR</span>　SIN 11:05 → MEL 20:20　直飛 7h15<span class="pay pay-cash">NT$7,368 ＋行李</span></li>
-          <li>9/27　<span class="fno">酷航 TR</span>　MEL <strong>21:35</strong> → SIN 03:40<sup>+1</sup>　直飛 8h05<span class="pay pay-cash">NT$10,082 ＋行李</span></li>
-          <li>9/28　<span class="fno">德威航空 TW</span>　SIN 23:00 → NRT 11:05<sup>+1</sup>　1 停首爾 11h05<span class="pay pay-cash">NT$10,454 ＋行李</span></li>
-        </ol>
-        <div class="warnline">票面 NT$38,769，但四段都要另付行李（NT$1,000–2,000 × 4）→ <strong>總額反而超過直通一張票</strong>。還要自理 4 段轉機、無銜接保障。</div></td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="callout warn">
-    <strong>而且拆開買省不到多少。</strong>把四段都用「確實符合時段」的單程票重算後：
-    經 SIN 拆 <strong>NT$38,040</strong>、經 BKK 拆 <strong>NT$39,157</strong>、直通一張票 <strong>NT$40,391</strong>。
-    最多省約 NT$2,350，代價是 4 張分開的廉航票、自理轉機、行李餐食另計、誤點無銜接保障。
+    <strong>一條貫穿全案的結構：ANA 自家班機（NH）在這個窗口全是候補；夥伴獎勵（TG／VN／TK）不收候補、畫面顯示即可訂。</strong>
+    所以「現在就拿得到」的里程票全是夥伴票。另外里程價值集中在長程商務段，短程與白天段一律買現金——完整 31 列數字在「每哩價值」分頁。
   </div>
 
   <div class="grid">
-    <div class="kpi"><div class="lbl">★ 純現金最佳（符合兩個時段）</div><div class="val">NT$40,433</div><div class="fine">中國南方直通 · 單一機票、含行李、有轉機保障</div></div>
-    <div class="kpi"><div class="lbl">現金 · 自己拆四段（經 SIN）</div><div class="val">NT$42,769–46,769</div><div class="fine">票面 38,769 ＋ 四段廉航行李費 → 已比直通貴</div></div>
-    <div class="kpi"><div class="lbl">現金 · 商務艙來回最低</div><div class="val">NT$156,884</div><div class="fine">國泰 15h45（NT$103,924 為菲航 39h）</div></div>
-    <div class="kpi"><div class="lbl">★ 最佳里程用法（可訂）</div><div class="val">48,000 哩<br><span style="font-size:13px">＋NT$33,848</span></div><div class="fine">TG462+TG600 MEL→HKG 商務，取代 NT$78,233 同班同艙現金票（<strong>每哩 NT$1.57</strong>）；其餘三段全傳統航空含行李。候補側更高的有 NH843 豪經 2.12／商務 1.96、SQ632 經濟 1.88（見換算表）</div></div>
+    <div class="kpi"><div class="lbl">★ 去程建議（經 SIN）</div><div class="val">10,833 起<br><span style="font-size:13px">＋掛 25,500 哩候補</span></div><div class="fine">TK168 先鎖 19:40 抵達；NH843 豪經清了＝18h00，沒清補廈門＝全現金 23,947</div></div>
+    <div class="kpi"><div class="lbl">★ 回程建議</div><div class="val">E 16h10<br><span style="font-size:13px">或 B′ 19h30</span></div><div class="fine">E：亞萬 20,000＋15,570（NRT 14:55）／B′：ANA 43,500＋日航 25,000＋11,222（HND 18:00 全平躺）</div></div>
+    <div class="kpi"><div class="lbl">純現金保底（來回一張票）</div><div class="val">NT$40,433</div><div class="fine">中國南方直通：去程 16h00 全表最快，但回程 23h45 全表最慢</div></div>
+    <div class="kpi"><div class="lbl">兌換價值王（每哩）</div><div class="val">可訂 1.57<br><span style="font-size:13px">候補 2.12</span></div><div class="fine">可訂：TG462+TG600 商務／候補：NH843 豪經 2.12、SQ632 1.88（詳見「每哩價值」）</div></div>
   </div>
 
-  <h2>每哩價值換算（2026-08-08，同艙對比）</h2>
-  <div class="callout warn">
-    <strong>⚠️ 本表已於 2026-08-08 重做。舊版拿<u>經濟艙</u>現金價去除<u>商務艙</u>里程，那不是「偏低的值」，是無效的值</strong>——
-    我卻給它標個「偏低」就放進表裡一起排序，等於讓沒有意義的數字看起來像可比較的資料。
-    現已全部改用<strong>同艙現金價</strong>重查重算，商務那幾列從 0.27–0.33 變成 <strong>1.31–1.57</strong>，結論完全不同。
+  <h2>去程五＋一個方案的正面對決（08-09）</h2>
+  <p class="note">你對去程的條件是<strong>舒適度、價格、里程消耗兼顧，也不排斥現金</strong>——所以這裡不像回程只看快，六案都列出來讓三個維度自己說話。
+  硬條件：<strong>9/19 21:30 前抵達 MEL</strong>。依總時長排序（東京起飛 → 抵達墨爾本）。</p>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>方案</th><th class="nosort">航段</th><th class="nosort">可訂性</th><th class="num">總時長</th><th class="num">抵達</th><th class="nosort">哩程</th><th class="num">現金</th><th class="nosort">備註</th></tr></thead>
+    <tbody>
+      <tr><td><strong>甲 一張票</strong></td><td class="wrapcell">中國南方 CZ　HND 15:40 → 廣州 → <strong>MEL 08:40<sup>+1</sup></strong></td><td><span class="tag t-yes">✓ 全現金</span></td><td class="num"><strong>16h00</strong></td><td>MEL 08:40</td><td class="wrapcell">—</td><td class="num">40,433</td><td class="wrapcell"><strong>最快、零轉機風險、含 9/27 回程</strong>。但回程被綁死在 CZ 21:10→19:55<sup>+1</sup>（23h45），與你要的高效回程衝突</td></tr>
+      <tr><td><strong>乙 綜合最佳</strong></td><td class="wrapcell"><strong>NH843　HND 00:40（9/19）→ SIN 06:40 豪華經濟</strong>（轉 3h45）＋<strong>TK168　SIN 10:25 → MEL 19:40</strong> 現金</td><td><span class="tag t-wait">⚠ 前段候補</span></td><td class="num">18h00</td><td>MEL 19:40</td><td class="wrapcell">ANA 25,500</td><td class="num">19,032</td><td class="wrapcell">豪經過夜、當日出發當日到。<strong>每哩 2.12 全表最高</strong>。你已定 TK168 走現金 → 這就是「前段升等、後段現金」的混搭。⚠ 前段候補，保底是丙</td></tr>
+      <tr><td><strong>丁 商務</strong></td><td class="wrapcell">國泰／日航　NRT 09:25 → HKG 13:15（轉 5h30）＋<strong>VN595＋VN781　18:45 → MEL 商務</strong></td><td><span class="tag t-yes">✓ 全可訂</span></td><td class="num">22h10</td><td>MEL 08:35</td><td class="wrapcell">ANA 48,000</td><td class="num">21,955</td><td class="wrapcell"><strong>全表唯一「里程段確定訂得到」的方案</strong>——VN 是夥伴獎勵，ANA 不收夥伴候補，顯示即可訂；接駁是現金票。08-09 訂位頁實證 11h50、SGN 轉 1h00、08:35 抵。<span style="color:var(--warn)">⚠ 星盟金卡在此路線用不到（越航屬天合、接駁屬寰宇）</span></td></tr>
+      <tr><td>戊 前段商務</td><td class="wrapcell"><strong>NH803　NRT 17:15 → SIN 23:20 商務候補</strong>（轉 11h05）＋ <strong>TK168 現金</strong> → MEL 19:40</td><td><span class="tag t-wait">⚠ 前段候補</span></td><td class="num">25h25</td><td>MEL 19:40</td><td class="wrapcell">ANA 42,500</td><td class="num">19,075</td><td class="wrapcell">08-09 依你指正改為<u>商務候補</u>＋TK168 現金。<span style="color:var(--warn)"><strong>但同樣 42,500 哩，NH843 商務每一項都更好</strong>（快 7h25、少等 7h20、稅便宜 43）——見下方</span></td></tr>
+      <tr><td><strong>丙 全現金</strong></td><td class="wrapcell">廈門 MF　NRT 14:55 → SIN 01:40<sup>+1</sup>（轉 8h45）＋<strong>TK168　10:25 → MEL 19:40</strong></td><td><span class="tag t-yes">✓ 全現金</span></td><td class="num">27h45</td><td>MEL 19:40</td><td class="wrapcell">—</td><td class="num">23,947</td><td class="wrapcell"><strong>零候補風險</strong>、兩段都是傳統航空含行李、一哩不花。乙 的保底方案</td></tr>
+      <tr><td>丁′ 商務·省現金</td><td class="wrapcell">NH813　HND 01:35 → HKG 05:15 里程（港停 13h30）＋ VN595＋VN781 商務</td><td><span class="tag t-wait">⚠ 前段候補</span></td><td class="num">30h00</td><td>MEL 08:35</td><td class="wrapcell">ANA 58,000</td><td class="num">6,960</td><td class="wrapcell"><strong>全表現金最省</strong>。多花 10,000 哩換掉 19,346 的接駁票＝每哩 1.50（高於 TG462 的 1.37）；香港白天 13h30 可進市區。<span style="color:var(--warn)">⚠ 08-09 截圖確認 NH813 <strong>Waitlisted</strong>。丁′＝丁 的前段升級版：VN 商務先訂起來，NH813 掛候補，沒清就買國泰／日航現金 19,346 退回丁</span></td></tr>
+    </tbody>
+  </table>
   </div>
+
+  <div class="callout warn">
+    <strong>把所有 ANA 截圖擺在一起，浮現一個結論：ANA <u>自家班機</u>在 9/18–9/19 這個窗口，東京出發的獎勵位幾乎不存在。</strong>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>ANA 自家班機（東京出發）</th><th>艙等</th><th>狀態</th><th class="num">哩程＋稅</th></tr></thead>
+      <tbody>
+        <tr><td>NH843 HND→SIN（9/19）</td><td>經濟</td><td><span class="tag t-no">連候補都沒有</span></td><td class="num">—</td></tr>
+        <tr><td>NH843 HND→SIN（9/19）</td><td>豪經／商務</td><td><span class="tag t-wait">候補</span></td><td class="num">25,500／42,500＋8,199</td></tr>
+        <tr><td>NH803・NH801 NRT→SIN（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">17,500＋8,199</td></tr>
+        <tr><td>NH803・NH801 NRT→SIN（9/18）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">42,500＋8,242</td></tr>
+        <tr><td>NH813 HND→HKG（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">10,000＋4,351</td></tr>
+        <tr><td>NH859 HND→HKG（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">10,000＋4,351</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <strong>六筆全數候補或無位——沒有一張 ANA 自家班機的獎勵票是訂得到的。</strong>
+    所以真正能「現在就確定拿到」的里程票，只剩<u>夥伴獎勵</u>：VN595＋VN781 商務 48,000（去程）、TG462 系 43,500／48,000（回程）、TK168 23,000。
+    ANA 對夥伴不開放候補，畫面顯示即代表有位。
+    <br><br><strong>這讓去程的兩條路變成同一個形狀：</strong>
+    <br>· <strong>經新加坡</strong>：TK168 現金先訂（後段固定）→ 前段掛 NH843 豪經候補 → 沒清就買廈門 13,114
+    <br>· <strong>經香港</strong>：VN595＋VN781 商務先訂（後段固定、確定有位）→ 前段掛 NH813 候補 → 沒清就買國泰／日航 19,346
+    <br>兩條都是「<strong>後段先鎖、前段賭候補、備案是現金</strong>」。差別只在後段是經濟現金還是商務里程。
+  </div>
+
+  <div class="callout ok">
+    <strong>經新加坡這條：TK168 現金先買之後，前段掛哪張候補？五個候選都接同一班 TK168（9/19 10:25）。</strong>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>前段</th><th>艙等</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">樟宜等待</th><th class="num">總時長</th><th class="nosort">評</th></tr></thead>
+      <tbody>
+        <tr><td><strong>NH843　HND 00:40（9/19）→ 06:40</strong></td><td><strong>豪華經濟</strong></td><td class="num"><strong>25,500</strong></td><td class="num">8,199</td><td class="num"><strong>3h45</strong></td><td class="num"><strong>18h00</strong></td><td class="wrapcell"><strong>★ 首選</strong>：真紅眼睡得到、同班每哩 2.12 全表最高</td></tr>
+        <tr><td>NH843　同班</td><td>商務</td><td class="num">42,500</td><td class="num">8,199</td><td class="num">3h45</td><td class="num">18h00</td><td class="wrapcell">平躺版；多 17,000 哩、邊際每哩 1.70。要換商務只選這班</td></tr>
+        <tr><td>NH803　NRT 17:15 → 23:20</td><td>經濟</td><td class="num">17,500</td><td class="num">8,199</td><td class="num">11h05</td><td class="num">25h25</td><td class="wrapcell">「同班 2.16」是假象——實際對照是廈門 13,114，只省 4,915（每哩 0.28）</td></tr>
+        <tr><td>NH801　NRT 18:40 → 00:45<sup>+1</sup></td><td>經濟</td><td class="num">17,500</td><td class="num">8,199</td><td class="num">9h40</td><td class="num">24h00</td><td class="wrapcell">同上（替代層 0.33）</td></tr>
+        <tr><td>NH803／NH801　商務（＝戊）</td><td>商務</td><td class="num">42,500</td><td class="num">8,242</td><td class="num">11h05／9h40</td><td class="num">25h25／24h00</td><td class="wrapcell">被 NH843 商務全面壓制：慢 7h25、多等 7h20、稅貴 43。唯一理由＝想在 SIN 住一晚——那用經濟掛就夠</td></tr>
+        <tr><td><strong>廈門 MF　NRT 14:55 → 01:40<sup>+1</sup></strong></td><td>經濟·<strong>現金</strong></td><td class="num">—</td><td class="num">13,114</td><td class="num">8h45</td><td class="num">27h45</td><td class="wrapcell"><strong>★ 唯一真正可訂＝保底（丙）</strong>，含行李</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <strong>結論：掛 NH843 豪經。</strong>比 NH803 經濟多 8,000 哩，換到快 7h25、少等 7h20、升一個艙等、而且是能睡的時段——<u>稅還完全相同（都是 JPY 40,230）</u>。
+    TK168 本身別用哩（每哩 0.14），這是你自己也定案的。
+  </div>
+
+  <div class="callout warn">
+    <strong>四個提醒。</strong>
+    <br>① <strong>甲（CZ 來回 40,433）的陷阱</strong>：去程 16h00 全表最快、零轉機風險，但回程被綁死在 23h45 的廣州轉機——只有你願意兩邊都搭 CZ 時才成立。
+    <br>② <strong>走經香港就走丁′</strong>：NH813 候補（10,000 哩＋4,351）換掉 19,346 的接駁票＝每哩 1.50；沒清就退回丁，VN 商務那段不受影響。
+    <br>③ <strong>越航兩個真實疑慮</strong>：SGN 轉機僅 1h00（同一張票、誤點越航負責改簽，風險是趕不是丟包）；星盟金卡整條路線用不到（VN 天合＋接駁寰宇）。另外它的每哩只能給 1.01–1.70 區間——越航自家商務現金 GF 未售，拿不到同班分母。
+    <br>④ <strong>短程與白天段一律現金</strong>：TK168 用哩只有 0.14、香港→東京 JL 系對替代 0.11–0.69、JL774 稅吃掉現金 56%（0.44）。
+  </div>
+
+  <h2>回程五個方案的正面對決（08-09，加入 JAL 曼谷線之後）</h2>
+  <p class="note">你說回程<strong>以效率為主</strong>，所以這裡用「MEL 起飛到抵達東京的總時長」排序，不是用價格排序。</p>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>方案</th><th class="nosort">航段</th><th class="num">總時長</th><th class="num">抵達</th><th class="nosort">哩程</th><th class="num">現金</th><th class="nosort">備註</th></tr></thead>
+    <tbody>
+      <tr><td><strong>E 最快</strong></td><td class="wrapcell">CX178 MEL 23:45→HKG 06:55（轉 2h15）＋<strong>港航 HX 09:10→NRT 14:55</strong></td><td class="num"><strong>16h10</strong></td><td>NRT 14:55</td><td class="wrapcell">亞萬 20,000</td><td class="num">15,570</td><td class="wrapcell">最快、哩程最省。經濟全程；轉機 2h15 若行李不能直掛會很趕</td></tr>
+      <tr><td><strong>D 寰宇</strong></td><td class="wrapcell">CX178 MEL 23:45→HKG 06:55（轉 3h35）＋<strong>JL736 10:30→NRT 15:55</strong></td><td class="num">17h10</td><td>NRT 15:55</td><td class="wrapcell">亞萬 20,000<br>＋日航 24,000</td><td class="num">12,815</td><td class="wrapcell">兩段都是寰宇一家。JL736 每哩僅 0.80／替代 0.11——<strong>用 24,000 哩換這段很虧</strong>，改買 HX 現金即方案 E</td></tr>
+      <tr><td><strong>B 全商務</strong></td><td class="wrapcell"><strong>TG462 MEL 23:30→BKK 06:00 商務</strong>（轉 3h40）＋<strong>JL032 09:40→HND 18:00 商務</strong></td><td class="num">19h30</td><td><strong>HND 18:00</strong></td><td class="wrapcell">ANA 43,500<br>＋日航 40,000</td><td class="num">11,222</td><td class="wrapcell"><strong>唯一全程商務且當天到</strong>。兩段每哩 1.37 與 1.05 都及格。落地羽田不是成田</td></tr>
+      <tr><td>B′ 商務＋豪經</td><td class="wrapcell">TG462 商務（轉 3h40）＋<strong>JL032 豪經 25,000 哩</strong></td><td class="num">19h30</td><td>HND 18:00</td><td class="wrapcell">ANA 43,500<br>＋日航 25,000</td><td class="num">11,222</td><td class="wrapcell">比 B 省 15,000 日航哩，只降級後段 6h20。<strong>哩程效率最佳解</strong></td></tr>
+      <tr><td>A 原推薦</td><td class="wrapcell">TG462＋TG600 MEL 23:30→HKG 11:45 商務（轉 2h35）＋港航 HX 14:20→NRT 20:05</td><td class="num">21h35</td><td>NRT 20:05</td><td class="wrapcell">ANA 48,000</td><td class="num">9,901</td><td class="wrapcell">單一里程計畫、現金最省；但<strong>最慢、最晚到</strong>，後段還是經濟</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout ok">
+    <strong>加入 JAL 之後，回程的推薦換了。</strong>
+    <br>你原本的 A（TG462+TG600＋HX）現在是<u>五案裡最慢的</u>。同一班 TG462 在曼谷下車、改接 JL032，
+    <strong>早 2 小時 5 分到、而且落地羽田、而且全程商務</strong>，代價是多花 NT$1,321 現金與 40,000（或豪經 25,000）日航哩。
+    <br>若「效率」你指的是<u>最早到家</u> → <strong>E</strong>（NRT 14:55，20,000 亞萬＋NT$15,570）。
+    若指的是<u>當天到且不受罪</u> → <strong>B′</strong>（HND 18:00，全程平躺／豪經，ANA 43,500＋日航 25,000）。
+  </div>
+  <div class="callout warn">
+    <strong>關於你說的「寰宇一家行李可以直掛」——這點我不敢替你打包票，理由是結構性的。</strong>
+    <br>CX178 是亞萬開的票、JL736 是 JAL 里程開的票，<u>兩張不同計畫的獎勵票＝兩個訂位代號</u>。
+    分開票的行李直掛，實務上是<strong>第一段航空公司的裁量權</strong>，不是聯盟身分自動給的權利；國泰對寰宇夥伴通常願意做，但它不是你能事先確定的規則。
+    我<u>沒有在本次查證國泰現行的公告條款</u>，所以只講我能確定的兩件事：
+    <br>（1）<strong>CX178 → JL736 轉機有 3h35</strong>，就算櫃檯不肯直掛，入境提領再重掛也來得及——風險是麻煩，不是趕不上。
+    <br>（2）方案 E 的 HX 轉機只有 <strong>2h15</strong>，而且港航不是寰宇一家，<u>一定不能直掛</u>，必須入境香港提行李再出境。這是 E 比 D 快 1 小時要付的代價。
+    <br>要 100% 直掛只有一個做法：<strong>兩段開在同一張票上</strong>（同一個里程計畫或同一張現金票）。
+  </div>
+
+  <h2>各計畫在這條線的實際結果</h2>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>計畫</th><th>東京⇄墨爾本 直通</th><th>新加坡⇄墨爾本</th><th>東京⇄新加坡</th><th class="nosort">備註</th></tr></thead>
+    <tbody>
+      <tr><td>ANA 星盟夥伴票</td><td><span class="tag t-no">無位</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-no">回程時段不符</span></td><td><span class="tag t-wait">自家班機全候補</span></td><td class="wrapcell"><strong>夥伴票不收候補＝顯示即可訂；ANA 自家班機（NH）會候補</strong>——9/18–9/19 東京出發的自家獎勵位六筆全候補或無位（08-09 實查）</td></tr>
+      <tr><td>長榮 無限萬哩遊</td><td><span class="tag t-wait">全候補</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-wait">回程候補</span></td><td><span class="tag t-wait">候補</span></td><td class="wrapcell">哩數比 ANA 貴 2 倍以上</td></tr>
+      <tr><td>新航 KrisFlyer</td><td><span class="tag t-wait">多為候補</span></td><td><span class="tag t-wait">Saver 候補</span></td><td><span class="tag t-ok">少數可訂</span></td><td class="wrapcell">Advantage 價差大但仍候補</td></tr>
+      <tr><td>日本航空 JMB</td><td><span class="tag t-no">全無位</span></td><td><span class="tag t-no">未營運</span></td><td><span class="tag t-ok">有位</span></td><td class="wrapcell"><strong>2026-08-07 登入後三個引擎全查完</strong>（自家／提携社 CX·QF／寰宇一家）：東京⇄墨爾本經濟與商務皆 0，已用 TYO→SIN 正對照證明查法有效。
+      <br><strong>2026-08-08 補：香港→東京 9/28 自家特典有位</strong>——JL028 23:45→HND 04:55+1 僅 <strong>11,000 哩</strong>＋¥22,650（該日最低）、JL736 10:30→NRT 24,000 哩、JL026 15:15→HND 27,000 哩，皆○可訂。已收錄為回程卡片。</td></tr>
+      <tr><td>亞洲萬里通</td><td><span class="tag t-no">全零</span></td><td><span class="tag t-wait">去程趕不上</span></td><td><span class="tag t-no">全零</span></td><td class="wrapcell"><strong>但 MEL→HKG 回程有 CX178 直飛 20,000 里數，符合時段</strong></td></tr>
+      <tr><td>現金</td><td><span class="tag t-cash">NT$40,391</span></td><td><span class="tag t-cash">NT$15,289</span></td><td><span class="tag t-cash">NT$20,580</span></td><td class="wrapcell">皆為來回含稅</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="note">完整的每哩價值表（31 列、兩層算法）在「<strong>每哩價值</strong>」分頁；
+  歷史更正（9/19 誤判、舊方案比較表、艙等比較法修正）collapse 在「<strong>缺口與方法</strong>」分頁末尾，資料正本在 repo 的 data-tyo-sin-mel.md。</p>
+</section>
+
+<section id="value" hidden>
+  <h2>每哩價值換算（兩層制，2026-08-09）</h2>
   <p class="note">依你 08-09 定的兩層算法：<strong>每哩·同班＝（同一航班同艙現金 − 自付稅）÷ 哩程</strong>——這張票本身值多少；
   <strong>每哩·替代＝（同起迄機場、起飛 ±3h 內最便宜任意航班含行李 − 自付稅）÷ 哩程</strong>——為了到達你最少要花多少。
   替代規則：廉航加行李 NT$1,000（取你 1,000–2,000 區間下緣，用 2,000 算值會更低）；香港快運與 9/29 才抵達的班不列入替代。現金為 08-08／08-09 Google Flights 含稅快照。<strong>ANA 獎勵票的稅費只看起訖站與開票航司，與搭哪一班無關</strong>（使用者 08-09 指出；與實測相符：HND→SIN ¥40,230、NRT→SIN ¥40,440、MEL→HKG ¥13,870、HKG→MEL ¥12,800）。
@@ -304,7 +306,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
   <table data-sortable id="permile">
     <thead><tr><th>航段</th><th>艙等</th><th>狀態</th><th class="num">同班現金</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">每哩·同班</th><th class="nosort">±3h 最省替代（含行李）</th><th class="num">每哩·替代</th></tr></thead>
     <tbody>
-            <tr><td><strong>NH843／803／801 東京→SIN</strong>（9/18）</td><td>經濟</td><td><span class="tag t-yes">可訂</span></td><td class="num">44,488–46,074</td><td class="num">17,500</td><td class="num">未查*</td><td class="num"><strong>≥2.07</strong></td><td class="wrapcell">NRT 班：中華 14:30 直開 13,973／HND 00:40 班：酷航 02:20 22,555＋1,000</td><td class="num">0.33–0.88</td></tr>
+            <tr><td><strong>NH843／803／801 東京→SIN</strong>（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">44,488–46,074</td><td class="num">17,500</td><td class="num">8,199</td><td class="num"><strong>2.07–2.16</strong></td><td class="wrapcell">同班同艙；現金 44,488＝NH843（HND 00:40）、46,074＝NH803／801（NRT）。<span style="color:var(--warn)">狀態 08-09 更正：三班全候補（9/19 的 NH843 經濟更是連候補都沒有）</span>；稅實查 ¥40,230。替代：中華 14:30 直開 13,973（NRT 班）／酷航 HND 02:20 22,555＋1,000</td><td class="num">0.33–0.88</td></tr>
       <tr><td><strong>NH843 HND→SIN</strong>（9/19）</td><td>豪華經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">62,380</td><td class="num">25,500</td><td class="num">8,199</td><td class="num"><strong>2.12</strong></td><td class="wrapcell">9/19 ±3h 經濟未查<br><span style="color:var(--warn)">⚠ 同班現金為 9/18 快照，差一天</span></td><td class="num">未查</td></tr>
       <tr><td><strong>NH843 HND→SIN</strong>（9/19）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">91,288</td><td class="num">42,500</td><td class="num">8,199</td><td class="num"><strong>1.96</strong></td><td class="wrapcell">9/19 ±3h 經濟未查</td><td class="num">未查</td></tr>
       <tr><td><strong>SQ632 SIN→HND</strong>（9/28）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">49,467</td><td class="num">25,500</td><td class="num">1,641*</td><td class="num"><strong>1.88</strong></td><td class="wrapcell">亞航X 07:55（經 KUL、22:35 到）11,890＋1,000。*KF 稅未實查，借長榮同段 1,641；長榮 25,000 版同班 1.91</td><td class="num">0.44</td></tr>
@@ -363,188 +365,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     <br>⑤ 既有結論不變：回程可訂商務 TG462+TG600 同班 1.57／替代 0.20；SQ632 候補 1.88／0.44 仍是候補側最佳；短程純運輸段一律現金。
   </div>
 
-
-
-  <h2>去程五＋一個方案的正面對決（08-09）</h2>
-  <p class="note">你對去程的條件是<strong>舒適度、價格、里程消耗兼顧，也不排斥現金</strong>——所以這裡不像回程只看快，六案都列出來讓三個維度自己說話。
-  硬條件：<strong>9/19 21:30 前抵達 MEL</strong>。依總時長排序（東京起飛 → 抵達墨爾本）。</p>
-  <div class="tablewrap">
-  <table data-sortable>
-    <thead><tr><th>方案</th><th class="nosort">航段</th><th class="nosort">可訂性</th><th class="num">總時長</th><th class="num">抵達</th><th class="nosort">哩程</th><th class="num">現金</th><th class="nosort">備註</th></tr></thead>
-    <tbody>
-      <tr><td><strong>甲 一張票</strong></td><td class="wrapcell">中國南方 CZ　HND 15:40 → 廣州 → <strong>MEL 08:40<sup>+1</sup></strong></td><td><span class="tag t-yes">✓ 全現金</span></td><td class="num"><strong>16h00</strong></td><td>MEL 08:40</td><td class="wrapcell">—</td><td class="num">40,433</td><td class="wrapcell"><strong>最快、零轉機風險、含 9/27 回程</strong>。但回程被綁死在 CZ 21:10→19:55<sup>+1</sup>（23h45），與你要的高效回程衝突</td></tr>
-      <tr><td><strong>乙 綜合最佳</strong></td><td class="wrapcell"><strong>NH843　HND 00:40（9/19）→ SIN 06:40 豪華經濟</strong>（轉 3h45）＋<strong>TK168　SIN 10:25 → MEL 19:40</strong> 現金</td><td><span class="tag t-wait">⚠ 前段候補</span></td><td class="num">18h00</td><td>MEL 19:40</td><td class="wrapcell">ANA 25,500</td><td class="num">19,032</td><td class="wrapcell">豪經過夜、當日出發當日到。<strong>每哩 2.12 全表最高</strong>。你已定 TK168 走現金 → 這就是「前段升等、後段現金」的混搭。⚠ 前段候補，保底是丙</td></tr>
-      <tr><td><strong>丁 商務</strong></td><td class="wrapcell">國泰／日航　NRT 09:25 → HKG 13:15（轉 5h30）＋<strong>VN595＋VN781　18:45 → MEL 商務</strong></td><td><span class="tag t-yes">✓ 全可訂</span></td><td class="num">22h10</td><td>MEL 08:35</td><td class="wrapcell">ANA 48,000</td><td class="num">21,955</td><td class="wrapcell"><strong>全表唯一「里程段確定訂得到」的方案</strong>——VN 是夥伴獎勵，ANA 不收夥伴候補，顯示即可訂；接駁是現金票。08-09 訂位頁實證 11h50、SGN 轉 1h00、08:35 抵。<span style="color:var(--warn)">⚠ 星盟金卡在此路線用不到（越航屬天合、接駁屬寰宇）</span></td></tr>
-      <tr><td>戊 前段商務</td><td class="wrapcell"><strong>NH803　NRT 17:15 → SIN 23:20 商務候補</strong>（轉 11h05）＋ <strong>TK168 現金</strong> → MEL 19:40</td><td><span class="tag t-wait">⚠ 前段候補</span></td><td class="num">25h25</td><td>MEL 19:40</td><td class="wrapcell">ANA 42,500</td><td class="num">19,075</td><td class="wrapcell">08-09 依你指正改為<u>商務候補</u>＋TK168 現金。<span style="color:var(--warn)"><strong>但同樣 42,500 哩，NH843 商務每一項都更好</strong>（快 7h25、少等 7h20、稅便宜 43）——見下方</span></td></tr>
-      <tr><td><strong>丙 全現金</strong></td><td class="wrapcell">廈門 MF　NRT 14:55 → SIN 01:40<sup>+1</sup>（轉 8h45）＋<strong>TK168　10:25 → MEL 19:40</strong></td><td><span class="tag t-yes">✓ 全現金</span></td><td class="num">27h45</td><td>MEL 19:40</td><td class="wrapcell">—</td><td class="num">23,947</td><td class="wrapcell"><strong>零候補風險</strong>、兩段都是傳統航空含行李、一哩不花。乙 的保底方案</td></tr>
-      <tr><td>丁′ 商務·省現金</td><td class="wrapcell">NH813　HND 01:35 → HKG 05:15 里程（港停 13h30）＋ VN595＋VN781 商務</td><td><span class="tag t-wait">⚠ 前段候補</span></td><td class="num">30h00</td><td>MEL 08:35</td><td class="wrapcell">ANA 58,000</td><td class="num">6,960</td><td class="wrapcell"><strong>全表現金最省</strong>。多花 10,000 哩換掉 19,346 的接駁票＝每哩 1.50（高於 TG462 的 1.37）；香港白天 13h30 可進市區。<span style="color:var(--warn)">⚠ 08-09 截圖確認 NH813 <strong>Waitlisted</strong>。丁′＝丁 的前段升級版：VN 商務先訂起來，NH813 掛候補，沒清就買國泰／日航現金 19,346 退回丁</span></td></tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="callout ok">
-    <strong>去程最重要的一件事：乙 和 丙 的第二段是<u>同一班 TK168</u>，所以這兩案不是二選一。</strong>
-    <br>你可以<strong>現在就買 TK168 現金 10,833 把 19:40 抵達鎖住</strong>，前段掛 NH843 豪經候補（25,500 哩）；
-    候補清了就是方案乙（18h00、豪經過夜、每哩 2.12），沒清就補一張廈門 13,114 變方案丙（27h45、全含行李）。
-    <strong>先鎖後段、前段留候補</strong>——這是唯一能同時吃到「舒適＋低哩程」又不承擔候補風險的走法。
-    <br>你原本的選項 1（TK168 現金＋星盟金卡）本來就是對的，我只是把它從「一個方案」變成「一個底座」。
-  </div>
-
-  <div class="callout ok">
-    <strong>你 08-09 定了兩件事：TK168 走現金、且不排斥混搭艙等。合起來去程只剩<u>一個問題</u>。</strong>
-    <br>TK168 現金 10,833（含行李、發揮星盟金卡、19:40 抵達）當底座之後，去程唯一還沒定的就是：
-    <strong>東京 → 新加坡這一段，要用哪張票、哪個艙等。</strong>下面四個候選都接同一班 TK168：
-    <div class="tablewrap">
-    <table data-sortable>
-      <thead><tr><th>前段</th><th>艙等</th><th>狀態</th><th class="num">哩程</th><th class="num">自付</th><th class="num">每哩</th><th class="num">樟宜等待</th><th class="nosort">評</th></tr></thead>
-      <tbody>
-        <tr><td><strong>NH843　HND 00:40（9/19）→ 06:40</strong></td><td>豪華經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">25,500</td><td class="num">8,199</td><td class="num"><strong>2.12</strong></td><td class="num">3h45</td><td class="wrapcell"><strong>首選</strong>：真紅眼、睡得到、哩程最省、每哩全表最高、當日出發當日到（總 18h00）</td></tr>
-        <tr><td><strong>NH843　HND 00:40（9/19）→ 06:40</strong></td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">42,500</td><td class="num"><strong>8,199</strong></td><td class="num">1.96</td><td class="num"><strong>3h45</strong></td><td class="wrapcell">同一班平躺版。多 17,000 哩買平躺，邊際每哩 1.70。<strong>要用 42,500 哩換商務就選這班，不要選 NH803</strong></td></tr>
-        <tr><td>NH801　NRT 18:40 → 00:45<sup>+1</sup></td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">42,500</td><td class="num">8,242</td><td class="num">1.31</td><td class="num">9h40</td><td class="wrapcell">傍晚班，落地後還要耗 9h40。<strong>平躺用在睡不著的時段＝浪費</strong></td></tr>
-        <tr><td>NH803　NRT 17:15 → 23:20</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">42,500</td><td class="num">8,242</td><td class="num">現金未售</td><td class="num">11h05</td><td class="wrapcell">同上且等更久。GF 該班商務無報價，每哩算不出來</td></tr>
-        <tr><td>NH803　NRT 17:15 → 23:20</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">17,500</td><td class="num">8,199</td><td class="num">同班 2.16<br><span style="color:var(--warn)">替代 0.28</span></td><td class="num">11h05</td><td class="wrapcell">同班現金 46,074 很貴所以同班值高，但<strong>真正的對照是廈門 13,114</strong>——這 17,500 哩只省 NT$4,915</td></tr>
-        <tr><td>NH801　NRT 18:40 → 00:45<sup>+1</sup></td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">17,500</td><td class="num">8,199</td><td class="num">同班 2.16<br><span style="color:var(--warn)">替代 0.33</span></td><td class="num">9h40</td><td class="wrapcell">同上，但等待短 1h25。同班現金亦為 46,074</td></tr>
-        <tr><td><strong>廈門 MF　NRT 14:55 → 01:40<sup>+1</sup></strong></td><td>經濟·現金</td><td><span class="tag t-yes">可訂</span></td><td class="num">—</td><td class="num">13,114</td><td class="num">—</td><td class="num">8h45</td><td class="wrapcell"><strong>★ 全表唯一真正可訂的前段</strong>——ANA 這條線 9/18–9/19 三個艙等全是候補。含行李、零風險</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <strong>做法：現在買 TK168 現金鎖住 19:40，前段只掛 NH843 豪經候補（25,500），清了就 18h00 到、沒清就補廈門。</strong>
-    這正好就是你說的混搭——<u>前段紅眼用哩程升豪經、後段白天用現金坐經濟</u>。
-    <br>⚠ 反過來要提醒：<strong>混搭在去程只有「前段升等」這一種有意義</strong>。後段 TK168 若改用哩，商務 77,500 長榮哩＋NT$9,928、經濟 23,000 ANA 哩每哩僅 0.14——白天 7h15 的航段，兩種換法都比現金 10,833 差。
-  </div>
-  <div class="callout warn">
-    <strong>三個要提醒你的取捨。</strong>
-    <br>① <strong>甲（CZ 來回票）看起來最好但有陷阱</strong>：40,433 含回程，等於單程約 2 萬、16h00、零轉機風險——去程單看是全表最佳。
-    但它把回程綁死在 23h45 的廣州轉機，而你回程要的是效率。<u>甲 只有在你願意兩邊都搭 CZ 時才成立。</u>
-    <br>② <strong>戊（全里程）是這六案裡最不該做的</strong>：花 40,500 ANA 哩，卻把 23,000 哩用在每哩 0.14 的 TK168 上。
-    同樣的哩程留給回程 TG462 商務（1.37）價值高十倍。
-    <br>③ <strong>丁 vs 丁′ 的差別是「10,000 哩換 NT$14,995」</strong>（19,346 的國泰接駁 → 4,351 的 NH813 里程票），
-    折合每哩 1.50，比 TG462 的 1.37 還高——<u>如果你決定走丁，就該走丁′</u>，代價是多 7h50 且在香港耗一個白天。
-  </div>
-
-
-
-
-  <div class="callout warn">
-    <strong>把所有 ANA 截圖擺在一起，浮現一個結論：ANA <u>自家班機</u>在 9/18–9/19 這個窗口，東京出發的獎勵位幾乎不存在。</strong>
-    <div class="tablewrap">
-    <table>
-      <thead><tr><th>ANA 自家班機（東京出發）</th><th>艙等</th><th>狀態</th><th class="num">哩程＋稅</th></tr></thead>
-      <tbody>
-        <tr><td>NH843 HND→SIN（9/19）</td><td>經濟</td><td><span class="tag t-no">連候補都沒有</span></td><td class="num">—</td></tr>
-        <tr><td>NH843 HND→SIN（9/19）</td><td>豪經／商務</td><td><span class="tag t-wait">候補</span></td><td class="num">25,500／42,500＋8,199</td></tr>
-        <tr><td>NH803・NH801 NRT→SIN（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">17,500＋8,199</td></tr>
-        <tr><td>NH803・NH801 NRT→SIN（9/18）</td><td>商務</td><td><span class="tag t-wait">候補</span></td><td class="num">42,500＋8,242</td></tr>
-        <tr><td>NH813 HND→HKG（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">10,000＋4,351</td></tr>
-        <tr><td>NH859 HND→HKG（9/18）</td><td>經濟</td><td><span class="tag t-wait">候補</span></td><td class="num">10,000＋4,351</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <strong>六筆全數候補或無位——沒有一張 ANA 自家班機的獎勵票是訂得到的。</strong>
-    所以真正能「現在就確定拿到」的里程票，只剩<u>夥伴獎勵</u>：VN595＋VN781 商務 48,000（去程）、TG462 系 43,500／48,000（回程）、TK168 23,000。
-    ANA 對夥伴不開放候補，畫面顯示即代表有位。
-    <br><br><strong>這讓去程的兩條路變成同一個形狀：</strong>
-    <br>· <strong>經新加坡</strong>：TK168 現金先訂（後段固定）→ 前段掛 NH843 豪經候補 → 沒清就買廈門 13,114
-    <br>· <strong>經香港</strong>：VN595＋VN781 商務先訂（後段固定、確定有位）→ 前段掛 NH813 候補 → 沒清就買國泰／日航 19,346
-    <br>兩條都是「<strong>後段先鎖、前段賭候補、備案是現金</strong>」。差別只在後段是經濟現金還是商務里程。
-  </div>
-  <div class="callout warn">
-    <strong>你這兩張截圖改了兩件事，第二件比第一件重要。</strong>
-    <br>① 戊 的前段是<u>商務候補 42,500</u>，不是我寫的經濟 17,500——我的「ANA 40,500」是 17,500（NH803 經濟）＋23,000（TK168 里程）拆出來的，已改。
-    <br>② <strong>經濟艙也是候補，而且稅費 JPY 40,230 跟商務的 40,440 只差 NT$43。</strong>
-    我原本把 9/18 的 NH803／NH801 經濟標成「可訂」，<u>那是錯的</u>——已全部改為候補（摘要表、卡片 o6／o7／o8、前段選擇表都改了）。
-    <br><br><strong>這件事改變了去程的結構：ANA 東京→新加坡這條線，9/18–9/19 三個艙等全部是候補。</strong>
-    也就是說前段沒有任何一張 ANA 里程票是「訂得到」的，<u>唯一真正可訂的前段是現金票</u>（廈門 13,114 ／ 中華 13,973）。
-    <br><br><strong>既然全都是候補，那就只剩一個問題：要掛哪一張候補？</strong>
-    <div class="tablewrap">
-    <table>
-      <thead><tr><th>候補選項</th><th class="num">哩程</th><th class="num">自付稅</th><th class="num">樟宜等待</th><th class="num">總時長</th><th class="nosort">座位／時段</th></tr></thead>
-      <tbody>
-        <tr><td><strong>NH843　HND 00:40（9/19）→ 06:40 豪經</strong></td><td class="num"><strong>25,500</strong></td><td class="num">8,199</td><td class="num"><strong>3h45</strong></td><td class="num"><strong>18h00</strong></td><td class="wrapcell"><strong>豪經＋真紅眼＝睡得到</strong></td></tr>
-        <tr><td>NH843 同班 商務</td><td class="num">42,500</td><td class="num">8,199</td><td class="num">3h45</td><td class="num">18h00</td><td class="wrapcell">平躺＋真紅眼。比豪經多 17,000 哩</td></tr>
-        <tr><td>NH803　NRT 17:15 → 23:20 經濟</td><td class="num">17,500</td><td class="num"><strong>8,199</strong></td><td class="num">11h05</td><td class="num">25h25</td><td class="wrapcell">經濟＋傍晚班，落地後耗 11h05</td></tr>
-        <tr><td>NH803／NH801 商務（＝戊）</td><td class="num">42,500</td><td class="num">8,242</td><td class="num">11h05／9h40</td><td class="num">25h25／24h00</td><td class="wrapcell">平躺，但用在睡不著的時段</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <strong>答案很乾淨：掛 NH843 豪經（25,500）。</strong>
-    對照 NH803 經濟（17,500），<u>稅完全一樣（都是 JPY 40,230）</u>，多花 <strong>8,000 哩</strong>換到的是：
-    <strong>快 7h25、少等 7h20、座位從經濟變豪經、而且是能睡的紅眼時段</strong>。這 8,000 哩太划算了。
-    而戊（NH803 商務 42,500）比 NH843 商務多等 7h20、多花 7h25、稅還貴 NT$43——<strong>同樣的哩程沒有任何一項贏</strong>。
-    <br><br><span style="color:var(--muted)">（附註：NH803 經濟的「同班每哩 2.16」是假象——同班現金 46,074 是全日空自家貴，你實際的替代是廈門 13,114，
-    那 17,500 哩只省下 NT$4,915，替代層每哩 0.28。所以就算你想省哩程，經濟候補也不值得掛。）</span>
-    <br><br><strong>戊 唯一站得住的理由</strong>：如果你想「9/18 傍晚正常時間出發、在新加坡住一晚睡飽再飛」，那 11h05 就不是浪費而是刻意安排。
-    但要另計一晚飯店錢，總時長也多 7h25。若是為了這個，NH803 <u>經濟</u> 候補（17,500）就夠了——反正睡在飯店不是睡在飛機上，沒必要為 7h05 的傍晚航段花 42,500 哩買平躺。
-  </div>
-  <div class="callout warn">
-    <strong>你問越航我有沒有疑慮——先講一件事：我原本的疑慮是錯的，已收回。</strong>
-    <br>我上一輪說「11h50 對 HKG–SGN–MEL 來說太短、幾乎不可能」，那是我用粗估的航段時間推的。
-    你的訂位頁證明實際是 <strong>HKG–SGN 2h40（A321）＋ SGN 轉 1h00 ＋ SGN–MEL 8h10（A350）＝11h50</strong>，完全合理。
-    是我估錯，不是資料有問題。稅費也確認為 <strong>JPY 12,800＝NT$2,609</strong>。
-    <br><br><strong>收回那條之後，我還剩四個疑慮，兩個真的、兩個其實不成立：</strong>
-    <br>① <strong>【真】SGN 轉機只有 1h00。</strong>不過這是<u>同一張獎勵票</u>——誤點時越航有義務改簽、行李直掛，
-    而且訂位系統不會組出低於官方最短轉機時間的行程，所以 1h00 是合規的。風險是「當天可能要跑」，不是「會被丟包」。
-    <br>② <strong>【真】你的星盟金卡在這條路線上完全用不到。</strong>越航是天合聯盟、接駁的國泰／日航是寰宇一家。
-    你選項 1 特別提到要發揮星盟金卡——走越航就等於放棄它。（不過商務艙本來就有貴賓室，實際損失只有接駁段。）
-    <br>③ <strong>【不成立】前段接駁貴。</strong>這確實是事實（國泰／日航 NRT 09:25 要 NT$19,346），
-    但用 NH813 里程票（10,000 哩＋NT$4,351）就解決了，折合每哩 1.50——比 TG462 的 1.37 還划算，就是方案丁′。
-    <br>④ <strong>【不成立】怕沒位。</strong>ANA 不收候補，畫面顯示可選＝真的有位。這是去程<u>唯一免候補的商務</u>。
-    <br><br><strong>剩下真正沒解的只有一個：每哩值仍是區間 1.01–1.70。</strong>
-    因為越航自家商務現金票沒出現在 Google Flights，我拿不到「同班同艙」的分母，只能用同日同城的商務價推。這點無法靠再查解決。
-  </div>
-
-  <h2>回程五個方案的正面對決（08-09，加入 JAL 曼谷線之後）</h2>
-  <p class="note">你說回程<strong>以效率為主</strong>，所以這裡用「MEL 起飛到抵達東京的總時長」排序，不是用價格排序。</p>
-  <div class="tablewrap">
-  <table data-sortable>
-    <thead><tr><th>方案</th><th class="nosort">航段</th><th class="num">總時長</th><th class="num">抵達</th><th class="nosort">哩程</th><th class="num">現金</th><th class="nosort">備註</th></tr></thead>
-    <tbody>
-      <tr><td><strong>E 最快</strong></td><td class="wrapcell">CX178 MEL 23:45→HKG 06:55（轉 2h15）＋<strong>港航 HX 09:10→NRT 14:55</strong></td><td class="num"><strong>16h10</strong></td><td>NRT 14:55</td><td class="wrapcell">亞萬 20,000</td><td class="num">15,570</td><td class="wrapcell">最快、哩程最省。經濟全程；轉機 2h15 若行李不能直掛會很趕</td></tr>
-      <tr><td><strong>D 寰宇</strong></td><td class="wrapcell">CX178 MEL 23:45→HKG 06:55（轉 3h35）＋<strong>JL736 10:30→NRT 15:55</strong></td><td class="num">17h10</td><td>NRT 15:55</td><td class="wrapcell">亞萬 20,000<br>＋日航 24,000</td><td class="num">12,815</td><td class="wrapcell">兩段都是寰宇一家。JL736 每哩僅 0.80／替代 0.11——<strong>用 24,000 哩換這段很虧</strong>，改買 HX 現金即方案 E</td></tr>
-      <tr><td><strong>B 全商務</strong></td><td class="wrapcell"><strong>TG462 MEL 23:30→BKK 06:00 商務</strong>（轉 3h40）＋<strong>JL032 09:40→HND 18:00 商務</strong></td><td class="num">19h30</td><td><strong>HND 18:00</strong></td><td class="wrapcell">ANA 43,500<br>＋日航 40,000</td><td class="num">11,222</td><td class="wrapcell"><strong>唯一全程商務且當天到</strong>。兩段每哩 1.37 與 1.05 都及格。落地羽田不是成田</td></tr>
-      <tr><td>B′ 商務＋豪經</td><td class="wrapcell">TG462 商務（轉 3h40）＋<strong>JL032 豪經 25,000 哩</strong></td><td class="num">19h30</td><td>HND 18:00</td><td class="wrapcell">ANA 43,500<br>＋日航 25,000</td><td class="num">11,222</td><td class="wrapcell">比 B 省 15,000 日航哩，只降級後段 6h20。<strong>哩程效率最佳解</strong></td></tr>
-      <tr><td>A 原推薦</td><td class="wrapcell">TG462＋TG600 MEL 23:30→HKG 11:45 商務（轉 2h35）＋港航 HX 14:20→NRT 20:05</td><td class="num">21h35</td><td>NRT 20:05</td><td class="wrapcell">ANA 48,000</td><td class="num">9,901</td><td class="wrapcell">單一里程計畫、現金最省；但<strong>最慢、最晚到</strong>，後段還是經濟</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="callout ok">
-    <strong>加入 JAL 之後，回程的推薦換了。</strong>
-    <br>你原本的 A（TG462+TG600＋HX）現在是<u>五案裡最慢的</u>。同一班 TG462 在曼谷下車、改接 JL032，
-    <strong>早 2 小時 5 分到、而且落地羽田、而且全程商務</strong>，代價是多花 NT$1,321 現金與 40,000（或豪經 25,000）日航哩。
-    <br>若「效率」你指的是<u>最早到家</u> → <strong>E</strong>（NRT 14:55，20,000 亞萬＋NT$15,570）。
-    若指的是<u>當天到且不受罪</u> → <strong>B′</strong>（HND 18:00，全程平躺／豪經，ANA 43,500＋日航 25,000）。
-  </div>
-  <div class="callout warn">
-    <strong>關於你說的「寰宇一家行李可以直掛」——這點我不敢替你打包票，理由是結構性的。</strong>
-    <br>CX178 是亞萬開的票、JL736 是 JAL 里程開的票，<u>兩張不同計畫的獎勵票＝兩個訂位代號</u>。
-    分開票的行李直掛，實務上是<strong>第一段航空公司的裁量權</strong>，不是聯盟身分自動給的權利；國泰對寰宇夥伴通常願意做，但它不是你能事先確定的規則。
-    我<u>沒有在本次查證國泰現行的公告條款</u>，所以只講我能確定的兩件事：
-    <br>（1）<strong>CX178 → JL736 轉機有 3h35</strong>，就算櫃檯不肯直掛，入境提領再重掛也來得及——風險是麻煩，不是趕不上。
-    <br>（2）方案 E 的 HX 轉機只有 <strong>2h15</strong>，而且港航不是寰宇一家，<u>一定不能直掛</u>，必須入境香港提行李再出境。這是 E 比 D 快 1 小時要付的代價。
-    <br>要 100% 直掛只有一個做法：<strong>兩段開在同一張票上</strong>（同一個里程計畫或同一張現金票）。
-  </div>
-
-  <h2>各計畫在這條線的實際結果</h2>
-  <div class="tablewrap">
-  <table data-sortable>
-    <thead><tr><th>計畫</th><th>東京⇄墨爾本 直通</th><th>新加坡⇄墨爾本</th><th>東京⇄新加坡</th><th class="nosort">備註</th></tr></thead>
-    <tbody>
-      <tr><td>ANA 星盟夥伴票</td><td><span class="tag t-no">無位</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-no">回程時段不符</span></td><td><span class="tag t-ok">17,500 哩有位</span></td><td class="wrapcell">不接受候補，全航段須確認</td></tr>
-      <tr><td>長榮 無限萬哩遊</td><td><span class="tag t-wait">全候補</span></td><td><span class="tag t-ok">去程可訂</span> ／ <span class="tag t-wait">回程候補</span></td><td><span class="tag t-wait">候補</span></td><td class="wrapcell">哩數比 ANA 貴 2 倍以上</td></tr>
-      <tr><td>新航 KrisFlyer</td><td><span class="tag t-wait">多為候補</span></td><td><span class="tag t-wait">Saver 候補</span></td><td><span class="tag t-ok">少數可訂</span></td><td class="wrapcell">Advantage 價差大但仍候補</td></tr>
-      <tr><td>日本航空 JMB</td><td><span class="tag t-no">全無位</span></td><td><span class="tag t-no">未營運</span></td><td><span class="tag t-ok">有位</span></td><td class="wrapcell"><strong>2026-08-07 登入後三個引擎全查完</strong>（自家／提携社 CX·QF／寰宇一家）：東京⇄墨爾本經濟與商務皆 0，已用 TYO→SIN 正對照證明查法有效。
-      <br><strong>2026-08-08 補：香港→東京 9/28 自家特典有位</strong>——JL028 23:45→HND 04:55+1 僅 <strong>11,000 哩</strong>＋¥22,650（該日最低）、JL736 10:30→NRT 24,000 哩、JL026 15:15→HND 27,000 哩，皆○可訂。已收錄為回程卡片。</td></tr>
-      <tr><td>亞洲萬里通</td><td><span class="tag t-no">全零</span></td><td><span class="tag t-wait">去程趕不上</span></td><td><span class="tag t-no">全零</span></td><td class="wrapcell"><strong>但 MEL→HKG 回程有 CX178 直飛 20,000 里數，符合時段</strong></td></tr>
-      <tr><td>現金</td><td><span class="tag t-cash">NT$40,391</span></td><td><span class="tag t-cash">NT$15,289</span></td><td><span class="tag t-cash">NT$20,580</span></td><td class="wrapcell">皆為來回含稅</td></tr>
-    </tbody>
-  </table>
-  </div>
-
-  <h2>三個關鍵發現</h2>
-  <div class="callout warn">
-    <strong>1 · 清單頁看不出候補。</strong>
-    長榮的航班清單完全沒有候補標記，但一路點到「旅客資料 → 確認」頁，機位狀態才顯示<strong>候補</strong>。
-    網站自己也跳提示：「機位狀態為確認或候補需待您填寫完旅客資料才可確認」。只看清單頁會誤判。
-  </div>
+  <h3>兩個通則（整份調查反覆驗證過）</h3>
   <div class="callout warn">
     <strong>2 · 拆短不會比較便宜。</strong>
     長榮 SIN→MEL 與 NRT→MEL 都是 <strong>52,500 哩</strong>；ANA 日本⇄澳洲 91,000 哩、新加坡⇄澳洲 87,000 哩，只差 4,000 哩。
@@ -557,6 +378,7 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
     等於燒 46,000 哩只省約 NT$8,538，<strong>每哩僅約 NT$0.19</strong>。
   </div>
 </section>
+
 
 <!-- ================= 長榮 ================= -->
 <!-- ================= 去程/回程 選擇器 ================= -->
@@ -1739,6 +1561,150 @@ code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:1
 
   <h2>時區換算基準</h2>
   <p class="note">東京 UTC+9　·　新加坡 UTC+8　·　墨爾本 UTC+10（2026 年 9 月，澳洲夏令時 10/4 才開始）。</p>
+
+  <h2>更正與歷史紀錄（點開看）</h2>
+  <p class="note">結論已被取代、但當時的證據與推理保留於此；完整逐筆紀錄在 repo 的 data-tyo-sin-mel.md（Z-13～Z-22）。</p>
+  <details><summary><strong>2026-08-08　「9/19 不可能當日抵達」誤判的更正全文＋四組合實查</strong></summary>
+  <div class="callout warn">
+    <strong>★★★ 2026-08-08 重大更正：9/19 當日出發是可行的，我先前寫「不可能」是錯的。</strong>
+    <br>原紀錄有一節標題掛著「依班表資料，非推測」，宣稱所有 9/19 出發的航班最快都要隔日才到墨爾本。
+    <strong>這個結論錯誤</strong>——我把單一引擎回傳的 7 組結果當成班表全集，據此下了物理可能性的判斷。
+    使用者提供 Google Flights 截圖證實，9/19 <strong>凌晨</strong>出發可當日抵達：
+    <br>① <strong>泰航 TG661</strong> HND 00:20 → BKK 04:50（轉 3h20）→ <strong>TG461</strong> BKK 08:10 → <strong>MEL 20:00</strong>　全程 15h40
+    <br>② <strong>全日空 NH843</strong> HND 00:40 → SIN 06:40（轉 4h30）→ <strong>新航 SQ217</strong> SIN 11:10 → <strong>MEL 20:35</strong>
+    <br>③ <strong>全日空 NH877</strong> HND 01:25 → BKK 05:55（轉 2h15）→ TG461 → <strong>MEL 20:00</strong>　④ <strong>全日空 NH849</strong> HND 00:15 → BKK 04:35（轉 3h35）→ TG461 → <strong>MEL 20:00</strong>
+    <br>四組都在 21:30 前抵達。而且這四段裡有三段本來就在我自己的紀錄裡——我有拼圖卻沒接起來。
+    <br><strong>影響</strong>：現行建議方案要 9/18 出發、在新加坡過夜；這兩組讓你<strong>少佔用一整天</strong>。
+    <span class="tag t-warn">里程空位未驗證</span>ANA 網站已登出，9/19 的里程空位還沒查——下方數字是依分區表推算，不是實查。
+  </div>
+  <div class="tablewrap">
+  <table data-sortable id="d919">
+    <thead><tr><th>9/19 當日出發組合</th><th class="num">哩程</th><th>時刻</th><th>ANA 實查狀態（08-08 22:00–22:05 JST）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>NH843 ＋ TK168（經新加坡）</strong><br><span style="font-size:11px;color:var(--muted)">唯一還活著的組合</span></td>
+        <td class="num">商務 42,500 ＋ 經濟 23,000 = <strong>65,500</strong><br><span style="font-size:11px">（前段改豪經則 25,500＋23,000 = 48,500）</span></td>
+        <td>HND 00:40 → SIN 06:40（轉 3h45）<br>SIN 10:25 → <strong>MEL 19:40</strong></td>
+        <td>前段 <span class="tag t-wait">候補</span>（商務／豪經皆候補，<strong>經濟連候補都沒有</strong>）<br>後段 <span class="tag t-yes">可訂</span></td></tr>
+      <tr><td>NH877 ＋ TG461（經曼谷）</td><td class="num">商務 42,500 ＋ —</td><td>HND 01:25 → BKK 05:55</td><td>前段 <span class="tag t-wait">商務候補</span>／<strong>後段 TG461 完全無位</strong> → <span class="tag t-no">走不通</span></td></tr>
+      <tr><td>NH849 ＋ TG461（經曼谷）</td><td class="num">—</td><td>HND 00:15 → BKK 04:35</td><td><span class="tag t-no">連候補都沒有</span></td></tr>
+      <tr><td>TG661 ＋ TG461（經曼谷）</td><td class="num">—</td><td>HND 00:20 → BKK 04:50</td><td><span class="tag t-no">連候補都沒有</span></td></tr>
+      <tr><td>NH843 ＋ SQ217（經新加坡）</td><td class="num">—</td><td>SIN 11:10 → MEL 20:35</td><td>SQ217 <span class="tag t-no">連候補都沒有</span>（同航線改用 TK168 才有位）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note"><strong>使用者於 2026-08-08 22:00–22:05 JST 在 ANA 引擎逐筆人工查證</strong>（有截圖者為實見畫面；未出現者＝連候補都沒有）。
+  稅金：NH843 JPY 40,230＝NT$8,199／NH877 JPY 40,520＝NT$8,258／TK168 JPY 37,580＝NT$7,659。
+  <br><strong>結論：四組裡三組出局</strong>——經曼谷的三組全部倒在 TG461 該日無位；SQ217 也沒有。
+  只剩 <strong>NH843 ＋ TK168</strong>，但前段僅有候補（且經濟艙連候補都沒有，得用商務或豪經），後段 TK168 是可訂的。
+  <br>ANA 畫面註記：<em>The availability status may change prior to making a ticket purchase.</em></p>
+  </details>
+  <details><summary><strong>2026-08-08　不搭快運＋行李費重算的舊方案表（B／C／A／E／D，已被去程・回程對決表取代）</strong></summary>
+  <div class="callout ok">
+    <strong>★★ 2026-08-08 依你的兩個條件全部重算：不搭香港快運 ＋ 廉航要加行李費。</strong>
+    所有現金票價已於今日（2026-08-08）用 Google Flights 重查，含稅、TWD、<strong>已排除香港快運</strong>。
+    <br><strong>結論翻轉：拆四段買的優勢完全消失了。</strong>
+    原本「拆四段 NT$38,040 比直通 NT$40,391 省 NT$2,351」——但那四段全是廉航，
+    加上行李費後變成 <strong>NT$42,769–46,769</strong>，反而<strong>比直通一張票貴 NT$2,336–6,336</strong>。
+    <br>而最佳里程方案改成<strong>全程傳統航空、零廉航、零香港快運</strong>：現金 <strong>NT$33,848</strong> ＋ 48,000 ANA 哩。
+  </div>
+  <p class="note"><strong>行李費怎麼算的：</strong>傳統航空經濟艙票價一般已含託運行李，故不加價；
+  廉航（酷航／濟州／德威等）每段以 <strong>NT$1,000–2,000</strong> 估列——這是<u>你提供的區間</u>，我沒有逐家查證實際費率，
+  因為各家依航線、重量、購買時機而異。下表對廉航段同時列出下緣與上緣。</p>
+  <div class="callout warn">
+    <strong>★ CX178 那條被降級了。</strong>
+    原本它掛著「里程最省（20,000 亞萬哩）」，但稅金實際是 <strong>NT$8,199</strong>（亞萬訂位頁 HKD 1,995；其中國泰燃油附加費就 NT$5,640，8/1 剛漲 41%）。
+    用 2026-08-08 的新票價重算：CX178 方案現金 <strong>NT$39,220</strong>、回程長程段是經濟；ANA/TG462 方案現金只要 <strong>NT$33,848</strong> 而且是商務平躺。
+    <strong>少用 28,000 哩，卻要多付 NT$5,372 並降到經濟艙——在你里程充足的前提下不值得。</strong>
+  </div>
+  <div class="tablewrap">
+  <table data-sortable>
+    <thead><tr><th>建議做法</th><th class="num">里程</th><th class="num">現金（已含行李）</th><th class="num">廉航段</th><th class="nosort">逐段班次</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>★★ B　ANA 換 MEL→HKG 商務</strong><br><span style="font-size:11px;color:var(--muted)">全程傳統航空，零廉航、零香港快運</span></td>
+        <td class="num"><strong>48,000</strong><br><span style="font-size:11px">ANA</span></td>
+        <td class="num"><strong>NT$33,848</strong></td><td class="num">0</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">廈門航空 MF</span>　NRT 14:55 → SIN 01:40<sup>+1</sup>　1 停廈門 11h45<span class="pay pay-cash">NT$13,114 含行李</span></li>
+          <li>9/19　<span class="fno">土耳其航空 TK168</span>　SIN 10:25 → MEL 19:40　直飛 7h15<span class="pay pay-cash">NT$10,833 含行李</span></li>
+          <li>9/27　<span class="fno">泰航 TG462＋TG600</span>　MEL <strong>23:30</strong> → BKK → HKG 11:45<sup>+1</sup>　<strong>商務</strong> 14h15<span class="pay pay-mile">48,000 ANA ＋ NT$2,827</span></li>
+          <li>9/28　<span class="fno">香港航空 HX</span>　HKG 14:20 → NRT 20:05　直飛 4h45<span class="pay pay-cash">NT$7,074 含行李</span></li>
+        </ol>
+        <div class="warnline">轉機：SIN 停 8h45（過夜）、HKG 停 2h35。抵達 MEL 9/19 19:40，符合 21:30 前；回程 23:30 出發，符合 20:00–23:59。</div></td>
+      </tr>
+      <tr>
+        <td>C　ANA 換 MEL→BKK 商務<br><span style="font-size:11px;color:var(--muted)">少用 4,500 哩，但多花現金</span></td>
+        <td class="num">43,500<br><span style="font-size:11px">ANA</span></td>
+        <td class="num">NT$35,098</td><td class="num">0</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">廈門航空 MF</span>　NRT 14:55 → SIN 01:40<sup>+1</sup>　1 停廈門 11h45<span class="pay pay-cash">NT$13,114 含行李</span></li>
+          <li>9/19　<span class="fno">土耳其航空 TK168</span>　SIN 10:25 → MEL 19:40　直飛 7h15<span class="pay pay-cash">NT$10,833 含行李</span></li>
+          <li>9/27　<span class="fno">泰航 TG462</span>　MEL <strong>23:30</strong> → BKK 06:00<sup>+1</sup>　<strong>商務直飛</strong> 9h30<span class="pay pay-mile">43,500 ANA ＋ NT$2,827</span></li>
+          <li>9/28　<span class="fno">香港航空 HX</span>　BKK 15:55 → NRT 14:15<sup>+1</sup>　1 停香港 20h20<span class="pay pay-cash">NT$8,324 含行李</span></li>
+        </ol>
+        <div class="warnline">比 B 少 4,500 哩，但現金多 NT$1,250，且最後一段要 20 小時。</div></td>
+      </tr>
+      <tr>
+        <td>A　同 B，但去程走香港<br><span style="font-size:11px;color:var(--muted)">含 1 段廉航</span></td>
+        <td class="num">48,000<br><span style="font-size:11px">ANA</span></td>
+        <td class="num">NT$35,272–36,272</td><td class="num">1</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">香港航空 HX</span>　NRT 15:15 → HKG 19:20　直飛 5h05<span class="pay pay-cash">NT$11,973 含行李</span></li>
+          <li>9/18　<span class="fno">酷航 TR</span>　HKG 20:45 → MEL 20:20<sup>+1</sup>　1 停新加坡 21h35<span class="pay pay-cash">NT$12,398 ＋行李</span></li>
+          <li>9/27　<span class="fno">泰航 TG462＋TG600</span>　MEL <strong>23:30</strong> → HKG 11:45<sup>+1</sup>　<strong>商務</strong> 14h15<span class="pay pay-mile">48,000 ANA ＋ NT$2,827</span></li>
+          <li>9/28　<span class="fno">香港航空 HX</span>　HKG 14:20 → NRT 20:05　直飛 4h45<span class="pay pay-cash">NT$7,074 含行李</span></li>
+        </ol>
+        <div class="warnline">⚠ 第 1→2 段在香港只有 <strong>85 分鐘</strong>，且是兩張分開的票。比 B 貴又比 B 累，列出來只是備案。</div></td>
+      </tr>
+      <tr>
+        <td><strong>E　全現金直通一張票</strong><br><span style="font-size:11px;color:var(--muted)">不想用里程就選這個</span></td>
+        <td class="num">0</td><td class="num"><strong>NT$40,433</strong></td><td class="num">0</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">中國南方 CZ</span>　HND 15:40 → MEL 08:40<sup>+1</sup>　1 停廣州、轉機 2h05、全程 16h00</li>
+          <li>9/27　<span class="fno">中國南方 CZ</span>　MEL <strong>21:10</strong> → HND 19:55<sup>+1</sup>　全程 23h45</li>
+        </ol>
+        <div class="warnline">單一訂位代號、行李直掛、有轉機保障。<strong>現在比拆四段還便宜。</strong></div></td>
+      </tr>
+      <tr>
+        <td>D　全現金拆四段<br><span style="font-size:11px;color:var(--muted)">四段全廉航——<u>已不再划算</u></span></td>
+        <td class="num">0</td><td class="num">NT$42,769–46,769</td><td class="num">4</td>
+        <td class="seg"><ol>
+          <li>9/18　<span class="fno">濟州航空 7C</span>　NRT 10:30 → SIN 23:25　1 停釜山 13h55<span class="pay pay-cash">NT$10,865 ＋行李</span></li>
+          <li>9/19　<span class="fno">酷航 TR</span>　SIN 11:05 → MEL 20:20　直飛 7h15<span class="pay pay-cash">NT$7,368 ＋行李</span></li>
+          <li>9/27　<span class="fno">酷航 TR</span>　MEL <strong>21:35</strong> → SIN 03:40<sup>+1</sup>　直飛 8h05<span class="pay pay-cash">NT$10,082 ＋行李</span></li>
+          <li>9/28　<span class="fno">德威航空 TW</span>　SIN 23:00 → NRT 11:05<sup>+1</sup>　1 停首爾 11h05<span class="pay pay-cash">NT$10,454 ＋行李</span></li>
+        </ol>
+        <div class="warnline">票面 NT$38,769，但四段都要另付行李（NT$1,000–2,000 × 4）→ <strong>總額反而超過直通一張票</strong>。還要自理 4 段轉機、無銜接保障。</div></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout warn">
+    <strong>而且拆開買省不到多少。</strong>把四段都用「確實符合時段」的單程票重算後：
+    經 SIN 拆 <strong>NT$38,040</strong>、經 BKK 拆 <strong>NT$39,157</strong>、直通一張票 <strong>NT$40,391</strong>。
+    最多省約 NT$2,350，代價是 4 張分開的廉航票、自理轉機、行李餐食另計、誤點無銜接保障。
+  </div>
+  </details>
+  <details><summary><strong>其餘更正一覽（一行一件）</strong></summary>
+  <div class="callout warn">
+    <strong>⚠️ 本表已於 2026-08-08 重做。舊版拿<u>經濟艙</u>現金價去除<u>商務艙</u>里程，那不是「偏低的值」，是無效的值</strong>——
+    我卻給它標個「偏低」就放進表裡一起排序，等於讓沒有意義的數字看起來像可比較的資料。
+    現已全部改用<strong>同艙現金價</strong>重查重算，商務那幾列從 0.27–0.33 變成 <strong>1.31–1.57</strong>，結論完全不同。
+  </div>
+    <ul>
+      <li>08-08　CX178 稅費實測 HKD 1,995＝NT$8,199（燃油 8/1 漲 41%），「里程最省」降級。</li>
+      <li>08-09　VN595＋VN781 的 11h50 質疑是我估錯，訂位頁證實 2h40＋1h00＋8h10；已收回。</li>
+      <li>08-09　o6／o7／o8 三張卡時刻誤記（NH843 機場、NH803／801 抵達時刻），已依 GF＋ANA 截圖更正。</li>
+      <li>08-09　<strong>9/18 東京→SIN 經濟誤標「可訂」，實為候補</strong>；經濟稅 ¥40,230 與商務僅差 43。</li>
+      <li>08-09　NH813／NH859 誤標可訂——稅金抄了、狀態漏抄；截圖實為 Waitlisted；NH859 機場 NRT→HND 亦更正。</li>
+      <li>08-09　戊 的前段由「經濟 17,500」更正為使用者實際所指的「商務候補 42,500」。</li>
+    </ul>
+  </details>
+  <div class="callout warn">
+    <strong>1 · 清單頁看不出候補。</strong>
+    長榮的航班清單完全沒有候補標記，但一路點到「旅客資料 → 確認」頁，機位狀態才顯示<strong>候補</strong>。
+    網站自己也跳提示：「機位狀態為確認或候補需待您填寫完旅客資料才可確認」。只看清單頁會誤判。
+  </div>
 </section>
 
 <footer>
